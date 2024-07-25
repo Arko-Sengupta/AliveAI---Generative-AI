@@ -1,0 +1,32 @@
+/* Hamburger Button */
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .line-lg {
+    width: 80%;
+    height: 2px;
+    background-color: #3dd5f3;
+  }
+  
+  .line-md {
+    width: 50%;
+    height: 2px;
+    background-color: #3dd5f3;
+  }
+  
+  /* Logo */
+  
+  .logo-container {
+    height: 60px;
+    width: 100%;
+  }
+  

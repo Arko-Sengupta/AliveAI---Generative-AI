@@ -1,0 +1,143 @@
+{
+    "Header": {
+        "Header_Link_1": "Home",
+        "Header_Link_2": "About Us",
+        "Header_Link_3": "Contact Us",
+        "Header_Link_4": "Feature",
+        "Header_Login_Button": "Login",
+        "Header_SignUp_Button": "SignUp"
+    },
+
+    "Home": {
+        "Home_Cover": {
+            "Home_Cover_Title": "Are you ready for the biggest revolution of the century?",
+            "Home_Cover_Sub_Title": "Alive AI is here. Start your Medical Diagnosis Today.",
+            "Home_Cover_Learn_More_Button": "Learn More"
+        },
+
+        "Home_Departments": {
+            "Home_Departments_Title": "Our Departments",
+            "Home_Departments_Sub_Title": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
+            "Home_Departments_FeatureIcon":{
+                "Home_Departments_FeatureIcon_Icon_1": "Diabetes Analysis",
+                "Home_Departments_FeatureIcon_Icon_2": "Feature 2",
+                "Home_Departments_FeatureIcon_Icon_3": "Feature 3",
+                "Home_Departments_FeatureIcon_Icon_4": "Feature 4",
+                "Home_Departments_FeatureIcon_Icon_5": "Feature 5",
+                "Home_Departments_FeatureIcon_Icon_6": "Feature 6",
+                "Home_Departments_FeatureIcon_Icon_7": "Feature 7",
+                "Home_Departments_FeatureIcon_Icon_8": "Feature 8"
+            }
+        },
+
+        "Home_Summary": {
+            "Home_Summary_Title": "What we do?",
+            "Home_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
+            "Home_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
+            "Home_Summary_Key_1": "Patient Data Privacy",
+            "Home_Summary_Key_2": "Health Diagnosis",
+            "Home_Summary_Key_3": "Assure Quality Treatment",
+            "Home_Summary_Read_More_Button": "Read More"
+        },
+
+        "Home_Founders": {
+            "Home_Founders_Title": "Meet Our Founders",
+            "Home_Founders_Sub_Title": "Meet the Visionaries Behind AliveAI. Harnessing AI to Revolutionize Healthcare with Cutting-Edge Medical Insights and Personalized Patient Care.",
+            "Home_Founders_Members":{
+                "Home_Founders_Members_Member_1": "Member 1",
+                "Home_Founders_Members_Member_2": "Member 2",
+                "Home_Founders_Members_Member_3": "Member 3",
+                "Home_Founders_Members_Member_4": "Member 4"
+            },
+            "Home_Founders_Designations": {
+                "Home_Founders_Designations_Designation_1": "Designation 1",
+                "Home_Founders_Designations_Designation_2": "Designation 2",
+                "Home_Founders_Designations_Designation_3": "Designation 3",
+                "Home_Founders_Designations_Designation_4": "Designation 4"
+            }
+        },
+
+        "Home_Review": {
+            "Home_Review_Title": "Our Patients Say About Us",
+            "Home_Review_Sub_Title": "AliveAI Patient Pulse: Real-time Feedback Hub — Amplify Patient Voices, Enhance Care, and Drive Continuous Improvement Efforts!",
+            "Home_Review_Patient_1": {
+                "Home_Review_Patient_Name": "Patient 1",
+                "Home_Review_Patient_Designation": "Designation 1",
+                "Home_Review_Patient_Review": "AliveAI has transformed our clinic's diagnostic process. The AI's accuracy and user-friendly interface have significantly improved patient outcomes. Highly recommended!"
+            },
+            "Home_Review_Patient_2": {
+                "Home_Review_Patient_Name": "Patient 2",
+                "Home_Review_Patient_Designation": "Designation 2",
+                "Home_Review_Patient_Review": "AliveAI is indispensable in my daily practice. It saves time on paperwork and provides highly accurate diagnostic suggestions. An essential tool for modern medicine!"
+            }
+        },
+
+        "Home_Gallery": {
+            "Home_Gallery_Title": "Our Gallery",
+            "Home_Gallery_Sub_Title": "Explore AliveAI's Gallery: Showcasing Innovative Medical IT Solutions and Advanced Technologies for Enhanced Healthcare and Patient Outcomes."
+        }
+    },
+
+    "About": {
+        "About_Cover": {
+            "About_Cover_Title": "Home -> About Us",
+            "About_Cover_Sub_Title": "Alive AI: Revolutionizing Healthcare with Intelligent Solutions. Transforming Health through Cutting-edge AI Technology."
+        },
+
+        "About_Summary": {
+            "About_Summary_Title": "What we do?",
+            "About_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
+            "About_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
+            "About_Summary_Key_1": "Patient Data Privacy",
+            "About_Summary_Key_2": "Health Diagnosis",
+            "About_Summary_Key_3": "Assure Quality Treatment",
+            "About_Summary_Read_More_Button": "Read More"
+        }
+    },
+
+    "Login": {
+        "Login_Signup_Account": "Sign into your Account",
+        "Login_Button": "Login",
+        "Login_Forgot_Password": "Forgot Password",
+        "Login_Account_Exists": "Don't have an account?",
+        "Login_Signup": "Register here"
+    },
+
+    "SignUp": {
+        "SignUp_Create_Account": "Create a New Account", 
+        "SignUp_Button": "Sign Up",
+        "SingUp_Account_Exist": "Already have an account?",
+        "SignUp_Login_Redirect": "Login Here"
+    },
+    
+    "Footer": {
+        "Footer_Col_1": {
+            "Footer_Col_1_Title": "Find Us",
+            "Footer_Col_1_Description": "Locate us easily! Find AliveAI HQ. Seamless integration, precise directions, and real-time updates. Explore now!",
+            "Footer_Col_1_Address": "795 South Park Avenue, CA 94107",
+            "Footer_Col_1_Mail": "enquiry@alive.ai",
+            "Footer_Col_1_Phone": "+1 987 654 321"
+        },
+
+        "Footer_Col_2": {
+            "Footer_Col_2_Title": "Quick Links",
+            "Footer_Col_2_Feature_1": "Diabetes Analysis",
+            "Footer_Col_2_Feature_2": "Feature 2",
+            "Footer_Col_2_Feature_3": "Feature 3",
+            "Footer_Col_2_Feature_4": "Feature 4",
+            "Footer_Col_2_Feature_5": "Feature 5",
+            "Footer_Col_2_Feature_6": "Feature 6",
+            "Footer_Col_2_Feature_7": "Feature 7",
+            "Footer_Col_2_Feature_8": "Feature 8"
+        },
+
+        "Footer_Col_3": {
+            "Footer_Col_3_Title": "Ask Query",
+            "Footer_Col_3_Query_Form_Button": "Send"
+        },
+
+        "Footer_Copyright": {
+            "Footer_Copyright_Title": "Copyright © 2024 | AliveAI"
+        }
+    }
+}
