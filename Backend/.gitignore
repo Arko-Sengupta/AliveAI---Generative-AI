@@ -1,3 +1,4 @@
 
 # Ignore Files
-*/.env
+Mobile_Services/**/*.env
+Email_Services/**/*.env
