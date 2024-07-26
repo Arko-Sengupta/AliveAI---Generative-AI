@@ -99,6 +99,7 @@ class EmailOTP_API:
         
     def run(self):
         try:
+            
             self.app.register_blueprint(self.GenerateOTP_blueprint)
             self.app.run(debug=True)
         except Exception as e:
