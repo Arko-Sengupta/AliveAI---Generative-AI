@@ -62,7 +62,7 @@ class CountryCodes_API:
     def CountryCodesData(self):
         try:
             req = request.get_json()
-            if req["user"] == "Admin" and req["password"] == "GenAI@7070" and req["token"] == "GenAI-CountryCodes":
+            if req["user"] == os.getenv("AUTH_NAME") and req["password"] == os.getenv("AUTH_PASSWORD") and req["token"] == os.getenv("AUTH_TOKEN"):
                 data = self.CountryCodes_.CountryCodeDataTable()
             
                 response = {
@@ -76,7 +76,7 @@ class CountryCodes_API:
                 response = {
                     "success": False,
                     "data": {},
-                    "message": "unknown Request"
+                    "message": "Request Authentication Error"
                 }
                 
                 return jsonify(response), 200
