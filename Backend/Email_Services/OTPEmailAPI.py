@@ -101,7 +101,7 @@ class EmailOTP_API:
         try:
             
             self.app.register_blueprint(self.GenerateOTP_blueprint)
-            self.app.run(debug=True)
+            self.app.run(debug=True, host='0.0.0.0')
         except Exception as e:
             logging.error('An Error Occured: ', exc_info=e)
             raise e
