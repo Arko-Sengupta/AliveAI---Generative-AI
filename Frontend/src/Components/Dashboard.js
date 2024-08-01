@@ -144,7 +144,7 @@ const WebDashboard = () => {
       <Row>
         <Col className="col-4 dashboard-menu-box">
           <Row className="text-center">
-            <h3>Welcome Arko to the Dashboard!</h3>
+            <h3>Welcome to the Dashboard!</h3>
           </Row>
           <Row>
             <WebMenuList toggleSubMenu={toggleSubMenu} setActiveMenu={setActiveMenu} activeMenu={activeMenu} />
