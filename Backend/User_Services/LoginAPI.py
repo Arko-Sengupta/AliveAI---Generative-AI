@@ -36,7 +36,7 @@ class Login:
             connection = getconn()
             
             cursor = connection.cursor()
-            validate_query = "SELECT COUNT(*) FROM UsersData WHERE username = %s AND password = %s"
+            validate_query = "SELECT COUNT(*) FROM UsersData WHERE Email = %s AND Password = %s"
                              
             cursor.execute(validate_query, (Email, Password))                 
             number_of_people = cursor.fetchone()
