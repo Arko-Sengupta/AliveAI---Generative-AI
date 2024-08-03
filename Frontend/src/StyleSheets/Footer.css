@@ -71,6 +71,15 @@
   padding-left: 420px;
 }
 
+.w-footer-link {
+  text-decoration: none;
+  color: white;
+}
+
+.w-footer-link:hover {
+  font-size: 1.2em;
+}
+
 @media only screen and (max-width: 1400px) {
   .w-footer-form-button {
     margin-left: 130px;
@@ -161,7 +170,8 @@
 
 .m-footer-form-button {
   min-width: 300px;
-  padding-left: 300px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .m-footer-copyright {
@@ -170,8 +180,17 @@
 }
 
 .m-footer-form {
-  padding-left: 80px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.m-footer-link {
+  text-decoration: none;
+  color: white;
+}
+
+.m-footer-link:hover {
+  font-size: 1.2em;
 }
 
 @media only screen and (max-width: 769px) {
@@ -198,8 +217,8 @@
   }
 
   .m-footer-form-button {
-    padding-left: 260px;
-    padding-right: 0px;
+    padding-left: 130px;
+    padding-right: 130px;
   }
 }
 
@@ -218,8 +237,8 @@
   }
 
   .m-footer-form {
-    padding-left: 100px;
-    padding-right: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
   }
 
   .m-footer-form-button {
@@ -230,8 +249,8 @@
 
 @media only screen and (max-width: 497px) {
   .m-footer-form {
-    padding-left: 30px;
-    padding-right: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .m-footer-form-button {

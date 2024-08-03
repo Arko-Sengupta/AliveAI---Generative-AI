@@ -1,10 +1,20 @@
 import React, { useMemo } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../StyleSheets/Footer.css";
-import { faChevronRight, faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faTwitter, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faChevronRight,
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faTwitter,
+  faLinkedin,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 // Frontend UI
 // WebFooter - Contact Component
@@ -12,7 +22,14 @@ import { faFacebook, faTwitter, faLinkedin, faInstagram } from '@fortawesome/fre
 const WebIconTextRow = ({ icon, text }) => (
   <Row className="align-items-center">
     <Col className="pt-1">
-      <h6><FontAwesomeIcon icon={icon} color="white" style={{paddingRight: "5px"}}/> {text}</h6>
+      <h6>
+        <FontAwesomeIcon
+          icon={icon}
+          color="white"
+          style={{ paddingRight: "5px" }}
+        />{" "}
+        {text}
+      </h6>
     </Col>
   </Row>
 );
@@ -27,14 +44,21 @@ const WebFooterContact = ({ Footer }) => {
       <Row>
         <p>{Footer.Footer_Col_1.Footer_Col_1_Description}</p>
       </Row>
-      <WebIconTextRow icon={faLocationDot} text={Footer.Footer_Col_1.Footer_Col_1_Address} />
-      <WebIconTextRow icon={faEnvelope} text={Footer.Footer_Col_1.Footer_Col_1_Mail} />
-      <WebIconTextRow icon={faPhone} text={Footer.Footer_Col_1.Footer_Col_1_Phone} />
+      <WebIconTextRow
+        icon={faLocationDot}
+        text={Footer.Footer_Col_1.Footer_Col_1_Address}
+      />
+      <WebIconTextRow
+        icon={faEnvelope}
+        text={Footer.Footer_Col_1.Footer_Col_1_Mail}
+      />
+      <WebIconTextRow
+        icon={faPhone}
+        text={Footer.Footer_Col_1.Footer_Col_1_Phone}
+      />
     </Col>
   );
 };
-
-
 
 // Web Footer - Feature List Component [Main]
 const WebFooterFeatureList = ({ Footer }) => {
@@ -49,8 +73,13 @@ const WebFooterFeatureList = ({ Footer }) => {
             .filter((key) => key.startsWith("Footer_Col_2_Feature"))
             .map((key) => (
               <li key={key}>
-                <Link to="/features">
-                  <FontAwesomeIcon icon={faChevronRight} style = {{paddingRight: "5px"}}/> {Footer.Footer_Col_2[key]}
+                <Link className="w-footer-link" to="/features">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />{" "}
+                  {Footer.Footer_Col_2[key]}
                 </Link>
               </li>
             ))}
@@ -59,8 +88,6 @@ const WebFooterFeatureList = ({ Footer }) => {
     </Col>
   );
 };
-
-
 
 // Web Footer Enquiry Form Component [Main]
 const WebFooterEnquiry = ({ Footer }) => {
@@ -96,11 +123,15 @@ const WebFooterEnquiry = ({ Footer }) => {
   );
 };
 
-
-
 // Web Footer WebFooter Social Media Strip Component [Main]
 const WebFooterSocial = ({ Footer }) => {
-  const socialIcons = [faFacebook, faTwitter, faLinkedin, faInstagram, faEnvelope];
+  const socialIcons = [
+    faFacebook,
+    faTwitter,
+    faLinkedin,
+    faInstagram,
+    faEnvelope,
+  ];
 
   return (
     <>
@@ -117,8 +148,6 @@ const WebFooterSocial = ({ Footer }) => {
     </>
   );
 };
-
-
 
 // Web Footer Component [Main]
 const WebFooter = ({ StaticData }) => {
@@ -140,23 +169,26 @@ const WebFooter = ({ StaticData }) => {
   );
 };
 
-
-
 // Mobile Footer - Section Headers Components [Main]
 const SectionHeader = ({ title }) => (
-  <Row className="text-center mb-4">
+  <Row className="text-center">
     <h1>{title}</h1>
   </Row>
 );
-
-
 
 // Mobile Footer - Contact Component
 // Mobile Footer Contact Icon Component
 const MobIconTextRow = ({ icon, text }) => (
   <Row className="align-items-center mb-2">
     <Col className="pt-1">
-      <h6><FontAwesomeIcon icon={icon} color="white" style={{paddingRight: "5px"}}/> {text}</h6>
+      <h6>
+        <FontAwesomeIcon
+          icon={icon}
+          color="white"
+          style={{ paddingRight: "5px" }}
+        />{" "}
+        {text}
+      </h6>
     </Col>
   </Row>
 );
@@ -164,19 +196,26 @@ const MobIconTextRow = ({ icon, text }) => (
 // Mobile Footer Contact Component [Main]
 const MobFooterContact = ({ Footer }) => {
   return (
-    <Col className="col-md-8 col-sm-12 mb-5">
+    <Col className="mb-5">
       <SectionHeader title={Footer.Footer_Col_1.Footer_Col_1_Title} />
       <Row>
         <p>{Footer.Footer_Col_1.Footer_Col_1_Description}</p>
       </Row>
-      <MobIconTextRow icon={faLocationDot} text={Footer.Footer_Col_1.Footer_Col_1_Address} />
-      <MobIconTextRow icon={faEnvelope} text={Footer.Footer_Col_1.Footer_Col_1_Mail} />
-      <MobIconTextRow icon={faPhone} text={Footer.Footer_Col_1.Footer_Col_1_Phone} />
+      <MobIconTextRow
+        icon={faLocationDot}
+        text={Footer.Footer_Col_1.Footer_Col_1_Address}
+      />
+      <MobIconTextRow
+        icon={faEnvelope}
+        text={Footer.Footer_Col_1.Footer_Col_1_Mail}
+      />
+      <MobIconTextRow
+        icon={faPhone}
+        text={Footer.Footer_Col_1.Footer_Col_1_Phone}
+      />
     </Col>
   );
 };
-
-
 
 // Mobile Footer Feature List Component [Main]
 const MobFooterFeature = ({ Footer, featureKeys }) => {
@@ -187,8 +226,13 @@ const MobFooterFeature = ({ Footer, featureKeys }) => {
         <ul className="m-footer">
           {featureKeys.map((key) => (
             <li key={key}>
-              <Link to="/features">
-                <FontAwesomeIcon icon={faChevronRight} /> {Footer.Footer_Col_2[key]}
+              <Link className="m-footer-link" to="/features">
+                <FontAwesomeIcon
+                  style={{ color: "#3dd5f3" }}
+                  className="fa-xs"
+                  icon={faChevronRight}
+                />{" "}
+                {Footer.Footer_Col_2[key]}
               </Link>
             </li>
           ))}
@@ -198,11 +242,9 @@ const MobFooterFeature = ({ Footer, featureKeys }) => {
   );
 };
 
-
-
 // Form Input Component
 const FormInputRow = ({ placeholder, type = "text" }) => (
-  <Row className="m-footer-form col-12 col-xs-8 mt-2">
+  <Row className="m-footer-form mt-2">
     <Form.Control className="mx-auto" type={type} placeholder={placeholder} />
   </Row>
 );
@@ -220,15 +262,13 @@ const MobFooterEnquiry = ({ Footer }) => {
         />
       ))}
       <Row className="m-footer-form-button">
-        <Button className="col-lg-2 col-md-4 mt-2" variant="outline-info">
+        <Button className="mt-2" variant="outline-info">
           {Footer.Footer_Col_3.Footer_Col_3_Query_Form_Button}
         </Button>
       </Row>
     </Col>
   );
 };
-
-
 
 // Social Media Icons Component
 const SocialMediaIcon = ({ icon }) => (
@@ -239,7 +279,13 @@ const SocialMediaIcon = ({ icon }) => (
 
 // Mobile Footer Social Media Strip Component [Main]
 const MobFooterSocial = ({ Footer }) => {
-  const socialIcons = [faFacebook, faTwitter, faLinkedin, faInstagram, faEnvelope];
+  const socialIcons = [
+    faFacebook,
+    faTwitter,
+    faLinkedin,
+    faInstagram,
+    faEnvelope,
+  ];
 
   return (
     <>
@@ -279,8 +325,6 @@ const MobileFooter = ({ StaticData }) => {
   );
 };
 
-
-
 // Responsive Footer Component [Main]
 const FooterComponent = ({ StaticData, windowWidth }) => {
   const footer = useMemo(() => {
@@ -292,8 +336,6 @@ const FooterComponent = ({ StaticData, windowWidth }) => {
   }, [windowWidth, StaticData]);
   return footer;
 };
-
-
 
 // Footer Component [Main]
 const Footer = ({ StaticData, windowWidth }) => {
