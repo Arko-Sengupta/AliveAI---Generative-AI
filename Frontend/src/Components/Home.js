@@ -135,7 +135,7 @@ const SummaryContent = ({ Home_Summary_Content_P1, Home_Summary_Content_P2, Home
       </SlideUp>
       <div>
         {[Home_Summary_Key_1, Home_Summary_Key_2, Home_Summary_Key_3].map((key, index) => (
-          <SlideUp>
+          <SlideUp key={key}>
             <div className="summary-tick-icon-title" key={index}>
               <img src={TickImg} alt="Tick Icon" />
               <span>{key}</span>
