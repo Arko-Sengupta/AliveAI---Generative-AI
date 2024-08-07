@@ -1,0 +1,769 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poetsen+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Cover */
+
+.cover-image-with-overlay {
+  position: relative;
+}
+
+.cover-image-with-overlay img {
+  min-width: 250px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-width: 250px;
+}
+
+.cover-overlay-layer {
+  min-width: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.cover-overlay-text {
+  min-width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  padding: 10px;
+}
+
+.cover-overlay-text h1 {
+  min-width: 250px;
+  font-size: 60px;
+  margin-bottom: 25px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.cover-overlay-text h3 {
+  min-width: 250px;
+  font-size: 35px;
+  margin-bottom: 25px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@media only screen and (max-width: 1495px) {
+  .cover-image-with-overlay img {
+    height: 800px;
+  }
+}
+
+@media only screen and (max-width: 1198px) {
+  .cover-overlay-text {
+    width: 800px;
+  }
+
+  .cover-overlay-text h1 {
+    font-size: 60px;
+  }
+
+  .cover-overlay-text h3 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 805px) {
+  .cover-overlay-text {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cover-overlay-text {
+    width: 500px;
+  }
+
+  .cover-overlay-text h1 {
+    font-size: 40px;
+  }
+
+  .cover-overlay-text h3 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 505px) {
+  .cover-overlay-text {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .cover-overlay-text {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .cover-overlay-text {
+    width: 200px;
+  }
+
+  .cover-overlay-text h1 {
+    font-size: 25px;
+  }
+
+  .cover-overlay-text h3 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 275px) {
+  .cover-overlay-text {
+    width: 100px;
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 200px) {
+  .cover-overlay-text {
+    padding-left: 25px;
+  }
+}
+
+@media only screen and (max-width: 110px) {
+  .cover-overlay-text {
+    padding-left: 80px;
+  }
+
+  .cover-overlay-text h1 {
+    font-size: 15px;
+  }
+
+  .cover-overlay-text h3 {
+    font-size: 10px;
+  }
+}
+
+/* Department */
+
+.department-container {
+  min-width: 250px;
+  padding-top: 100px;
+  background-color: #212529;
+  color: white;
+}
+
+.department-container img {
+  min-width: 250px;
+  width: 100px;
+}
+
+.department-container h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.department-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+}
+
+@media only screen and (max-width: 955px) {
+  .department-container h6 {
+    padding-inline: 10%;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .department-container h6 {
+    padding-inline: 0%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .department-container h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 135px) {
+  .department-container h1 {
+    font-size: 25px;
+  }
+}
+
+/* Feature Icon */
+
+.feature-icon-container {
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  padding-inline: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.feature-icon-container img {
+  min-width: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.feature-icon-container h3 {
+  font-family: "Cinzel Decorative", serif;
+  margin-top: 10px;
+  font-size: 10px;
+  color: white;
+}
+
+.feature-container {
+  display: flex;
+  align-items: center;
+}
+
+.feature-icon {
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 515px) {
+  .feature-icon-container {
+    margin-left: -5px;
+    width: 70px;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .feature-container {
+    display: inline-block;
+  }
+
+  .feature-icon-container {
+    width: 200px;
+    height: 100px;
+  }
+
+  .feature-icon-container h3 {
+    font-size: 12px;
+  }
+}
+
+/* Summary */
+
+.summary-container {
+  min-width: 250px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  background-color: #212529;
+  color: white;
+}
+
+.summary-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.summary-ecg-line img {
+  min-width: 250px;
+  width: 100px;
+}
+
+.summary-content {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  text-align: justify;
+  text-justify: inter-word;
+  width: 300px;
+  padding-top: 30px;
+}
+
+.summary-disabled-text {
+  color: #676767;
+  pointer-events: none;
+}
+
+.summary-tick-icon-title {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.summary-tick-icon-title img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.summary-image-row {
+  padding-left: 100px;
+}
+
+.summary-image img {
+  padding-inline: 50px;
+  width: 480px;
+  height: 350px;
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 1200px) {
+  .summary-image-row {
+    padding-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .summary-image img {
+    margin-top: 100px;
+    padding-inline: 30px;
+    width: 300px;
+    height: 250px;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .summary-image img {
+    margin-top: 60px;
+    padding-inline: 50px;
+    width: 350px;
+    height: 300px;
+  }
+
+  .summary-image-row {
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .summary-image-row {
+    padding-left: 80px;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .summary-image img {
+    width: 300px;
+    height: 200px;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+
+  .summary-image-row {
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .summary-image img {
+    padding-inline: 30px;
+  }
+
+  .summary-image-row {
+    padding-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .summary-image img {
+    padding-inline: 20px;
+    width: 200px;
+    height: 120px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .summary-image-row {
+    padding-left: 80px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .summary-image-row {
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 260px) {
+  .summary-image-row {
+    padding-left: 20px;
+  }
+}
+
+/* Founders */
+
+.founders-container {
+  min-width: 250px;
+  padding-top: 100px;
+  background-color: #212529;
+  color: white;
+}
+
+.founders-container img {
+  min-width: 250px;
+  width: 100px;
+}
+
+.founders-container h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.founders-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+}
+
+@media only screen and (max-width: 955px) {
+  .founders-container h6 {
+    padding-inline: 10%;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .founders-container h6 {
+    padding-inline: 0%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .founders-container h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 135px) {
+  .founders-container h1 {
+    font-size: 25px;
+  }
+}
+
+/* Member Card */
+
+.member-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 180px;
+  margin-bottom: 250px;
+  font-family: "Cinzel Decorative", serif;
+}
+
+.member-container img {
+  min-width: 100px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .member-container {
+    padding-left: 140px;
+  }
+}
+
+@media only screen and (max-width: 1210px) {
+  .member-container {
+    padding-left: 60px;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .member-container {
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 552px) {
+  .member-container {
+    padding-left: 150px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .member-container {
+    padding-left: 70px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .member-container {
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 287px) {
+  .member-container {
+    padding-left: 20px;
+  }
+}
+
+@media only screen and (max-width: 275px) {
+  .member-container {
+    padding-left: 0px;
+  }
+}
+
+/* Review */
+
+.review-image-with-overlay {
+  position: relative;
+}
+
+.review-image-with-overlay img {
+  min-width: 250px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-overlay-layer {
+  min-width: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.review-overlay-text {
+  min-width: 250px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  padding: 10px;
+}
+
+.review-container {
+  min-width: 250px;
+  padding-top: 100px;
+  background-color: transparent;
+  color: white;
+}
+
+.review-container img {
+  width: 150px;
+}
+
+.review-container h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.review-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+}
+
+.review-container h3 {
+  min-width: 250px;
+  font-size: 20px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.review-container h5 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.review-container p {
+  min-width: 250px;
+  font-size: 12px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  padding-inline: 150px;
+}
+
+.review-member-image img {
+  min-width: 150px;
+  border-radius: 100%;
+}
+
+@media only screen and (max-width: 1495px) {
+  .review-image img {
+    height: 1000px;
+  }
+}
+
+@media only screen and (max-width: 1495px) {
+  .review-container h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 1360px) {
+  .review-container p {
+    padding-inline: 120px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .review-container p {
+    padding-inline: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .review-container h6 {
+    font-size: 10px;
+  }
+
+  .review-container p {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  .review-container h1 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 150px) {
+  .review-container h1 {
+    margin-left: 70px;
+  }
+
+  .review-container img {
+    margin-left: 120px;
+  }
+
+  .review-container h6 {
+    margin-left: 70px;
+  }
+
+  .review-container h3 {
+    margin-left: 70px;
+  }
+
+  .review-container h5 {
+    margin-left: 70px;
+  }
+
+  .review-container p {
+    margin-left: 70px;
+  }
+}
+
+/* Gallery */
+
+.gallery-container {
+  min-width: 250px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #212529;
+  color: white;
+}
+
+.gallery-container img {
+  min-width: 250px;
+  width: 100px;
+}
+
+.gallery-container h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.gallery-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+}
+
+.gallery-images img {
+  min-width: 80%;
+  height: 100%;
+  border: 2px solid white;
+  box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 955px) {
+  .gallery-container h6 {
+    padding-inline: 10%;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .gallery-container h6 {
+    padding-inline: 0%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gallery-container h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 135px) {
+  .gallery-container h1 {
+    font-size: 25px;
+  }
+}
