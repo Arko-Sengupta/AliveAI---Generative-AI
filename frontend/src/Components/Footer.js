@@ -1,20 +1,20 @@
-import React, { useMemo } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../StyleSheets/Footer.css";
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faChevronRight,
   faEnvelope,
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faLinkedin,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useMemo } from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../StyleSheets/Footer.css";
 
 // Frontend UI
 // WebFooter - Contact Component
@@ -25,9 +25,10 @@ const WebIconTextRow = ({ icon, text }) => (
       <h6>
         <FontAwesomeIcon
           icon={icon}
-          color="white"
+          color="#3dd5f3"
           style={{ paddingRight: "5px" }}
-        />{" "}
+          className="fa-xs"
+        />
         {text}
       </h6>
     </Col>
@@ -78,7 +79,7 @@ const WebFooterFeatureList = ({ Footer }) => {
                     className="fa-xs"
                     icon={faChevronRight}
                     style={{ paddingRight: "5px", color: "#3dd5f3" }}
-                  />{" "}
+                  />
                   {Footer.Footer_Col_2[key]}
                 </Link>
               </li>
@@ -135,14 +136,12 @@ const WebFooterSocial = ({ Footer }) => {
 
   return (
     <>
-      <Row className="w-footer-copyright text-center">
-        <h6>{Footer.Footer_Copyright.Footer_Copyright_Title_Title}</h6>
+      <Row className="w-footer-copyright">
+        <h6>{Footer.Footer_Copyright.Footer_Copyright_Title}</h6>
       </Row>
-      <Row className="w-footer-icons my-3">
+      <Row className="w-footer-icons">
         {socialIcons.map((icon, index) => (
-          <Col className="col-1" key={index}>
-            <FontAwesomeIcon icon={icon} color="white" size="1x" />
-          </Col>
+          <SocialMediaIcon key={index} icon={icon} />
         ))}
       </Row>
     </>
@@ -184,9 +183,9 @@ const MobIconTextRow = ({ icon, text }) => (
       <h6>
         <FontAwesomeIcon
           icon={icon}
-          color="white"
+          color="#3dd5f3"
           style={{ paddingRight: "5px" }}
-        />{" "}
+        />
         {text}
       </h6>
     </Col>
@@ -228,10 +227,10 @@ const MobFooterFeature = ({ Footer, featureKeys }) => {
             <li key={key}>
               <Link className="m-footer-link" to="/features">
                 <FontAwesomeIcon
-                  style={{ color: "#3dd5f3" }}
                   className="fa-xs"
                   icon={faChevronRight}
-                />{" "}
+                  style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                />
                 {Footer.Footer_Col_2[key]}
               </Link>
             </li>
@@ -272,8 +271,8 @@ const MobFooterEnquiry = ({ Footer }) => {
 
 // Social Media Icons Component
 const SocialMediaIcon = ({ icon }) => (
-  <Col className="col-1 me-2">
-    <FontAwesomeIcon icon={icon} color="white" size="1x" />
+  <Col className="col-1">
+    <FontAwesomeIcon icon={icon} color="#3dd5f3" size="1x" />
   </Col>
 );
 
@@ -289,10 +288,10 @@ const MobFooterSocial = ({ Footer }) => {
 
   return (
     <>
-      <Row className="m-footer-copyright text-center">
+      <Row className="m-footer-copyright">
         <h6>{Footer.Footer_Copyright.Footer_Copyright_Title}</h6>
       </Row>
-      <Row className="m-footer-icons my-3 justify-content-center">
+      <Row className="m-footer-icons">
         {socialIcons.map((icon, index) => (
           <SocialMediaIcon key={index} icon={icon} />
         ))}
