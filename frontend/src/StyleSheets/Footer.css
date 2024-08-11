@@ -72,6 +72,7 @@
 .w-footer-icons {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .w-footer-icons .col-1 {
@@ -132,6 +133,7 @@
 .m-footer-icons {
   display: flex;
   justify-content: center;
+  padding-top: 10px;
 }
 
 .m-footer ul {
@@ -160,7 +162,6 @@
 }
 
 .m-footer p {
-  margin-left: 70px;
   margin-top: 20px;
   width: 250px;
   text-align: justify;

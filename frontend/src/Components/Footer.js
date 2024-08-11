@@ -26,7 +26,7 @@ const WebIconTextRow = ({ icon, text }) => (
         <FontAwesomeIcon
           icon={icon}
           color="#3dd5f3"
-          style={{ paddingRight: "5px" }}
+          style={{ paddingRight: "8px" }}
           className="fa-xs"
         />
         {text}
@@ -184,7 +184,7 @@ const MobIconTextRow = ({ icon, text }) => (
         <FontAwesomeIcon
           icon={icon}
           color="#3dd5f3"
-          style={{ paddingRight: "5px" }}
+          style={{ paddingRight: "8px" }}
         />
         {text}
       </h6>
@@ -271,7 +271,7 @@ const MobFooterEnquiry = ({ Footer }) => {
 
 // Social Media Icons Component
 const SocialMediaIcon = ({ icon }) => (
-  <Col className="col-1">
+  <Col className="col-1 mx-1">
     <FontAwesomeIcon icon={icon} color="#3dd5f3" size="1x" />
   </Col>
 );
