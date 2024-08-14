@@ -38,16 +38,13 @@
   padding-top: 50px;
 }
 
-@media screen and (max-width: 770px) {
-  .form-logo-container img {
-    max-width: 30%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .form-logo-container img {
-    max-width: 20%;
-  }
+.remember-me-text {
+  color: gray;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1rem;
 }
 
 .forgot-password-text {
@@ -59,12 +56,38 @@
   font-size: 1rem;
 }
 
+.swal2-input {
+  margin-inline: 0;
+}
+
+@media screen and (max-width: 770px) {
+  .form-logo-container img {
+    max-width: 30%;
+  }
+
+  .remember-me-text,
+  .forgot-password-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .form-logo-container img {
+    max-width: 20%;
+  }
+
+  .remember-me-text,
+  .forgot-password-text {
+    font-size: 0.8rem;
+  }
+}
+
 .forgot-password-text:hover {
   color: darkgray;
 }
 
 .form-redirect-button {
-  color: blue;
+  color: #009ab8;
   cursor: pointer;
   text-decoration: none;
 }
@@ -142,7 +165,7 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.mobile-dashboard-navbar::-webkit-scrollbar{
+.mobile-dashboard-navbar::-webkit-scrollbar {
   display: none;
 }
 
@@ -158,4 +181,14 @@
 .mobile-dashboard-navbar button ul {
   font-size: 0.5em;
   background-color: #212529;
+}
+
+.btn-verify {
+  background-color: #38bdf8 !important;
+  color: white !important;
+}
+
+.btn-blue {
+  background-color: #38bdf8 !important;
+  color: white !important;
 }

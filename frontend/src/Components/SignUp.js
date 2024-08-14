@@ -1,11 +1,27 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Alert, InputGroup } from "react-bootstrap";
+import {
+  Alert,
+  Button,
+  Col,
+  Container,
+  Form,
+  InputGroup,
+  Row,
+} from "react-bootstrap";
+import {
+  FaAt,
+  FaEnvelope,
+  FaEye,
+  FaEyeSlash,
+  FaHome,
+  FaLock,
+  FaPhone,
+  FaUser,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { FaAt, FaEnvelope, FaEye, FaEyeSlash, FaHome, FaPhone, FaUser, FaLock } from "react-icons/fa";
-
-import Logo from "../Utils/Images/Logo Images/AliveAI Logo.png";
-import "../StyleSheets/Dashboard.css";
 import Swal from "sweetalert2";
+import "../StyleSheets/Dashboard.css";
+import Logo from "../Utils/Images/Logo Images/AliveAI Logo.png";
 
 // Replace with Country Code API
 const countryCodes = [
@@ -63,46 +79,52 @@ const handleSignUp = async (
       setShow(true);
     } else {
       const { value: otpValues } = await Swal.fire({
-        title: 'Enter OTPs',
+        title: "Enter OTPs",
         html: `
-          <input id="emailOtp" class="swal2-input" placeholder="Enter OTP sent to email" type="number">
-          <input id="phoneOtp" class="swal2-input" placeholder="Enter OTP sent to phone" type="number">
+          <input id="emailOtp" class="swal2-input" placeholder="Enter OTP sent to email" type="number" min='0'>
+          <input id="phoneOtp" class="swal2-input" placeholder="Enter OTP sent to phone" type="number" min='0'>
         `,
         focusConfirm: false,
         showCancelButton: true,
-        confirmButtonText: 'Verify',
-        cancelButtonText: 'Cancel',
+        confirmButtonText: "Verify",
+        cancelButtonText: "Cancel",
+        customClass: {
+          confirmButton: "btn-verify",
+        },
         preConfirm: () => {
-          const emailOtp = Swal.getPopup().querySelector('#emailOtp').value;
-          const phoneOtp = Swal.getPopup().querySelector('#phoneOtp').value;
+          const emailOtp = Swal.getPopup().querySelector("#emailOtp").value;
+          const phoneOtp = Swal.getPopup().querySelector("#phoneOtp").value;
 
           if (!/^\d{6}$/.test(emailOtp)) {
-            Swal.showValidationMessage('Email OTP must be exactly 6 digits');
+            Swal.showValidationMessage("Email OTP must be exactly 6 digits");
             return false;
           }
           if (!/^\d{6}$/.test(phoneOtp)) {
-            Swal.showValidationMessage('Phone OTP must be exactly 6 digits');
+            Swal.showValidationMessage("Phone OTP must be exactly 6 digits");
             return false;
           }
-          if (emailOtp !== '123456') {
-            Swal.showValidationMessage('Incorrect OTP for email');
+          if (emailOtp !== "123456") {
+            Swal.showValidationMessage("Incorrect OTP for email");
             return false;
           }
-          if (phoneOtp !== '654321') {
-            Swal.showValidationMessage('Incorrect OTP for phone');
+          if (phoneOtp !== "654321") {
+            Swal.showValidationMessage("Incorrect OTP for phone");
             return false;
           }
           return { emailOtp, phoneOtp };
-        }
+        },
       });
 
       if (otpValues) {
         // Show success message and proceed with sign-up
         Swal.fire({
-          title: 'Success',
-          text: 'Sign-up has been completed successfully!',
-          icon: 'success',
-          confirmButtonText: 'OK'
+          title: "Success",
+          text: "Sign-up has been completed successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+          customClass: {
+            confirmButton: "btn-blue",
+          },
         }).then(() => {
           // Proceed with further actions (e.g., redirect to another page)
           navigateCallback();
@@ -162,44 +184,7 @@ const handleMobileNumberFormat = (e, setMobileNumber) => {
   }
 };
 
-// API Calls
-// const UsernameExist = () => {
-//   try {
-//   } catch (error) {
-//     alert("An Error Occurred.");
-//   }
-// };
-
-// const EmailExist = () => {
-//   try {
-//   } catch (error) {
-//     alert("An Error Occurred.");
-//   }
-// };
-
-// const MobileExist = () => {
-//   try {
-//   } catch (error) {
-//     alert("An Error Occurred.");
-//   }
-// };
-
 // UI Components
-const FormAlert = ({ type, message, show, setShow }) => {
-  if (show) {
-    return (
-      <Alert
-        variant={type === "Congratulations!" ? "success" : "danger"}
-        onClose={() => setShow(false)}
-        dismissible
-      >
-        <h5>{type}</h5>
-        <p>{message}</p>
-      </Alert>
-    );
-  }
-  return null;
-};
 
 const FormLogo = () => {
   return (
@@ -219,9 +204,10 @@ const FormConstraints = ({
   icon,
   isPassword,
   togglePassword,
-  showPassword
+  showPassword,
 }) => {
   const inputType = isPassword ? (showPassword ? "text" : "password") : type;
+  const iconStyle = { color: "#009ab8" };
 
   return (
     <Form.Group controlId="formName" className="my-3">
@@ -235,7 +221,7 @@ const FormConstraints = ({
         </Form.Control>
       ) : (
         <InputGroup>
-          <InputGroup.Text>{icon}</InputGroup.Text>
+          <InputGroup.Text style={iconStyle}>{icon}</InputGroup.Text>
           <Form.Control
             type={inputType}
             placeholder={placeholder}
@@ -243,7 +229,10 @@ const FormConstraints = ({
             onChange={onChange}
           />
           {isPassword && (
-            <InputGroup.Text onClick={togglePassword} style={{ cursor: "pointer" }}>
+            <InputGroup.Text
+              onClick={togglePassword}
+              style={{ cursor: "pointer" }}
+            >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </InputGroup.Text>
           )}
@@ -389,7 +378,7 @@ const SignUpForm = ({
   );
 };
 
-const SignUp = ({  StaticData }) => {
+const SignUp = ({ StaticData }) => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -406,23 +395,21 @@ const SignUp = ({  StaticData }) => {
       ? "Congratulations!"
       : "Validation Error";
 
+  show &&
+    Swal.fire({
+      icon: "error",
+      title: AlertType,
+      text: signUpMessage,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+    }).then((res) => {
+      if (res.isConfirmed) {
+        setShow(false);
+      }
+    });
+
   return (
     <>
-      <Container
-        fluid
-        className="d-flex justify-content-center align-items-center max-vh-100 bg-dark text-light"
-      >
-        <Row className="form-alert w-100 mx-2">
-          {
-            <FormAlert
-              type={AlertType}
-              message={signUpMessage}
-              show={show}
-              setShow={setShow}
-            />
-          }
-        </Row>
-      </Container>
       <Container
         fluid
         className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light"
