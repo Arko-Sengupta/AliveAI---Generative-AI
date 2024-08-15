@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
 import CoverImg from "../Utils/Images/Home Images/Cover Image.jpg";
 import DiabetesImg from "../Utils/Images/Home Images/Daibetes Analysis.png";
@@ -27,7 +27,11 @@ import "../StyleSheets/Home.css";
 // Home - Cover Component
 // Cover Component [Main]
 const Cover = ({ StaticData }) => {
-  const { Home_Cover_Title, Home_Cover_Sub_Title, Home_Cover_Learn_More_Button } = StaticData.Home.Home_Cover;
+  const {
+    Home_Cover_Title,
+    Home_Cover_Sub_Title,
+    Home_Cover_Learn_More_Button,
+  } = StaticData.Home.Home_Cover;
 
   return (
     <div className="cover-image-with-overlay">
@@ -50,8 +54,6 @@ const Cover = ({ StaticData }) => {
   );
 };
 
-
-
 // Home - Department Component
 // Feature Icon Grid
 const FeatureIconGrid = ({ icon, title }) => (
@@ -66,7 +68,10 @@ const FeatureIcon = ({ StaticData }) => {
   const icons = useMemo(() => {
     const iconsArray = [];
     for (let i = 1; i <= 8; i++) {
-      const icon = StaticData.Home.Home_Departments.Home_Departments_FeatureIcon[`Home_Departments_FeatureIcon_Icon_${i}`];
+      const icon =
+        StaticData.Home.Home_Departments.Home_Departments_FeatureIcon[
+          `Home_Departments_FeatureIcon_Icon_${i}`
+        ];
       iconsArray.push({
         icon: icon,
         image: i === 1 ? DiabetesImg : DemoIcon,
@@ -90,11 +95,10 @@ const FeatureIcon = ({ StaticData }) => {
   );
 };
 
-
-
 // Department Component [Main]
 const Departments = ({ StaticData }) => {
-  const { Home_Departments_Title, Home_Departments_Sub_Title } = StaticData.Home.Home_Departments;
+  const { Home_Departments_Title, Home_Departments_Sub_Title } =
+    StaticData.Home.Home_Departments;
 
   return (
     <Container fluid className="text-center department-container">
@@ -120,11 +124,15 @@ const Departments = ({ StaticData }) => {
   );
 };
 
-
-
 // Home - Summary Component
 // Summary ContentComponent
-const SummaryContent = ({ Home_Summary_Content_P1, Home_Summary_Content_P2, Home_Summary_Key_1, Home_Summary_Key_2, Home_Summary_Key_3 }) => {
+const SummaryContent = ({
+  Home_Summary_Content_P1,
+  Home_Summary_Content_P2,
+  Home_Summary_Key_1,
+  Home_Summary_Key_2,
+  Home_Summary_Key_3,
+}) => {
   return (
     <Col className="summary-content">
       <SlideUp>
@@ -134,14 +142,16 @@ const SummaryContent = ({ Home_Summary_Content_P1, Home_Summary_Content_P2, Home
         <p className="summary-disabled-text">{Home_Summary_Content_P2}</p>
       </SlideUp>
       <div>
-        {[Home_Summary_Key_1, Home_Summary_Key_2, Home_Summary_Key_3].map((key, index) => (
-          <SlideUp key={key}>
-            <div className="summary-tick-icon-title" key={index}>
-              <img src={TickImg} alt="Tick Icon" />
-              <span>{key}</span>
-            </div>
-          </SlideUp>
-        ))}
+        {[Home_Summary_Key_1, Home_Summary_Key_2, Home_Summary_Key_3].map(
+          (key, index) => (
+            <SlideUp key={key}>
+              <div className="summary-tick-icon-title" key={index}>
+                <img src={TickImg} alt="Tick Icon" />
+                <span>{key}</span>
+              </div>
+            </SlideUp>
+          )
+        )}
       </div>
     </Col>
   );
@@ -201,24 +211,33 @@ const Summary = ({ StaticData }) => {
             Home_Summary_Key_2={Home_Summary_Key_2}
             Home_Summary_Key_3={Home_Summary_Key_3}
           />
-          <SummaryImage Home_Summary_Read_More_Button={Home_Summary_Read_More_Button} />
+          <SummaryImage
+            Home_Summary_Read_More_Button={Home_Summary_Read_More_Button}
+          />
         </Row>
       </Container>
     </div>
   );
 };
 
-
-
 // Home - Founders Component
 // Member Component
 const MemberCard = ({ Home_Founders }) => {
   const memberData = React.useMemo(() => {
     return Array.from({ length: 4 }, (_, i) => ({
-      member: Home_Founders.Home_Founders_Members[`Home_Founders_Members_Member_${i + 1}`],
-      designation: Home_Founders.Home_Founders_Designations[`Home_Founders_Designations_Designation_${i + 1}`],
+      member:
+        Home_Founders.Home_Founders_Members[
+          `Home_Founders_Members_Member_${i + 1}`
+        ],
+      designation:
+        Home_Founders.Home_Founders_Designations[
+          `Home_Founders_Designations_Designation_${i + 1}`
+        ],
     }));
-  }, [Home_Founders.Home_Founders_Members, Home_Founders.Home_Founders_Designations]);
+  }, [
+    Home_Founders.Home_Founders_Members,
+    Home_Founders.Home_Founders_Designations,
+  ]);
 
   return (
     <div className="member-container">
@@ -253,7 +272,8 @@ const MemberCard = ({ Home_Founders }) => {
 
 // Founders Component [Main]
 const Founders = ({ StaticData }) => {
-  const { Home_Founders_Title, Home_Founders_Sub_Title } = StaticData.Home.Home_Founders;
+  const { Home_Founders_Title, Home_Founders_Sub_Title } =
+    StaticData.Home.Home_Founders;
 
   return (
     <Container fluid className="text-center founders-container">
@@ -279,14 +299,12 @@ const Founders = ({ StaticData }) => {
   );
 };
 
-
-
 // Home - Review Component
 // ReviewBlock Component
 const ReviewBlock = ({ patient }) => (
   <Col>
     <Row className="justify-content-center pt-2">
-      <img src={DemoMember} alt='' />
+      <img src={DemoMember} alt="" />
     </Row>
     <Row className="pt-2">
       <h3>{patient.Home_Review_Patient_Name}</h3>
@@ -302,7 +320,12 @@ const ReviewBlock = ({ patient }) => (
 
 // Review Component [Main]
 const Review = ({ StaticData }) => {
-  const { Home_Review_Title, Home_Review_Sub_Title, Home_Review_Patient_1, Home_Review_Patient_2 } = StaticData.Home.Home_Review;
+  const {
+    Home_Review_Title,
+    Home_Review_Sub_Title,
+    Home_Review_Patient_1,
+    Home_Review_Patient_2,
+  } = StaticData.Home.Home_Review;
 
   return (
     <div className="review-image-with-overlay">
@@ -339,8 +362,6 @@ const Review = ({ StaticData }) => {
   );
 };
 
-
-
 // Home - Gallery Component
 // Images for Gallery
 const galleryImages = [
@@ -367,8 +388,9 @@ const renderImageRow = (images) => (
 
 // Gallery Component [Main]
 const Gallery = ({ StaticData }) => {
-  const { Home_Gallery_Title, Home_Gallery_Sub_Title } = StaticData.Home.Home_Gallery;
-  
+  const { Home_Gallery_Title, Home_Gallery_Sub_Title } =
+    StaticData.Home.Home_Gallery;
+
   return (
     <Container fluid className="text-center gallery-container">
       <Row className="py-2">
@@ -393,8 +415,6 @@ const Gallery = ({ StaticData }) => {
     </Container>
   );
 };
-
-
 
 // Home Component [Main]
 const Home = ({ StaticData }) => {

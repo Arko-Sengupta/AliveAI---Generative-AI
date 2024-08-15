@@ -17,10 +17,9 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useAuth } from "./Routes/AuthContext";
-
 import "../StyleSheets/Navbar.css";
 import AILogo from "../Utils/Images/Logo Images/AliveAI Logo.png";
+import { useAuth } from "./Routes/AuthContext";
 
 // Frontend UI
 // Logo Component
@@ -186,14 +185,25 @@ const MobileNavbar = ({ StaticData }) => {
         <Offcanvas.Header closeButton />
         <Offcanvas.Body>
           {isAuthenticated ? (
-            <Button
-              onClick={logout}
-              className="w-100 me-2"
-              variant="outline-info"
-              size="sm"
-            >
-              Logout
-            </Button>
+            <div className="d-flex justify-content-center align-items-center gap-2">
+              <Button
+                as={Link}
+                to="/dashboard"
+                className="w-50 me-2"
+                variant="outline-info"
+                size="sm"
+              >
+                Dashboard
+              </Button>
+              <Button
+                onClick={logout}
+                className="w-50 me-2"
+                variant="outline-info"
+                size="sm"
+              >
+                Logout
+              </Button>
+            </div>
           ) : (
             <Container>
               <div className="row">
@@ -209,12 +219,6 @@ const MobileNavbar = ({ StaticData }) => {
             </Container>
           )}
           <Nav className="flex-column ms-3 mt-2">
-            {isAuthenticated && (
-              <Nav.Link as={Link} to="/dashboard" className="me-4">
-                <FontAwesomeIcon icon={faHome} className="me-2" />
-                Dashboard
-              </Nav.Link>
-            )}
             <Nav.Link as={Link} to="/" className="me-4">
               <FontAwesomeIcon icon={faHome} className="me-2" />
               {StaticData.Header.Header_Link_1}
@@ -228,8 +232,6 @@ const MobileNavbar = ({ StaticData }) => {
               {StaticData.Header.Header_Link_3}
             </Nav.Link>
             <Nav.Link
-              as={Link}
-              to="/features"
               className="me-4"
               onClick={() => setShowDropdown((prevState) => !prevState)}
             >
@@ -296,7 +298,7 @@ const Header = ({ StaticData, windowWidth }) => {
         bg="dark"
         data-bs-theme="dark"
         style={{ minWidth: 250 }}
-        className="shadow-lg"
+        className="shadow-lg fixed-top"
       >
         <Container>
           <Navbar.Brand>

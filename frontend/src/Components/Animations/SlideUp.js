@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 import "../../StyleSheets/Animations.css";
 
 // Slide Up Fade In Component
@@ -9,19 +9,19 @@ const useScrollAnimation = (ref) => {
       if (ref.current) {
         const position = ref.current.getBoundingClientRect();
         if (position.top < window.innerHeight && position.bottom >= 0) {
-          ref.current.classList.add('slide-up-show');
+          ref.current.classList.add("slide-up-show");
         }
       }
     };
 
-    window.addEventListener('scroll', checkPosition);
-    window.addEventListener('resize', checkPosition);
+    window.addEventListener("scroll", checkPosition);
+    window.addEventListener("resize", checkPosition);
 
     checkPosition();
 
     return () => {
-      window.removeEventListener('scroll', checkPosition);
-      window.removeEventListener('resize', checkPosition);
+      window.removeEventListener("scroll", checkPosition);
+      window.removeEventListener("resize", checkPosition);
     };
   }, [ref]);
 };
@@ -32,7 +32,10 @@ const SlideUp = ({ children }) => {
   useScrollAnimation(ref);
 
   return (
-    <div ref={ref} className="slide-up">
+    <div
+      ref={ref}
+      className="slide-up d-flex justify-content-center align-items-center"
+    >
       {children}
     </div>
   );
