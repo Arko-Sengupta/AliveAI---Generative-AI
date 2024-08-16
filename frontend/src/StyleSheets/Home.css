@@ -237,10 +237,6 @@
   align-items: center;
 }
 
-.feature-icon {
-  margin-right: 10px;
-}
-
 @media only screen and (max-width: 515px) {
   .feature-icon-container {
     margin-left: -5px;
