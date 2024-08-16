@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-
+import { Link } from "react-router-dom";
+import SlideUp from "../Components/Animations/SlideUp";
+import "../StyleSheets/Home.css";
 import CoverImg from "../Utils/Images/Home Images/Cover Image.jpg";
 import DiabetesImg from "../Utils/Images/Home Images/Daibetes Analysis.png";
 import DemoIcon from "../Utils/Images/Home Images/Demo Icon.png";
@@ -19,9 +20,6 @@ import GalleryImg_8 from "../Utils/Images/Home Images/Gallery Image 8.webp";
 import ReviewImg from "../Utils/Images/Home Images/Review Image.jpg";
 import SummaryImg from "../Utils/Images/Home Images/Summary Image.avif";
 import TickImg from "../Utils/Images/Home Images/Tick Image.png";
-
-import SlideUp from "../Components/Animations/SlideUp";
-import "../StyleSheets/Home.css";
 
 // Frontend UI
 // Home - Cover Component
@@ -45,7 +43,13 @@ const Cover = ({ StaticData }) => {
           <h3>{Home_Cover_Sub_Title}</h3>
         </SlideUp>
         <SlideUp>
-          <Button className="mx-2" variant="outline-info" size="md">
+          <Button
+            as={Link}
+            to={"/about"}
+            className="mx-2"
+            variant="outline-info"
+            size="md"
+          >
             {Home_Cover_Learn_More_Button}
           </Button>
         </SlideUp>
@@ -169,6 +173,8 @@ const SummaryImage = ({ Home_Summary_Read_More_Button }) => {
         </Row>
         <Row className="mt-3 d-flex justify-content-center">
           <Button
+            as={Link}
+            to={"/about"}
             className="col-6 col-xs-3 col-sm-3 col-md-4 col-lg-3 col-xl-3"
             variant="outline-info"
           >
@@ -217,85 +223,6 @@ const Summary = ({ StaticData }) => {
         </Row>
       </Container>
     </div>
-  );
-};
-
-// Home - Founders Component
-// Member Component
-const MemberCard = ({ Home_Founders }) => {
-  const memberData = React.useMemo(() => {
-    return Array.from({ length: 4 }, (_, i) => ({
-      member:
-        Home_Founders.Home_Founders_Members[
-          `Home_Founders_Members_Member_${i + 1}`
-        ],
-      designation:
-        Home_Founders.Home_Founders_Designations[
-          `Home_Founders_Designations_Designation_${i + 1}`
-        ],
-    }));
-  }, [
-    Home_Founders.Home_Founders_Members,
-    Home_Founders.Home_Founders_Designations,
-  ]);
-
-  return (
-    <div className="member-container">
-      {memberData.map((data, index) => (
-        <SlideUp key={index}>
-          <Card
-            bg="dark"
-            data-bs-theme="dark"
-            style={{
-              width: "12rem",
-              height: "18rem",
-              WebkitBoxShadow: "0px 2px 5px rgba(0, 0, 0, 0.8)",
-            }}
-          >
-            <Card.Img
-              variant="top"
-              style={{ width: "100%" }}
-              src={DemoMember}
-            />
-            <Card.Body>
-              <Card.Title style={{ fontWeight: "bold" }}>
-                {data.member}
-              </Card.Title>
-              <Card.Text>{data.designation}</Card.Text>
-            </Card.Body>
-          </Card>
-        </SlideUp>
-      ))}
-    </div>
-  );
-};
-
-// Founders Component [Main]
-const Founders = ({ StaticData }) => {
-  const { Home_Founders_Title, Home_Founders_Sub_Title } =
-    StaticData.Home.Home_Founders;
-
-  return (
-    <Container fluid className="text-center founders-container">
-      <Row className="py-2">
-        <SlideUp>
-          <h1>{Home_Founders_Title}</h1>
-        </SlideUp>
-      </Row>
-      <Row className="justify-content-center py-2">
-        <SlideUp>
-          <img src={ECG} alt="ECG Line" />
-        </SlideUp>
-      </Row>
-      <Row className="py-2">
-        <SlideUp>
-          <h6>{Home_Founders_Sub_Title}</h6>
-        </SlideUp>
-      </Row>
-      <Container className="mt-5 d-flex text-center">
-        <MemberCard Home_Founders={StaticData.Home.Home_Founders} />
-      </Container>
-    </Container>
   );
 };
 
@@ -380,7 +307,12 @@ const renderImageRow = (images) => (
   <Row>
     {images.map((src, index) => (
       <Col className="mt-2" key={index} xs={6} sm={6} md={3} lg={3}>
-        <Image src={src} alt={`Gallery image ${index + 1}`} fluid />
+        <Image
+          src={src}
+          alt={`Gallery image ${index + 1}`}
+          fluid
+          className="image-hover-effect"
+        />
       </Col>
     ))}
   </Row>
@@ -423,7 +355,6 @@ const Home = ({ StaticData }) => {
       <Cover StaticData={StaticData} />
       <Departments StaticData={StaticData} />
       <Summary StaticData={StaticData} />
-      <Founders StaticData={StaticData} />
       <Review StaticData={StaticData} />
       <Gallery StaticData={StaticData} />
     </>
