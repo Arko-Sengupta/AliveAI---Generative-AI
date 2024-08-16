@@ -415,61 +415,6 @@
   }
 }
 
-/* Founders */
-
-.founders-container {
-  min-width: 250px;
-  padding-top: 100px;
-  background-color: #212529;
-  color: white;
-}
-
-.founders-container img {
-  min-width: 250px;
-  width: 100px;
-}
-
-.founders-container h1 {
-  min-width: 250px;
-  font-size: 40px;
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.founders-container h6 {
-  min-width: 250px;
-  font-size: 15px;
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal;
-  padding-inline: 20%;
-}
-
-@media only screen and (max-width: 955px) {
-  .founders-container h6 {
-    padding-inline: 10%;
-  }
-}
-
-@media only screen and (max-width: 465px) {
-  .founders-container h6 {
-    padding-inline: 0%;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .founders-container h1 {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (max-width: 135px) {
-  .founders-container h1 {
-    font-size: 25px;
-  }
-}
-
 /* Member Card */
 
 .member-container {
@@ -738,6 +683,14 @@
   height: 100%;
   border: 2px solid white;
   box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.6);
+}
+
+.image-hover-effect {
+  transition: transform 0.5s ease;
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.1);
 }
 
 @media only screen and (max-width: 955px) {
