@@ -127,7 +127,13 @@ const handleSignUp = async (
           },
         }).then(() => {
           // Proceed with further actions (e.g., redirect to another page)
-          navigateCallback();
+          setName("");
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setMobileNumber("");
+          setAddress("");
+          navigateCallback("/login");
         });
       }
     }
@@ -414,7 +420,7 @@ const SignUp = ({ StaticData }) => {
         fluid
         className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light"
       >
-        <Row className="w-100 mx-2">
+        <Row className="w-100 mx-2 my-4">
           <Col xs={12} sm={10} md={8} lg={6} xl={4} className="mx-auto">
             <div className="form-container">
               <FormLogo />

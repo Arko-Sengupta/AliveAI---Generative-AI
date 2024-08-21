@@ -48,13 +48,8 @@ const handleLogin = async (
       setloginMessage("Please Enter valid password");
       setShow(true);
     } else {
-      setloginMessage("Logging into your Account.");
-      setShow(true);
-
       setEmail("");
       setPassword("");
-
-      await sleep(2000);
 
       // Replace "web_token" with your actual JWT token
       const token =
@@ -66,14 +61,6 @@ const handleLogin = async (
     }
   } catch (error) {
     alert("An Error Occurred.");
-  }
-};
-
-const sleep = (ms) => {
-  try {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  } catch (error) {
-    alert("An Error Occured.");
   }
 };
 
@@ -223,6 +210,9 @@ const Login = ({ StaticData }) => {
         showCancelButton: true,
         confirmButtonText: "Submit",
         cancelButtonText: "Cancel",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
         preConfirm: () => {
           const newPassword =
             Swal.getPopup().querySelector("#newPassword").value;
@@ -248,6 +238,9 @@ const Login = ({ StaticData }) => {
           text: "Password has been updated successfully!",
           icon: "success",
           confirmButtonText: "OK",
+          customClass: {
+            confirmButton: "btn-blue",
+          },
         });
       }
     }
