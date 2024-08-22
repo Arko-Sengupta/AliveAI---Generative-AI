@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 
 import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
-import SummaryImg from "../Utils/Images/About Images/Summary Image.avif";
+import SummaryImg from "../Utils/Images/About Images/Summary Image.jpg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
 
 import SlideUp from "../Components/Animations/SlideUp";

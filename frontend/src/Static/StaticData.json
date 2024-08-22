@@ -20,13 +20,13 @@
             "Home_Departments_Sub_Title": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
             "Home_Departments_FeatureIcon":{
                 "Home_Departments_FeatureIcon_Icon_1": "Diabetes Analysis",
-                "Home_Departments_FeatureIcon_Icon_2": "Feature 2",
-                "Home_Departments_FeatureIcon_Icon_3": "Feature 3",
-                "Home_Departments_FeatureIcon_Icon_4": "Feature 4",
-                "Home_Departments_FeatureIcon_Icon_5": "Feature 5",
-                "Home_Departments_FeatureIcon_Icon_6": "Feature 6",
-                "Home_Departments_FeatureIcon_Icon_7": "Feature 7",
-                "Home_Departments_FeatureIcon_Icon_8": "Feature 8"
+                "Home_Departments_FeatureIcon_Icon_2": "Asthma Analysis",
+                "Home_Departments_FeatureIcon_Icon_3": "Cardiovascular Analysis",
+                "Home_Departments_FeatureIcon_Icon_4": "Arthritis Analysis",
+                "Home_Departments_FeatureIcon_Icon_5": "Heart and Strokes Analysis",
+                "Home_Departments_FeatureIcon_Icon_6": "Migraine Control Analysis",
+                "Home_Departments_FeatureIcon_Icon_7": "Bronchitis Analysis",
+                "Home_Departments_FeatureIcon_Icon_8": "Liver Condition Analysis"
             }
         },
 
@@ -114,7 +114,7 @@
         "Footer_Col_1": {
             "Footer_Col_1_Title": "Find Us",
             "Footer_Col_1_Description": "Locate us easily! Find AliveAI HQ. Seamless integration, precise directions, and real-time updates. Explore now!",
-            "Footer_Col_1_Address": "795 South Park Avenue, CA 94107",
+            "Footer_Col_1_Address": "1511 Bridges Court Fremont, CA-94536 USA",
             "Footer_Col_1_Mail": "enquiry@alive.ai",
             "Footer_Col_1_Phone": "+1 987 654 321"
         },
@@ -122,13 +122,13 @@
         "Footer_Col_2": {
             "Footer_Col_2_Title": "Quick Links",
             "Footer_Col_2_Feature_1": "Diabetes Analysis",
-            "Footer_Col_2_Feature_2": "Feature 2",
-            "Footer_Col_2_Feature_3": "Feature 3",
-            "Footer_Col_2_Feature_4": "Feature 4",
-            "Footer_Col_2_Feature_5": "Feature 5",
-            "Footer_Col_2_Feature_6": "Feature 6",
-            "Footer_Col_2_Feature_7": "Feature 7",
-            "Footer_Col_2_Feature_8": "Feature 8"
+            "Footer_Col_2_Feature_2": "Asthma Analysis",
+            "Footer_Col_2_Feature_3": "Cardiovascular Analysis",
+            "Footer_Col_2_Feature_4": "Arthritis Analysis",
+            "Footer_Col_2_Feature_5": "Heart and Strokes Analysis",
+            "Footer_Col_2_Feature_6": "Migraine Control Analysis",
+            "Footer_Col_2_Feature_7": "Bronchitis Analysis",
+            "Footer_Col_2_Feature_8": "Liver Condition Analysis"
         },
 
         "Footer_Col_3": {

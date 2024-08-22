@@ -79,25 +79,25 @@ const WebNavbar = ({ StaticData }) => {
             Diabetes Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 2
+            Asthma Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 3
+            Cardiovascular Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 4
+            Arthritis Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 5
+            Heart and Strokes Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 6
+            Migraine Control Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 7
+            Bronchitis Analysis
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/features">
-            Feature 8
+            Liver Condition Analysis
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
@@ -245,25 +245,25 @@ const MobileNavbar = ({ StaticData }) => {
                   Diabetes Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 2
+                  Asthma Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 3
+                  Cardiovascular Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 4
+                  Arthritis Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 5
+                  Heart and Strokes Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 6
+                  Migraine Control Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 7
+                  Bronchitis Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
-                  Feature 8
+                  Liver Condition Analysis
                 </Nav.Link>
               </Nav>
             )}

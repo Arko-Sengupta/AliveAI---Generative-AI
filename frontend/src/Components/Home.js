@@ -18,7 +18,7 @@ import GalleryImg_6 from "../Utils/Images/Home Images/Gallery Image 6.jpg";
 import GalleryImg_7 from "../Utils/Images/Home Images/Gallery Image 7.jpg";
 import GalleryImg_8 from "../Utils/Images/Home Images/Gallery Image 8.webp";
 import ReviewImg from "../Utils/Images/Home Images/Review Image.jpg";
-import SummaryImg from "../Utils/Images/Home Images/Summary Image.avif";
+import SummaryImg from "../Utils/Images/Home Images/Summary Image.jpg";
 import TickImg from "../Utils/Images/Home Images/Tick Image.png";
 
 // Frontend UI
