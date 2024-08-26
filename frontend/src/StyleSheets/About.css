@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poetsen+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* About Cover */
 
@@ -64,9 +65,41 @@
 }
 
 .back-to-home-text {
-  font-size: 12px;
+  font-size: 15px;
   margin: 0;
-  font-weight: normal;
+  color: #9B9D9E;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.underline-expand {
+  position: relative;
+  display: inline-block;
+  color: #9B9D9E;
+  text-decoration: none;
+}
+
+.underline-expand::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  bottom: 0;
+  left: 50%;
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.underline-expand:hover::after {
+  width: 100px;
+  left: calc(30% - 30px);
+}
+
+.back-to-home-text:hover {
+  color: white;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1495px) {

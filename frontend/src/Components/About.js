@@ -47,7 +47,7 @@ const AboutCover = ({ StaticData }) => {
         <SlideUp>
           <div className="back-to-home" onClick={() => navigate("/")}>
             <FontAwesomeIcon icon={faArrowLeft} className="left-icon" />
-            <span className="back-to-home-text">Back to home</span>
+            <span className="back-to-home-text underline-expand">Back to Home</span>
           </div>
         </SlideUp>
       </div>

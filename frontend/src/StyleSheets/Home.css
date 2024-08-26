@@ -223,6 +223,7 @@
 .feature-icon-container:hover {
   transform: scale(1.05);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
 
 .feature-icon-container img {
@@ -350,7 +351,8 @@
 
 .summary-tick-icon-title:hover {
   transform: scale(1.1);
-  transition: transform 0.6s ease;
+  transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
 .summary-tick-icon-title img {
@@ -734,6 +736,7 @@
 
 .image-hover-effect:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 955px) {

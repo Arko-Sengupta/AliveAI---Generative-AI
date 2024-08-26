@@ -90,7 +90,7 @@ const WebNavbar = ({ StaticData }) => {
             as={Link}
             to="/features"
             key={index}
-            className="nav-dropdown-item"
+            className="nav-dropdown-item underline-expand"
             style={{
               display: "flex",
               alignItems: "center",
