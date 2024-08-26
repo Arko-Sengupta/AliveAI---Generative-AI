@@ -1,32 +1,51 @@
 /* Hamburger Button */
 
 .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .line-lg {
-    width: 80%;
-    height: 2px;
-    background-color: #3dd5f3;
-  }
-  
-  .line-md {
-    width: 50%;
-    height: 2px;
-    background-color: #3dd5f3;
-  }
-  
-  /* Logo */
-  
-  .logo-container {
-    height: 60px;
-    width: 100%;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.line-lg {
+  width: 80%;
+  height: 2px;
+  background-color: #3dd5f3;
+}
+
+.line-md {
+  width: 50%;
+  height: 2px;
+  background-color: #3dd5f3;
+}
+
+/* Logo */
+
+.logo-container {
+  height: 60px;
+  width: 100%;
+}
+
+/* Dropdown Items */
+.nav-dropdown-item {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-dropdown-item:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #1a73e8;
+}
+
+.nav-dropdown-item:hover .fa-xs {
+  color: #1a73e8;
+}
+
+.nav-dropdown-item:hover span {
+  color: #1a73e8;
+}
+

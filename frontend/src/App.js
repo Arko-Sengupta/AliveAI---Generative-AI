@@ -27,6 +27,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Navbar StaticData={StaticData} windowWidth={windowWidth} />
+        <div style={{ height: "86px" }} />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route exact path="/" element={<Home StaticData={StaticData} />} />
@@ -34,9 +35,19 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/features" element={<Feature />} />
             <Route path="/login" element={<Login StaticData={StaticData} />} />
-            <Route path="/signup" element={<SignUp StaticData={StaticData} />} />
+            <Route
+              path="/signup"
+              element={<SignUp StaticData={StaticData} />}
+            />
             <Route path="/features" element={<Feature />} />
-            <Route path="/dashboard/*" element={<PrivateRoute element={<Dashboard windowWidth={windowWidth} />} />} />
+            <Route
+              path="/dashboard/*"
+              element={
+                <PrivateRoute
+                  element={<Dashboard windowWidth={windowWidth} />}
+                />
+              }
+            />
           </Routes>
         </Suspense>
         <Footer StaticData={StaticData} windowWidth={windowWidth} />

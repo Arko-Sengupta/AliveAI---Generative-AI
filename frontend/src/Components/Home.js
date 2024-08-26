@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
@@ -25,6 +25,22 @@ import TickImg from "../Utils/Images/Home Images/Tick Image.png";
 // Home - Cover Component
 // Cover Component [Main]
 const Cover = ({ StaticData }) => {
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let index = -1;
+    setDisplayedText("");
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => prev + Home_Cover_Sub_Title.charAt(index));
+      index++;
+      if (index === Home_Cover_Sub_Title.length) {
+        clearInterval(interval);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const {
     Home_Cover_Title,
     Home_Cover_Sub_Title,
@@ -40,7 +56,7 @@ const Cover = ({ StaticData }) => {
           <h1>{Home_Cover_Title}</h1>
         </SlideUp>
         <SlideUp>
-          <h3>{Home_Cover_Sub_Title}</h3>
+          <h3>{displayedText}</h3>
         </SlideUp>
         <SlideUp>
           <Button

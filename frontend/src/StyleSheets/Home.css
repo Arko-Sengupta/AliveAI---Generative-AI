@@ -209,13 +209,20 @@
 
 .feature-icon-container {
   width: 100%;
-  height: 40%;
+  height: 110px;
   text-align: center;
   padding-inline: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 20px;
+  margin-right: 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-icon-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 .feature-icon-container img {
@@ -223,6 +230,11 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.feature-icon-container img:hover {
+  transform: scale(1.1);
 }
 
 .feature-icon-container h3 {
@@ -230,18 +242,43 @@
   margin-top: 10px;
   font-size: 10px;
   color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-icon-container h3:hover {
+  transform: scale(1.1);
+  color: #3dd5f3;
 }
 
 .feature-container {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 
 @media only screen and (max-width: 515px) {
   .feature-icon-container {
-    margin-left: -5px;
-    width: 70px;
-    height: 100px;
+    margin-left: 0;
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+  }
+
+  .feature-icon-container img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .feature-icon-container h3 {
+    font-size: 8px;
+    margin-top: 5px;
+  }
+
+  .feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 }
 
@@ -252,11 +289,11 @@
 
   .feature-icon-container {
     width: 200px;
-    height: 100px;
+    height: 80px;
   }
 
   .feature-icon-container h3 {
-    font-size: 12px;
+    font-size: 9px;
   }
 }
 
@@ -311,6 +348,11 @@
   margin-bottom: 5px;
 }
 
+.summary-tick-icon-title:hover {
+  transform: scale(1.1);
+  transition: transform 0.6s ease;
+}
+
 .summary-tick-icon-title img {
   width: 25px;
   height: 25px;
@@ -328,6 +370,7 @@
   border-top-left-radius: 150px;
   border-bottom-right-radius: 150px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
 }
 
 @media only screen and (max-width: 1200px) {
