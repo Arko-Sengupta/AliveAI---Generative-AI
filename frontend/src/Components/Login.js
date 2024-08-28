@@ -161,11 +161,10 @@ const Login = ({ StaticData }) => {
       : "Authentication Failed";
 
   const handleForgotPassword = async () => {
-    const { value: otpValues } = await Swal.fire({
-      title: "Enter OTPs",
+    const { value: email } = await Swal.fire({
+      title: "Enter your email",
       html: `
-        <input id="emailOtp" class="swal2-input" placeholder="Enter OTP sent to email" type="number" min='0'>
-        <input id="phoneOtp" class="swal2-input" placeholder="Enter OTP sent to phone" type="number" min='0'>
+        <input id="email" class="swal2-input" placeholder="Enter email" type="email">
       `,
       focusConfirm: false,
       showCancelButton: true,
@@ -175,73 +174,109 @@ const Login = ({ StaticData }) => {
         confirmButton: "btn-verify",
       },
       preConfirm: () => {
-        const emailOtp = Swal.getPopup().querySelector("#emailOtp").value;
-        const phoneOtp = Swal.getPopup().querySelector("#phoneOtp").value;
+        const email = Swal.getPopup().querySelector("#email").value;
 
-        if (!/^\d{6}$/.test(emailOtp)) {
-          Swal.showValidationMessage("Email OTP must be exactly 6 digits");
+        // Email validation regex
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+          Swal.showValidationMessage("Please enter a valid email address");
           return false;
         }
-        if (!/^\d{6}$/.test(phoneOtp)) {
-          Swal.showValidationMessage("Phone OTP must be exactly 6 digits");
-          return false;
-        }
-        if (emailOtp !== "123456") {
-          Swal.showValidationMessage("Incorrect OTP for email");
-          return false;
-        }
-        if (phoneOtp !== "654321") {
-          Swal.showValidationMessage("Incorrect OTP for phone");
-          return false;
-        }
-        return { emailOtp, phoneOtp };
+
+        // If additional verification is needed, add it here.
+        return { email };
       },
     });
 
-    if (otpValues) {
-      // Step 1: Show popup to enter new password and confirm password
-      const { value: formValues } = await Swal.fire({
-        title: "Reset Password",
+    if (email) {
+      console.log("Valid email entered:", email);
+      // You can proceed with further actions here
+    }
+
+    if (email) {
+      const { value: otpValues } = await Swal.fire({
+        title: "Enter OTPs",
         html: `
-                  <input id="newPassword" class="swal2-input" placeholder="New Password" type="password">
-                  <input id="confirmPassword" class="swal2-input" placeholder="Confirm Password" type="password">
-                `,
+          <input id="emailOtp" class="swal2-input" placeholder="Enter OTP sent to email" type="number" min='0'>
+          <input id="phoneOtp" class="swal2-input" placeholder="Enter OTP sent to phone" type="number" min='0'>
+        `,
         focusConfirm: false,
         showCancelButton: true,
-        confirmButtonText: "Submit",
+        confirmButtonText: "Verify",
         cancelButtonText: "Cancel",
         customClass: {
-          confirmButton: "btn-blue",
+          confirmButton: "btn-verify",
         },
         preConfirm: () => {
-          const newPassword =
-            Swal.getPopup().querySelector("#newPassword").value;
-          const confirmPassword =
-            Swal.getPopup().querySelector("#confirmPassword").value;
-          if (newPassword !== confirmPassword) {
-            Swal.showValidationMessage("Passwords do not match");
+          const emailOtp = Swal.getPopup().querySelector("#emailOtp").value;
+          const phoneOtp = Swal.getPopup().querySelector("#phoneOtp").value;
+
+          if (!/^\d{6}$/.test(emailOtp)) {
+            Swal.showValidationMessage("Email OTP must be exactly 6 digits");
             return false;
           }
-          if (!handlePasswordFormat(newPassword)) {
-            Swal.showValidationMessage(
-              "Password must be between 8 and 18 characters and include uppercase, lowercase, numeric, and special characters"
-            );
+          if (!/^\d{6}$/.test(phoneOtp)) {
+            Swal.showValidationMessage("Phone OTP must be exactly 6 digits");
             return false;
           }
-          return { newPassword };
+          if (emailOtp !== "123456") {
+            Swal.showValidationMessage("Incorrect OTP for email");
+            return false;
+          }
+          if (phoneOtp !== "654321") {
+            Swal.showValidationMessage("Incorrect OTP for phone");
+            return false;
+          }
+          return { emailOtp, phoneOtp };
         },
       });
 
-      if (formValues) {
-        Swal.fire({
-          title: "Success",
-          text: "Password has been updated successfully!",
-          icon: "success",
-          confirmButtonText: "OK",
+      if (otpValues) {
+        // Step 1: Show popup to enter new password and confirm password
+        const { value: formValues } = await Swal.fire({
+          title: "Reset Password",
+          html: `
+                    <input id="newPassword" class="swal2-input" placeholder="New Password" type="password">
+                    <input id="confirmPassword" class="swal2-input" placeholder="Confirm Password" type="password">
+                  `,
+          focusConfirm: false,
+          showCancelButton: true,
+          confirmButtonText: "Submit",
+          cancelButtonText: "Cancel",
           customClass: {
             confirmButton: "btn-blue",
           },
+          preConfirm: () => {
+            const newPassword =
+              Swal.getPopup().querySelector("#newPassword").value;
+            const confirmPassword =
+              Swal.getPopup().querySelector("#confirmPassword").value;
+            if (newPassword !== confirmPassword) {
+              Swal.showValidationMessage("Passwords do not match");
+              return false;
+            }
+            if (!handlePasswordFormat(newPassword)) {
+              Swal.showValidationMessage(
+                "Password must be between 8 and 18 characters and include uppercase, lowercase, numeric, and special characters"
+              );
+              return false;
+            }
+            return { newPassword };
+          },
         });
+
+        if (formValues) {
+          Swal.fire({
+            title: "Success",
+            text: "Password has been updated successfully!",
+            icon: "success",
+            confirmButtonText: "OK",
+            customClass: {
+              confirmButton: "btn-blue",
+            },
+          });
+        }
       }
     }
   };
@@ -253,6 +288,9 @@ const Login = ({ StaticData }) => {
       text: loginMessage,
       allowOutsideClick: false,
       allowEscapeKey: false,
+      customClass: {
+        confirmButton: "btn-blue",
+      },
     }).then((res) => {
       if (res.isConfirmed) {
         setShow(false);

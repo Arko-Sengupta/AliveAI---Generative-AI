@@ -408,6 +408,9 @@ const SignUp = ({ StaticData }) => {
       text: signUpMessage,
       allowOutsideClick: false,
       allowEscapeKey: false,
+      customClass: {
+        confirmButton: "btn-blue",
+      },
     }).then((res) => {
       if (res.isConfirmed) {
         setShow(false);
