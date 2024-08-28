@@ -162,9 +162,9 @@ const Login = ({ StaticData }) => {
 
   const handleForgotPassword = async () => {
     const { value: email } = await Swal.fire({
-      title: "Enter your email",
+      title: "Enter Account Email",
       html: `
-        <input id="email" class="swal2-input" placeholder="Enter email" type="email">
+        <input id="email" class="swal2-input" placeholder="Enter Email" type="email">
       `,
       focusConfirm: false,
       showCancelButton: true,
