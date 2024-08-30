@@ -212,8 +212,12 @@
 /* Feature Icon */
 
 .feature-icon {
-  color: #3dd5f3;
   padding-inline: 10px;
+}
+
+.feature-icon a {
+  color: #3dd5f3;
+  text-decoration: none;
 }
 
 .feature-icon-container {
@@ -651,19 +655,17 @@
 
 .review-container h3 {
   min-width: 250px;
-  font-size: 20px;
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 600;
   font-style: normal;
 }
 
 .review-container h5 {
   min-width: 250px;
   font-size: 15px;
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -680,6 +682,18 @@
 .review-member-image img {
   min-width: 150px;
   border-radius: 100%;
+  cursor: pointer;
+  transition: min-width 0.5s ease-in-out;
+}
+
+.review-image-border img {
+  border: 4px solid #11accb;
+  padding: 10px;
+  transition: padding 0.5s ease-in-out;
+}
+
+.review-image-border img:hover {
+  padding: 20px;
 }
 
 .review-text {

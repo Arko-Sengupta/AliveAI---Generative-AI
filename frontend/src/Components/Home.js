@@ -116,7 +116,9 @@ const FeatureIcon = ({ StaticData }) => {
         <Col key={colIndex} xs={4} sm={3} lg={3} className="feature-icon">
           {icons.slice(colIndex * 2, colIndex * 2 + 2).map((icon, index) => (
             <SlideUp key={index}>
-              <FeatureIconGrid icon={icon.image} title={icon.icon} />
+              <Link to="/features">
+                <FeatureIconGrid icon={icon.image} title={icon.icon} />
+              </Link>
             </SlideUp>
           ))}
         </Col>
@@ -258,7 +260,9 @@ const Summary = ({ StaticData }) => {
 const ReviewBlock = ({ img, patient }) => (
   <Col>
     <Row className="justify-content-center pt-2">
-      <img src={img} alt="" />
+      <div className="review-image-border">
+        <img src={img} alt="" />
+      </div>
     </Row>
     <Row className="pt-2">
       <h3>{patient.Home_Review_Patient_Name}</h3>
