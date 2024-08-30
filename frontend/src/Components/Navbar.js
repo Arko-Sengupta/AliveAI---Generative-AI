@@ -1,6 +1,7 @@
 import {
   faAddressBook,
   faChevronDown,
+  faChevronRight,
   faCircleInfo,
   faHome,
   faKitMedical,
@@ -66,40 +67,44 @@ const WebNavbar = ({ StaticData }) => {
           {StaticData.Header.Header_Link_3}
         </Nav.Link>
         <NavDropdown
-          title={
-            <span>
-              <FontAwesomeIcon icon={faKitMedical} className="me-2" />
-              {StaticData.Header.Header_Link_4}
-            </span>
-          }
-          id="features-dropdown"
-          className="me-4"
-        >
-          <NavDropdown.Item as={Link} to="/features">
-            Diabetes Analysis
+        title={
+          <span>
+            <FontAwesomeIcon icon={faKitMedical} className="me-2" />
+            {StaticData.Header.Header_Link_4}
+          </span>
+        }
+        id="features-dropdown"
+        className="me-4"
+      >
+        {[
+          "Diabetes Analysis",
+          "Asthma Analysis",
+          "Cardiovascular Analysis",
+          "Arthritis Analysis",
+          "Heart and Strokes Analysis",
+          "Migraine Control Analysis",
+          "Bronchitis Analysis",
+          "Liver Condition Analysis",
+        ].map((analysis, index) => (
+          <NavDropdown.Item
+            as={Link}
+            to="/features"
+            key={index}
+            className="nav-dropdown-item underline-expand"
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <FontAwesomeIcon
+              className="fa-xs"
+              icon={faChevronRight}
+              style={{ paddingRight: "5px", color: "#3dd5f3" }}
+            />
+            <span style={{ fontSize: "0.8rem" }}>{analysis}</span>
           </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Asthma Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Cardiovascular Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Arthritis Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Heart and Strokes Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Migraine Control Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Bronchitis Analysis
-          </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/features">
-            Liver Condition Analysis
-          </NavDropdown.Item>
-        </NavDropdown>
+        ))}
+      </NavDropdown>
       </Nav>
       <Nav>
         {isAuthenticated ? (
@@ -242,27 +247,67 @@ const MobileNavbar = ({ StaticData }) => {
             {showDropdown && (
               <Nav className="flex-column ms-3 mt-2">
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Diabetes Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Asthma Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Cardiovascular Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Arthritis Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Heart and Strokes Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Migraine Control Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Bronchitis Analysis
                 </Nav.Link>
                 <Nav.Link as={Link} to="/features" className="me-4">
+                  <FontAwesomeIcon
+                    className="fa-xs"
+                    icon={faChevronRight}
+                    style={{ paddingRight: "5px", color: "#3dd5f3" }}
+                  />
                   Liver Condition Analysis
                 </Nav.Link>
               </Nav>

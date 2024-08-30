@@ -1,19 +1,37 @@
-import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import SlideUp from "../Components/Animations/SlideUp";
+import "../StyleSheets/About.css";
 import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
 import SummaryImg from "../Utils/Images/About Images/Summary Image.jpg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
-
-import SlideUp from "../Components/Animations/SlideUp";
-import "../StyleSheets/About.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 // Frontend UI
 // About - Cover Component
 // Cover Component [Main]
 const AboutCover = ({ StaticData }) => {
-  const { About_Cover_Title, About_Cover_Sub_Title } = StaticData.About.About_Cover;
+  const [displayedText, setDisplayedText] = useState("");
+  const navigate = useNavigate();
+  const { About_Cover_Title, About_Cover_Sub_Title } =
+    StaticData.About.About_Cover;
+
+  useEffect(() => {
+    let index = 0; // Start from 0 to correctly display the first character
+    setDisplayedText("");
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => prev + About_Cover_Sub_Title.charAt(index));
+      index++;
+      if (index === About_Cover_Sub_Title.length) {
+        clearInterval(interval);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [About_Cover_Sub_Title]);
 
   return (
     <div className="about-cover-image-with-overlay">
@@ -24,14 +42,18 @@ const AboutCover = ({ StaticData }) => {
           <h1>{About_Cover_Title}</h1>
         </SlideUp>
         <SlideUp>
-          <h3>{About_Cover_Sub_Title}</h3>
+          <h3>{displayedText}</h3>
+        </SlideUp>
+        <SlideUp>
+          <div className="back-to-home" onClick={() => navigate("/")}>
+            <FontAwesomeIcon icon={faArrowLeft} className="left-icon" />
+            <span className="back-to-home-text underline-expand">Back to Home</span>
+          </div>
         </SlideUp>
       </div>
     </div>
   );
 };
-
-
 
 // About - Summary Component
 // About SummaryContentComponent
@@ -48,17 +70,21 @@ const AboutSummaryContent = ({
         <p>{About_Summary_Content_P1}</p>
       </SlideUp>
       <SlideUp>
-        <p className="about-summary-disabled-text">{About_Summary_Content_P2}</p>
+        <p className="about-summary-disabled-text">
+          {About_Summary_Content_P2}
+        </p>
       </SlideUp>
       <div>
-        {[About_Summary_Key_1, About_Summary_Key_2, About_Summary_Key_3].map((key, index) => (
-          <SlideUp key={index}>
-            <div className="about-summary-tick-icon-title">
-              <img src={TickImg} alt="Tick Icon" />
-              <span>{key}</span>
-            </div>
-          </SlideUp>
-        ))}
+        {[About_Summary_Key_1, About_Summary_Key_2, About_Summary_Key_3].map(
+          (key, index) => (
+            <SlideUp key={index}>
+              <div className="about-summary-tick-icon-title">
+                <img src={TickImg} alt="Tick Icon" />
+                <span>{key}</span>
+              </div>
+            </SlideUp>
+          )
+        )}
       </div>
     </Col>
   );
@@ -81,8 +107,14 @@ const AboutSummaryImage = () => {
 
 // About Summary [Main]
 const AboutSummary = ({ StaticData }) => {
-  const { About_Summary_Title, About_Summary_Content_P1, About_Summary_Content_P2, About_Summary_Key_1, About_Summary_Key_2, About_Summary_Key_3 } =
-    StaticData.About.About_Summary;
+  const {
+    About_Summary_Title,
+    About_Summary_Content_P1,
+    About_Summary_Content_P2,
+    About_Summary_Key_1,
+    About_Summary_Key_2,
+    About_Summary_Key_3,
+  } = StaticData.About.About_Summary;
 
   return (
     <div className="about-summary-container">
@@ -109,8 +141,6 @@ const AboutSummary = ({ StaticData }) => {
     </div>
   );
 };
-
-
 
 // About Component [Main]
 const About = ({ StaticData }) => {
