@@ -61,13 +61,13 @@
             "Home_Review_Title": "Our Patients Say About Us",
             "Home_Review_Sub_Title": "AliveAI Patient Pulse: Real-time Feedback Hub — Amplify Patient Voices, Enhance Care, and Drive Continuous Improvement Efforts!",
             "Home_Review_Patient_1": {
-                "Home_Review_Patient_Name": "Patient 1",
-                "Home_Review_Patient_Designation": "Designation 1",
+                "Home_Review_Patient_Name": "J.K.Rowling",
+                "Home_Review_Patient_Designation": "Author & Philanthropist",
                 "Home_Review_Patient_Review": "AliveAI has transformed our clinic's diagnostic process. The AI's accuracy and user-friendly interface have significantly improved patient outcomes. Highly recommended!"
             },
             "Home_Review_Patient_2": {
-                "Home_Review_Patient_Name": "Patient 2",
-                "Home_Review_Patient_Designation": "Designation 2",
+                "Home_Review_Patient_Name": "Jerry Springer",
+                "Home_Review_Patient_Designation": "Primary News Anchor & Managing Editor",
                 "Home_Review_Patient_Review": "AliveAI is indispensable in my daily practice. It saves time on paperwork and provides highly accurate diagnostic suggestions. An essential tool for modern medicine!"
             }
         },

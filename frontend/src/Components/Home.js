@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/Home.css";
 import CoverImg from "../Utils/Images/Home Images/Cover Image.jpg";
-import DiabetesImg from "../Utils/Images/Home Images/Daibetes Analysis.png";
-import DemoIcon from "../Utils/Images/Home Images/Demo Icon.png";
 import DemoMember from "../Utils/Images/Home Images/Demo Member.png";
 import ECG from "../Utils/Images/Home Images/ECG Line Image.png";
 import TransECG from "../Utils/Images/Home Images/ECG Transparent.png";
@@ -18,8 +16,21 @@ import GalleryImg_6 from "../Utils/Images/Home Images/Gallery Image 6.jpg";
 import GalleryImg_7 from "../Utils/Images/Home Images/Gallery Image 7.jpg";
 import GalleryImg_8 from "../Utils/Images/Home Images/Gallery Image 8.webp";
 import ReviewImg from "../Utils/Images/Home Images/Review Image.jpg";
-import SummaryImg from "../Utils/Images/Home Images/Summary Image.jpg";
+import SummaryImg from "../Utils/Images/Home Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/Home Images/Tick Image.png";
+import {
+  faHeartbeat,
+  faLungs,
+  faStethoscope,
+  faBone,
+  faBrain,
+  faHeadSideVirus,
+  faVial,
+  faSyringe
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Patient_1_Img from "../Utils/Images/Home Images/J.K.Rowling.jpg";
+import Patient_2_Img from "../Utils/Images/Home Images/Jerry Springer.jpg";
 
 // Frontend UI
 // Home - Cover Component
@@ -78,7 +89,7 @@ const Cover = ({ StaticData }) => {
 // Feature Icon Grid
 const FeatureIconGrid = ({ icon, title }) => (
   <div className="feature-icon-container">
-    <img src={icon} alt={title} />
+    {icon}
     <h3>{title}</h3>
   </div>
 );
@@ -86,17 +97,16 @@ const FeatureIconGrid = ({ icon, title }) => (
 // Features Icons Component [Main]
 const FeatureIcon = ({ StaticData }) => {
   const icons = useMemo(() => {
-    const iconsArray = [];
-    for (let i = 1; i <= 8; i++) {
-      const icon =
-        StaticData.Home.Home_Departments.Home_Departments_FeatureIcon[
-          `Home_Departments_FeatureIcon_Icon_${i}`
-        ];
-      iconsArray.push({
-        icon: icon,
-        image: i === 1 ? DiabetesImg : DemoIcon,
-      });
-    }
+    const iconsArray = [
+      { icon: "Diabetes Analysis", image: <FontAwesomeIcon icon={faSyringe} /> },
+      { icon: "Asthma Analysis", image: <FontAwesomeIcon icon={faLungs} /> },
+      { icon: "Cardiovascular Analysis", image: <FontAwesomeIcon icon={faHeartbeat} /> },
+      { icon: "Arthritis Analysis", image: <FontAwesomeIcon icon={faBone} /> },
+      { icon: "Heart & Stroke Analysis", image: <FontAwesomeIcon icon={faStethoscope} /> },
+      { icon: "Migraine Control Analysis", image: <FontAwesomeIcon icon={faBrain} /> },
+      { icon: "Bronchitis Analysis", image: <FontAwesomeIcon icon={faHeadSideVirus} /> },
+      { icon: "Liver Condition Analysis", image: <FontAwesomeIcon icon={faVial} /> },
+    ];
     return iconsArray;
   }, [StaticData]);
 
@@ -185,6 +195,7 @@ const SummaryImage = ({ Home_Summary_Read_More_Button }) => {
         <Row className="summary-image-row">
           <div className="summary-image">
             <img src={SummaryImg} alt="Summary" />
+            <div className="summary-black-overlay"></div>
           </div>
         </Row>
         <Row className="mt-3 d-flex justify-content-center">
@@ -244,10 +255,10 @@ const Summary = ({ StaticData }) => {
 
 // Home - Review Component
 // ReviewBlock Component
-const ReviewBlock = ({ patient }) => (
+const ReviewBlock = ({ img, patient }) => (
   <Col>
     <Row className="justify-content-center pt-2">
-      <img src={DemoMember} alt="" />
+      <img src={img} alt="" />
     </Row>
     <Row className="pt-2">
       <h3>{patient.Home_Review_Patient_Name}</h3>
@@ -255,7 +266,7 @@ const ReviewBlock = ({ patient }) => (
     <Row className="pt-2">
       <h5>{patient.Home_Review_Patient_Designation}</h5>
     </Row>
-    <Row className="pt-2">
+    <Row className="review-text pt-2 pb-5">
       <p>{patient.Home_Review_Patient_Review}</p>
     </Row>
   </Col>
@@ -295,8 +306,8 @@ const Review = ({ StaticData }) => {
           </SlideUp>
           <SlideUp>
             <Row className="review-member-image" style={{ marginTop: "10%" }}>
-              <ReviewBlock patient={Home_Review_Patient_1} />
-              <ReviewBlock patient={Home_Review_Patient_2} />
+              <ReviewBlock img={Patient_1_Img} patient={Home_Review_Patient_1} />
+              <ReviewBlock img={Patient_2_Img} patient={Home_Review_Patient_2} />
             </Row>
           </SlideUp>
         </Container>

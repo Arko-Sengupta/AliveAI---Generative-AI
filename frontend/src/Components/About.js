@@ -4,7 +4,7 @@ import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/About.css";
 import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
-import SummaryImg from "../Utils/Images/About Images/Summary Image.jpg";
+import SummaryImg from "../Utils/Images/About Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -98,6 +98,7 @@ const AboutSummaryImage = () => {
         <Row className="about-summary-image-row">
           <div className="about-summary-image">
             <img src={SummaryImg} alt="about-summary" />
+            <div className="about-summary-black-overlay"></div>
           </div>
         </Row>
       </SlideUp>

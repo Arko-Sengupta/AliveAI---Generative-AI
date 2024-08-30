@@ -41,11 +41,11 @@ const handleLogin = async (
     // Temporary Email & Password for Test
     if (userEmail === "" || userEmail !== "arkosengupta9@gmail.com") {
       setEmail("");
-      setloginMessage("Please Enter valid email");
+      setloginMessage("Please Enter Valid Email");
       setShow(true);
     } else if (userPassword === "" || userPassword !== "Arko@1234") {
       setPassword("");
-      setloginMessage("Please Enter valid password");
+      setloginMessage("Please Enter Valid Password");
       setShow(true);
     } else {
       setEmail("");
@@ -221,11 +221,11 @@ const Login = ({ StaticData }) => {
             return false;
           }
           if (emailOtp !== "123456") {
-            Swal.showValidationMessage("Incorrect OTP for email");
+            Swal.showValidationMessage("Incorrect OTP for Email");
             return false;
           }
           if (phoneOtp !== "654321") {
-            Swal.showValidationMessage("Incorrect OTP for phone");
+            Swal.showValidationMessage("Incorrect OTP for Phone");
             return false;
           }
           return { emailOtp, phoneOtp };
