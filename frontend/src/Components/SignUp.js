@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import {
-  Alert,
   Button,
   Col,
   Container,
   Form,
   InputGroup,
-  Row,
+  Row
 } from "react-bootstrap";
 import {
   FaAt,
