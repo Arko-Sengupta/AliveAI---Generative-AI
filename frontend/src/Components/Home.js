@@ -406,7 +406,6 @@ const Gallery = ({ StaticData }) => {
 };
 
 // Counter Component
-
 const Counter = ({ StaticData }) => {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
