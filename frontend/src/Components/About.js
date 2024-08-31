@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+import {
+  faArrowLeft,
+  faBuilding,
+  faFaceSmile,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { React, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/About.css";
+import "../StyleSheets/Home.css";
 import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
 import SummaryImg from "../Utils/Images/About Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
 
 // Frontend UI
 // About - Cover Component
@@ -47,7 +54,9 @@ const AboutCover = ({ StaticData }) => {
         <SlideUp>
           <div className="back-to-home" onClick={() => navigate("/")}>
             <FontAwesomeIcon icon={faArrowLeft} className="left-icon" />
-            <span className="back-to-home-text underline-expand">Back to Home</span>
+            <span className="back-to-home-text underline-expand">
+              Back to Home
+            </span>
           </div>
         </SlideUp>
       </div>
@@ -143,12 +152,98 @@ const AboutSummary = ({ StaticData }) => {
   );
 };
 
+// The counter component
+
+const Counter = ({ StaticData }) => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const counterRef = useRef(null);
+  const target = 4352;
+  const duration = 2000;
+
+  useEffect(() => {
+    const handleScroll = (entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting && !hasStarted) {
+        setHasStarted(true);
+        let start = 0;
+        const end = target;
+        const increment = end / (duration / 10);
+
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= end) {
+            setCount(end);
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(start));
+          }
+        }, 20);
+
+        return () => clearInterval(timer);
+      }
+    };
+
+    const observer = new IntersectionObserver(handleScroll, {
+      threshold: 0.5,
+    });
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
+      }
+    };
+  }, [hasStarted, target, duration]);
+
+  return (
+    <div ref={counterRef} className="Counter-container-main">
+      <SlideUp>
+        <h1 className="counter-container-h1">Our Team</h1>
+      </SlideUp>
+      <Row className="justify-content-center py-2">
+        <SlideUp>
+          <img src={ECGTransparentLine} alt="ECG Line" />
+        </SlideUp>
+      </Row>
+      <Row className="text-center py-2">
+        <SlideUp>
+          <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+        </SlideUp>
+      </Row>
+      <SlideUp>
+        <Container className="Counter-container">
+          <div className="Box">
+            <FontAwesomeIcon icon={faFaceSmile} className="icon" />
+            <h2>{count}</h2>
+            <h3>PATIENTS</h3>
+          </div>
+          <div className="Box">
+            <FontAwesomeIcon icon={faUser} className="icon" />
+            <h2>{count}</h2>
+            <h3>SPECIALISTS</h3>
+          </div>
+          <div className="Box">
+            <FontAwesomeIcon icon={faBuilding} className="icon" />
+            <h2>{count}</h2>
+            <h3>LOCATIONS</h3>
+          </div>
+        </Container>
+      </SlideUp>
+    </div>
+  );
+};
+
 // About Component [Main]
 const About = ({ StaticData }) => {
   return (
     <>
       <AboutCover StaticData={StaticData} />
       <AboutSummary StaticData={StaticData} />
+      <Counter StaticData={StaticData} />
     </>
   );
 };
