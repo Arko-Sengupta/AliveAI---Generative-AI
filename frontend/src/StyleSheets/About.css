@@ -403,85 +403,101 @@
   }
 }
 
-/* Counter component */
+/* Service Component */
 
-.Counter-container-main {
+.service-container-main {
   min-width: 250px;
-  padding-top: 150px;
-  padding-bottom: 100px;
-  background-color: #176581;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  background-color: #212529;
   color: white;
   position: relative;
 }
 
-.Counter-container-main h6 {
-  min-width: 250px;
-  font-size: 15px;
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal;
-  padding-inline: 20%;
-}
-
-.Counter-container {
-  width: 100%;
-  height: 300px;
-  display: flex;
+.medical-services-section {
+  padding: 50px 0;
+  font-family: "Roboto", sans-serif;
+  display: grid;
   justify-content: center;
   align-items: center;
-  gap: 200px;
-  padding: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 50px;
 }
 
-.Box {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 180px;
-  height: 140px;
-  border: 1px solid white;
+.service-ecg-line img{
+  width: 100px;
+}
+
+.intro-container {
+  grid-column: span 4;
   text-align: center;
-  margin: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  transition: width 0.3s ease;
+  margin-bottom: 30px;
 }
 
-.Box:hover {
+.services-subtitle {
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  color: #c0c0c0;
+  text-align: start;
+  padding-bottom: 20px;
+}
+
+.services-title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: start;
+  margin-bottom: 100px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #212529;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-item:hover {
+  background-color: #212529;
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #05b8db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.service-icon .icon {
+  color: white;
+  font-size: 24px;
+}
+
+.service-icon:hover {
+  background-color: #0494b1;
   cursor: pointer;
-  width: 220px;
 }
 
-.Box h2 {
-  font-size: 35px;
-  margin: 0;
-  padding-bottom: 5px;
-  font-family: "Lora", serif;
-  color: white;
-}
-
-.Box h3 {
+.service-text p {
   font-size: 12px;
+  font-weight: 500;
+  color: #f8f9fa;
   margin: 0;
-  font-family: "Lora", serif;
-  color: white;
+  font-family: "Cinzel Decorative", serif;
 }
 
-.icon {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 30px;
-  color: white;
-  background-color: #176581;
-  padding: 2px 20px;
-  z-index: 1;
-  margin: 0;
-}
-
-.counter-container-h1 {
+.service-container-h1 {
   min-width: 250px;
   font-size: 40px;
   font-family: "Cinzel Decorative", serif;
@@ -490,93 +506,78 @@
   text-align: center;
 }
 
-.Counter-container-main img {
+.service-container-main img {
   margin: 0 auto;
   min-width: 250px;
   width: 100px;
   display: block;
 }
 
-@media (max-width: 991px) {
-  .Counter-container {
-    gap: 100px;
+.grid-three-columns {
+  grid-column: span 3;
+}
+
+@media (max-width: 992px) {
+  .medical-services-section {
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .Box {
-    width: 170px;
-    height: 135px;
+  .intro-container {
+    grid-column: span 2;
   }
 
-  .Box h2 {
-    font-size: 38px;
+  .services-subtitle {
+    margin-bottom: 5px;
+    font-size: 16px;
   }
 
-  .Box h3 {
-    font-size: 14px;
-  }
-
-  .icon {
+  .services-title {
+    margin-bottom: 30px;
     font-size: 28px;
-    top: -18px;
   }
 
-  .counter-container-h1 {
-    font-size: 35px;
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-icon .icon {
+    font-size: 20px;
+  }
+
+  .service-text p {
+    font-size: 14px;
   }
 }
 
-@media (max-width: 768px) {
-  .Counter-container {
-    gap: 50px;
+@media (max-width: 576px) {
+  .medical-services-section {
+    grid-template-columns: 1fr;
   }
 
-  .Box {
-    width: 150px;
-    height: 130px;
+  .intro-container {
+    grid-column: span 1;
   }
 
-  .Box h2 {
-    font-size: 35px;
-  }
-
-  .Box h3 {
+  .services-subtitle {
     font-size: 14px;
   }
 
-  .icon {
-    font-size: 28px;
-    top: -18px;
+  .services-title {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
-  .counter-container-h1 {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .Counter-container {
-    gap: 10px;
+  .service-icon {
+    width: 40px;
+    height: 40px;
   }
 
-  .Box {
-    width: 140px;
-    height: 120px;
+  .service-icon .icon {
+    font-size: 18px;
   }
 
-  .Box h2 {
-    font-size: 32px;
-  }
-
-  .Box h3 {
-    font-size: 13px;
-  }
-
-  .icon {
-    font-size: 26px;
-    top: -16px;
-  }
-
-  .counter-container-h1 {
-    font-size: 28px;
+  .service-text p {
+    font-size: 12px;
   }
 }
