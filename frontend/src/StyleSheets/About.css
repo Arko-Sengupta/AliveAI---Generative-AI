@@ -403,6 +403,8 @@
   }
 }
 
+/* Service Component */
+
 .service-container-main {
   min-width: 250px;
   padding-top: 80px;
@@ -420,6 +422,10 @@
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
   padding-left: 50px;
+}
+
+.service-ecg-line img{
+  width: 100px;
 }
 
 .intro-container {
@@ -465,7 +471,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #28a745;
+  background-color: #05b8db;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -479,15 +485,16 @@
 }
 
 .service-icon:hover {
-  background-color: #218838;
+  background-color: #0494b1;
+  cursor: pointer;
 }
 
 .service-text p {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   color: #f8f9fa;
   margin: 0;
-  font-family: "Lora", serif;
+  font-family: "Cinzel Decorative", serif;
 }
 
 .service-container-h1 {

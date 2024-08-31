@@ -19,7 +19,6 @@ import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
 import SummaryImg from "../Utils/Images/About Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
-import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
 
 // Frontend UI
 // About - Cover Component
@@ -164,22 +163,17 @@ const MedicalServices = ({ StaticData }) => {
     { icon: faClipboardList, text: "Patient Registration Data" },
     { icon: faCalendarAlt, text: "Health Check-Ups Analysis" },
     { icon: faComments, text: "Chatbot for Health Suggestions" },
-    { icon: faUserMd, text: "Doctor's Appointment" },
-    { icon: faFileAlt, text: "Doctor's Column Post" },
-    { icon: faCogs, text: "Fully Customizable Templates" },
-    { icon: faIcons, text: "A pack of custom icons!" },
+    { icon: faUserMd, text: "Doctor's Appointment" }
   ];
-
-  const { Our_Services_Header } = StaticData?.Our_Services;
 
   return (
     <div className="service-container-main">
       <SlideUp>
-        <h1 className="service-container-h1">{Our_Services_Header}</h1>
+        <h1 className="service-container-h1">Our Services</h1>
       </SlideUp>
-      <Row className="justify-content-center py-2">
+      <Row className="service-ecg-line justify-content-center py-2">
         <SlideUp>
-          <img src={ECGTransparentLine} alt="ECG Line" />
+          <img src={ECG} alt="ECG Line" />
         </SlideUp>
       </Row>
       <SlideUp>
