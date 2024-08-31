@@ -405,7 +405,7 @@ const Gallery = ({ StaticData }) => {
   );
 };
 
-// The counter component
+// Counter Component
 
 const Counter = ({ StaticData }) => {
   const [count, setCount] = useState(0);
@@ -413,8 +413,6 @@ const Counter = ({ StaticData }) => {
   const counterRef = useRef(null);
   const target = 4352;
   const duration = 2000;
-
-  const { Counter_Title } = StaticData.Counter;
 
   useEffect(() => {
     const handleScroll = (entries) => {
@@ -457,13 +455,18 @@ const Counter = ({ StaticData }) => {
   return (
     <div ref={counterRef} className="Counter-container-main">
       <SlideUp>
-        <h1 className="counter-container-h1">{Counter_Title}</h1>
+        <h1 className="counter-container-h1">Our Team</h1>
       </SlideUp>
       <Row className="justify-content-center py-2">
         <SlideUp>
           <img src={ECGTransparentLine} alt="ECG Line" />
         </SlideUp>
       </Row>
+      <Row className="text-center py-2">
+        <SlideUp>
+          <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+        </SlideUp>
+      </Row> 
       <SlideUp>
         <Container className="Counter-container">
           <div className="Box">
