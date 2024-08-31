@@ -19,6 +19,7 @@ import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/Home.css";
 import CoverImg from "../Utils/Images/Home Images/Cover Image.jpg";
 import ECG from "../Utils/Images/Home Images/ECG Line Image.png";
+import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
 import TransECG from "../Utils/Images/Home Images/ECG Transparent.png";
 import GalleryImg_1 from "../Utils/Images/Home Images/Gallery Image 1.jpg";
 import GalleryImg_2 from "../Utils/Images/Home Images/Gallery Image 2.webp";
@@ -458,6 +459,11 @@ const Counter = ({ StaticData }) => {
       <SlideUp>
         <h1 className="counter-container-h1">{Counter_Title}</h1>
       </SlideUp>
+      <Row className="justify-content-center py-2">
+        <SlideUp>
+          <img src={ECGTransparentLine} alt="ECG Line" />
+        </SlideUp>
+      </Row>
       <SlideUp>
         <Container className="Counter-container">
           <div className="Box">

@@ -217,6 +217,7 @@
   padding-bottom: 20px;
   background-color: #343a40;
   color: white;
+  position: relative;
 }
 
 .Counter-container {
@@ -277,6 +278,13 @@
   font-weight: 900;
   font-style: normal;
   text-align: center;
+}
+
+.Counter-container-main img {
+  margin: 0 auto;
+  min-width: 250px;
+  width: 100px;
+  display: block;
 }
 
 @media (max-width: 991px) {

@@ -15,6 +15,7 @@ import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
 import SummaryImg from "../Utils/Images/About Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
+import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
 
 // Frontend UI
 // About - Cover Component
@@ -205,6 +206,11 @@ const Counter = ({ StaticData }) => {
       <SlideUp>
         <h1 className="counter-container-h1">{Counter_Title}</h1>
       </SlideUp>
+      <Row className="justify-content-center py-2">
+        <SlideUp>
+          <img src={ECGTransparentLine} alt="ECG Line" />
+        </SlideUp>
+      </Row>
       <SlideUp>
         <Container className="Counter-container">
           <div className="Box">
