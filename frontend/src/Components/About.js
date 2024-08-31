@@ -1,14 +1,25 @@
+import {
+  faArrowLeft,
+  faCalendarAlt,
+  faClipboardList,
+  faCogs,
+  faComments,
+  faFileAlt,
+  faIcons,
+  faPencilAlt,
+  faUserMd,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/About.css";
 import AboutCoverImg from "../Utils/Images/About Images/About Cover Image.jpg";
 import ECG from "../Utils/Images/About Images/ECG Line Image.png";
 import SummaryImg from "../Utils/Images/About Images/Summary Image.jpeg";
 import TickImg from "../Utils/Images/About Images/Tick Image.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
 
 // Frontend UI
 // About - Cover Component
@@ -20,7 +31,7 @@ const AboutCover = ({ StaticData }) => {
     StaticData.About.About_Cover;
 
   useEffect(() => {
-    let index = 0; // Start from 0 to correctly display the first character
+    let index = -1;
     setDisplayedText("");
     const interval = setInterval(() => {
       setDisplayedText((prev) => prev + About_Cover_Sub_Title.charAt(index));
@@ -47,7 +58,9 @@ const AboutCover = ({ StaticData }) => {
         <SlideUp>
           <div className="back-to-home" onClick={() => navigate("/")}>
             <FontAwesomeIcon icon={faArrowLeft} className="left-icon" />
-            <span className="back-to-home-text underline-expand">Back to Home</span>
+            <span className="back-to-home-text underline-expand">
+              Back to Home
+            </span>
           </div>
         </SlideUp>
       </div>
@@ -143,12 +156,77 @@ const AboutSummary = ({ StaticData }) => {
   );
 };
 
+// MedicalServices component
+
+const MedicalServices = ({ StaticData }) => {
+  const services = [
+    { icon: faPencilAlt, text: "Health Dashboard" },
+    { icon: faClipboardList, text: "Patient Registration Data" },
+    { icon: faCalendarAlt, text: "Health Check-Ups Analysis" },
+    { icon: faComments, text: "Chatbot for Health Suggestions" },
+    { icon: faUserMd, text: "Doctor's Appointment" },
+    { icon: faFileAlt, text: "Doctor's Column Post" },
+    { icon: faCogs, text: "Fully Customizable Templates" },
+    { icon: faIcons, text: "A pack of custom icons!" },
+  ];
+
+  const { Our_Services_Header } = StaticData?.Our_Services;
+
+  return (
+    <div className="service-container-main">
+      <SlideUp>
+        <h1 className="service-container-h1">{Our_Services_Header}</h1>
+      </SlideUp>
+      <Row className="justify-content-center py-2">
+        <SlideUp>
+          <img src={ECGTransparentLine} alt="ECG Line" />
+        </SlideUp>
+      </Row>
+      <SlideUp>
+        <div className="medical-services-section">
+          <Container>
+            <Row className="mb-10">
+              <Col>
+                <h3 className="services-subtitle">KEY SERVICES</h3>
+                <h2 className="services-title">
+                  What medical functionality is inside?
+                </h2>
+              </Col>
+            </Row>
+          </Container>
+          <Container className="grid-three-columns">
+            <Row>
+              {services.map((service, index) => (
+                <Col
+                  key={index}
+                  xs={12}
+                  md={6}
+                  lg={4}
+                  className="d-flex mb-4 service-item"
+                >
+                  <div className="service-icon">
+                    <FontAwesomeIcon icon={service.icon} className="icon" />
+                  </div>
+                  <div className="service-text">
+                    <p>{service.text}</p>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </div>
+      </SlideUp>
+    </div>
+  );
+};
+
 // About Component [Main]
 const About = ({ StaticData }) => {
   return (
     <>
       <AboutCover StaticData={StaticData} />
       <AboutSummary StaticData={StaticData} />
+      <MedicalServices StaticData={StaticData} />
     </>
   );
 };

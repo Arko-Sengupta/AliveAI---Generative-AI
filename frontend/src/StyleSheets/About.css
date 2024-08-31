@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poetsen+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 /* About Cover */
 
@@ -67,7 +67,7 @@
 .back-to-home-text {
   font-size: 15px;
   margin: 0;
-  color: #9B9D9E;
+  color: #9b9d9e;
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -77,12 +77,12 @@
 .underline-expand {
   position: relative;
   display: inline-block;
-  color: #9B9D9E;
+  color: #9b9d9e;
   text-decoration: none;
 }
 
 .underline-expand::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 1px;
@@ -329,7 +329,7 @@
     padding-left: 50px;
   }
 
-  .about-summary-black-overlay{
+  .about-summary-black-overlay {
     margin-top: 60px;
     width: 350px;
     height: 300px;
@@ -354,7 +354,7 @@
     padding-left: 50px;
   }
 
-  .about-summary-black-overlay{
+  .about-summary-black-overlay {
     width: 300px;
     height: 200px;
   }
@@ -383,7 +383,7 @@
     padding-left: 80px;
   }
 
-  .about-summary-black-overlay{
+  .about-summary-black-overlay {
     width: 200px;
     height: 120px;
     border-top-left-radius: 50px;
@@ -400,5 +400,177 @@
 @media only screen and (max-width: 260px) {
   .about-summary-image-row {
     padding-left: 20px;
+  }
+}
+
+.service-container-main {
+  min-width: 250px;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  background-color: #212529;
+  color: white;
+  position: relative;
+}
+
+.medical-services-section {
+  padding: 50px 0;
+  font-family: "Roboto", sans-serif;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 50px;
+}
+
+.intro-container {
+  grid-column: span 4;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.services-subtitle {
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  color: #c0c0c0;
+  text-align: start;
+  padding-bottom: 20px;
+}
+
+.services-title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: start;
+  margin-bottom: 100px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #212529;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-item:hover {
+  background-color: #212529;
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #28a745;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.service-icon .icon {
+  color: white;
+  font-size: 24px;
+}
+
+.service-icon:hover {
+  background-color: #218838;
+}
+
+.service-text p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f8f9fa;
+  margin: 0;
+  font-family: "Lora", serif;
+}
+
+.service-container-h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+}
+
+.service-container-main img {
+  margin: 0 auto;
+  min-width: 250px;
+  width: 100px;
+  display: block;
+}
+
+.grid-three-columns {
+  grid-column: span 3;
+}
+
+@media (max-width: 992px) {
+  .medical-services-section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .intro-container {
+    grid-column: span 2;
+  }
+
+  .services-subtitle {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .services-title {
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-icon .icon {
+    font-size: 20px;
+  }
+
+  .service-text p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .medical-services-section {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-container {
+    grid-column: span 1;
+  }
+
+  .services-subtitle {
+    font-size: 14px;
+  }
+
+  .services-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .service-icon .icon {
+    font-size: 18px;
+  }
+
+  .service-text p {
+    font-size: 12px;
   }
 }
