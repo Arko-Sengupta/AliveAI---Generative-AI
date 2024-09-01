@@ -309,6 +309,10 @@
     gap: 100px;
   }
 
+  .Counter-container-main h6 {
+    padding-inline: 10%;
+  }
+
   .Box {
     width: 170px;
     height: 135px;
@@ -363,6 +367,10 @@
 @media (max-width: 480px) {
   .Counter-container {
     gap: 10px;
+  }
+
+  .Counter-container-main h6 {
+    padding-inline: 0%;
   }
 
   .Box {
@@ -622,6 +630,10 @@
     border-top-left-radius: 100px;
     border-bottom-right-radius: 100px;
   }
+
+  .summary-container h6 {
+    padding-inline: 10%;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -664,6 +676,10 @@
   .summary-black-overlay {
     width: 300px;
     height: 200px;
+  }
+
+  .summary-container h6 {
+    padding-inline: 0%;
   }
 }
 
@@ -817,7 +833,7 @@
 .review-container {
   min-width: 250px;
   padding-top: 200px;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
   background-color: transparent;
   color: white;
 }
@@ -913,15 +929,21 @@
   .review-container p {
     padding-inline: 30px;
   }
+
+  .review-container h6 {
+    padding-inline: 10%;
+  }
 }
 
 @media only screen and (max-width: 767px) {
-  .review-container h6 {
-    font-size: 10px;
-  }
-
   .review-container p {
     font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 445px) {
+  .review-container h6 {
+    padding-inline: 0%;
   }
 }
 
