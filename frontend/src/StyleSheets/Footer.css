@@ -11,6 +11,45 @@
   margin-bottom: 30px;
 }
 
+.w-footer-title:hover .underlineBox-1 {
+  padding-right: 35%;   
+}
+
+.w-footer-title .underlineBox-1 {
+  padding-left: 38%;
+  padding-right: 45%;
+  transition: padding-right 0.3s ease;
+}
+
+.w-footer-title:hover .underlineBox-2 {
+  padding-right: 35%;   
+}
+
+.w-footer-title .underlineBox-2 {
+  padding-left: 30%;
+  padding-right: 45%;
+  margin-bottom: 20px;
+  transition: padding-right 0.3s ease;
+}
+
+.w-footer-title:hover .underlineBox-3 {
+  padding-right: 35%;   
+}
+
+.w-footer-title .underlineBox-3 {
+  padding-left: 32%;
+  padding-right: 45%;
+  margin-bottom: 20px;
+  transition: padding-right 0.3s ease;
+}
+
+.w-footer-title .underline {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+}
+
 .w-footer ul {
   list-style: none;
   padding-left: 20px;
@@ -113,6 +152,18 @@
   .w-footer-icons {
     display: flex;
     justify-content: center;
+  }
+
+  .w-footer-title .underlineBox-1 {
+    padding-left: 38%;
+  }
+
+  .w-footer-title .underlineBox-2 {
+    padding-left: 20%;
+  }
+
+  .w-footer-title .underlineBox-3 {
+    padding-left: 22%;
   }
 }
 

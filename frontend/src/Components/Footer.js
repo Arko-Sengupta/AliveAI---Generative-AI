@@ -39,8 +39,11 @@ const WebIconTextRow = ({ icon, text }) => (
 const WebFooterContact = ({ Footer }) => {
   return (
     <Col>
-      <Row className="text-center">
+      <Row className="w-footer-title text-center">
         <h1>{Footer.Footer_Col_1.Footer_Col_1_Title}</h1>
+        <div className="underlineBox-1">
+          <div className="underline"></div>
+        </div>
       </Row>
       <Row>
         <p>{Footer.Footer_Col_1.Footer_Col_1_Description}</p>
@@ -65,8 +68,11 @@ const WebFooterContact = ({ Footer }) => {
 const WebFooterFeatureList = ({ Footer }) => {
   return (
     <Col className="w-footer">
-      <Row className="text-center">
+      <Row className="w-footer-title text-center">
         <h1>{Footer.Footer_Col_2.Footer_Col_2_Title}</h1>
+        <div className="underlineBox-2">
+          <div className="underline"></div>
+        </div>
       </Row>
       <Row>
         <ul>
@@ -94,8 +100,11 @@ const WebFooterFeatureList = ({ Footer }) => {
 const WebFooterEnquiry = ({ Footer }) => {
   return (
     <Col>
-      <Row className="text-center">
+      <Row className="w-footer-title text-center">
         <h1>{Footer.Footer_Col_3.Footer_Col_3_Title}</h1>
+        <div className="underlineBox-3">
+          <div className="underline"></div>
+        </div>
       </Row>
       {["Your Name", "Your Email", ""].map((placeholder, index) => (
         <Row className="col-8 mt-2" key={index}>
