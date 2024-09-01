@@ -2,10 +2,7 @@ import {
   faArrowLeft,
   faCalendarAlt,
   faClipboardList,
-  faCogs,
   faComments,
-  faFileAlt,
-  faIcons,
   faPencilAlt,
   faUserMd,
   faFaceSmile,
@@ -126,6 +123,7 @@ const AboutSummaryImage = () => {
 const AboutSummary = ({ StaticData }) => {
   const {
     About_Summary_Title,
+    About_Summary_Subtitle,
     About_Summary_Content_P1,
     About_Summary_Content_P2,
     About_Summary_Key_1,
@@ -143,6 +141,11 @@ const AboutSummary = ({ StaticData }) => {
         </Row>
         <Row className="about-summary-ecg-line justify-content-center py-2">
           <img src={ECG} alt="ECG Line" />
+        </Row>
+        <Row className="py-2">
+          <SlideUp>
+            <h6>{About_Summary_Subtitle}</h6>
+          </SlideUp>
         </Row>
         <Row className="py-2">
           <AboutSummaryContent
@@ -171,59 +174,72 @@ const MedicalServices = ({ StaticData }) => {
 
   return (
     <div className="service-container-main">
-      <SlideUp>
-        <h1 className="service-container-h1">Our Services</h1>
-      </SlideUp>
-      <Row className="service-ecg-line justify-content-center py-2">
+      <div className="container">
         <SlideUp>
-          <img src={ECG} alt="ECG Line" />
+          <h1 className="service-container-h1">Our Services</h1>
         </SlideUp>
-      </Row>
-      <SlideUp>
-        <div className="medical-services-section">
-          <Container>
-            <Row className="mb-10">
-              <Col>
-                <h3 className="services-subtitle">KEY SERVICES</h3>
-                <h2 className="services-title">
-                  What medical functionality is inside?
-                </h2>
-              </Col>
-            </Row>
-          </Container>
-          <Container className="grid-three-columns">
-            <Row>
-              {services.map((service, index) => (
-                <Col
-                  key={index}
-                  xs={12}
-                  md={6}
-                  lg={4}
-                  className="d-flex mb-4 service-item"
-                >
-                  <div className="service-icon">
-                    <FontAwesomeIcon icon={service.icon} className="icon" />
-                  </div>
-                  <div className="service-text">
-                    <p>{service.text}</p>
-                  </div>
+        <Row className="service-ecg-line justify-content-center py-2">
+          <SlideUp>
+            <img src={ECG} alt="ECG Line" />
+          </SlideUp>
+        </Row>
+        <Row className="py-2">
+          <SlideUp>
+            <h6>Comprehensive AI-Powered Healthcare Services. Offering cutting-edge solutions for diagnostics,
+              treatment planning, and patient management across all medical fields.</h6>
+          </SlideUp>
+        </Row>
+        <SlideUp>
+          <div className="medical-services-section">
+            <Container>
+              <Row className="mb-10">
+                <Col>
+                  <h3 className="services-subtitle">KEY SERVICES</h3>
+                  <h2 className="services-title">
+                    What medical functionality is inside?
+                  </h2>
                 </Col>
-              ))}
-            </Row>
-          </Container>
-        </div>
-      </SlideUp>
+              </Row>
+            </Container>
+            <Container className="grid-three-columns">
+              <Row>
+                {services.map((service, index) => (
+                  <Col
+                    key={index}
+                    xs={12}
+                    md={6}
+                    lg={4}
+                    className="d-flex mb-4 service-item"
+                  >
+                    <div className="service-icon">
+                      <FontAwesomeIcon icon={service.icon} className="s-icon" />
+                    </div>
+                    <div className="service-text">
+                      <p>{service.text}</p>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Container>
+          </div>
+        </SlideUp>
+      </div>
     </div>
   );
 };
 
 
 // Counter Component
-const Counter = ({ StaticData }) => {
-  const [count, setCount] = useState(0);
+const Counter = () => {
+  const [countPatients, setCountPatients] = useState(0);
+  const [countSpecialists, setCountSpecialists] = useState(0);
+  const [countLocations, setCountLocations] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const counterRef = useRef(null);
-  const target = 4352;
+
+  const targetPatients = 4352;
+  const targetSpecialists = 120;
+  const targetLocations = 25;
   const duration = 2000;
 
   useEffect(() => {
@@ -231,21 +247,23 @@ const Counter = ({ StaticData }) => {
       const entry = entries[0];
       if (entry.isIntersecting && !hasStarted) {
         setHasStarted(true);
-        let start = 0;
-        const end = target;
-        const increment = end / (duration / 10);
 
-        const timer = setInterval(() => {
-          start += increment;
-          if (start >= end) {
-            setCount(end);
-            clearInterval(timer);
-          } else {
-            setCount(Math.floor(start));
-          }
-        }, 20);
+        const animateCount = (start, end, setCount) => {
+          const increment = end / (duration / 10);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(start));
+            }
+          }, 20);
+        };
 
-        return () => clearInterval(timer);
+        animateCount(0, targetPatients, setCountPatients);
+        animateCount(0, targetSpecialists, setCountSpecialists);
+        animateCount(0, targetLocations, setCountLocations);
       }
     };
 
@@ -262,42 +280,44 @@ const Counter = ({ StaticData }) => {
         observer.unobserve(counterRef.current);
       }
     };
-  }, [hasStarted, target, duration]);
+  }, [hasStarted, targetPatients, targetSpecialists, targetLocations, duration]);
 
   return (
     <div ref={counterRef} className="Counter-container-main">
-      <SlideUp>
-        <h1 className="counter-container-h1">Our Team</h1>
-      </SlideUp>
-      <Row className="justify-content-center py-2">
+      <div className="container">
         <SlideUp>
-          <img src={ECGTransparentLine} alt="ECG Line" />
+          <h1 className="counter-container-h1">Our Team</h1>
         </SlideUp>
-      </Row>
-      <Row className="text-center py-2">
+        <Row className="justify-content-center py-2">
+          <SlideUp>
+            <img src={ECGTransparentLine} alt="ECG Line" />
+          </SlideUp>
+        </Row>
+        <Row className="text-center py-2">
+          <SlideUp>
+            <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+          </SlideUp>
+        </Row>
         <SlideUp>
-          <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+          <Container className="Counter-container">
+            <div className="Box">
+              <FontAwesomeIcon icon={faFaceSmile} className="icon" />
+              <h2>{countPatients}</h2>
+              <h3>PATIENTS</h3>
+            </div>
+            <div className="Box">
+              <FontAwesomeIcon icon={faUser} className="icon" />
+              <h2>{countSpecialists}</h2>
+              <h3>SPECIALISTS</h3>
+            </div>
+            <div className="Box">
+              <FontAwesomeIcon icon={faBuilding} className="icon" />
+              <h2>{countLocations}</h2>
+              <h3>LOCATIONS</h3>
+            </div>
+          </Container>
         </SlideUp>
-      </Row> 
-      <SlideUp>
-        <Container className="Counter-container">
-          <div className="Box">
-            <FontAwesomeIcon icon={faFaceSmile} className="icon" />
-            <h2>{count}</h2>
-            <h3>PATIENTS</h3>
-          </div>
-          <div className="Box">
-            <FontAwesomeIcon icon={faUser} className="icon" />
-            <h2>{count}</h2>
-            <h3>SPECIALISTS</h3>
-          </div>
-          <div className="Box">
-            <FontAwesomeIcon icon={faBuilding} className="icon" />
-            <h2>{count}</h2>
-            <h3>LOCATIONS</h3>
-          </div>
-        </Container>
-      </SlideUp>
+      </div>
     </div>
   );
 };

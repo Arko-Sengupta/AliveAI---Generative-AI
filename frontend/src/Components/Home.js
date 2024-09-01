@@ -239,6 +239,7 @@ const SummaryImage = ({ Home_Summary_Read_More_Button }) => {
 const Summary = ({ StaticData }) => {
   const {
     Home_Summary_Title,
+    Home_Summary_Subtitle,
     Home_Summary_Content_P1,
     Home_Summary_Content_P2,
     Home_Summary_Key_1,
@@ -257,6 +258,11 @@ const Summary = ({ StaticData }) => {
         </Row>
         <Row className="summary-ecg-line justify-content-center py-2">
           <img src={ECG} alt="ECG Line" />
+        </Row>
+        <Row className="py-2">
+          <SlideUp>
+            <h6>{Home_Summary_Subtitle}</h6>
+          </SlideUp>
         </Row>
         <Row className="py-2">
           <SummaryContent
@@ -406,11 +412,16 @@ const Gallery = ({ StaticData }) => {
 };
 
 // Counter Component
-const Counter = ({ StaticData }) => {
-  const [count, setCount] = useState(0);
+const Counter = () => {
+  const [countPatients, setCountPatients] = useState(0);
+  const [countSpecialists, setCountSpecialists] = useState(0);
+  const [countLocations, setCountLocations] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const counterRef = useRef(null);
-  const target = 4352;
+
+  const targetPatients = 4352;
+  const targetSpecialists = 120;
+  const targetLocations = 25;
   const duration = 2000;
 
   useEffect(() => {
@@ -418,21 +429,23 @@ const Counter = ({ StaticData }) => {
       const entry = entries[0];
       if (entry.isIntersecting && !hasStarted) {
         setHasStarted(true);
-        let start = 0;
-        const end = target;
-        const increment = end / (duration / 10);
 
-        const timer = setInterval(() => {
-          start += increment;
-          if (start >= end) {
-            setCount(end);
-            clearInterval(timer);
-          } else {
-            setCount(Math.floor(start));
-          }
-        }, 20);
+        const animateCount = (start, end, setCount) => {
+          const increment = end / (duration / 10);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(start));
+            }
+          }, 20);
+        };
 
-        return () => clearInterval(timer);
+        animateCount(0, targetPatients, setCountPatients);
+        animateCount(0, targetSpecialists, setCountSpecialists);
+        animateCount(0, targetLocations, setCountLocations);
       }
     };
 
@@ -449,7 +462,7 @@ const Counter = ({ StaticData }) => {
         observer.unobserve(counterRef.current);
       }
     };
-  }, [hasStarted, target, duration]);
+  }, [hasStarted, targetPatients, targetSpecialists, targetLocations, duration]);
 
   return (
     <div ref={counterRef} className="Counter-container-main">
@@ -465,22 +478,22 @@ const Counter = ({ StaticData }) => {
         <SlideUp>
           <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
         </SlideUp>
-      </Row> 
+      </Row>
       <SlideUp>
         <Container className="Counter-container">
           <div className="Box">
             <FontAwesomeIcon icon={faFaceSmile} className="icon" />
-            <h2>{count}</h2>
+            <h2>{countPatients}</h2>
             <h3>PATIENTS</h3>
           </div>
           <div className="Box">
             <FontAwesomeIcon icon={faUser} className="icon" />
-            <h2>{count}</h2>
+            <h2>{countSpecialists}</h2>
             <h3>SPECIALISTS</h3>
           </div>
           <div className="Box">
             <FontAwesomeIcon icon={faBuilding} className="icon" />
-            <h2>{count}</h2>
+            <h2>{countLocations}</h2>
             <h3>LOCATIONS</h3>
           </div>
         </Container>

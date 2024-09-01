@@ -17,7 +17,7 @@
 
     "Home_Departments": {
       "Home_Departments_Title": "Our Departments",
-      "Home_Departments_Sub_Title": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
+      "Home_Departments_Sub_Title": "Specialized Medical Departments. Integrating advanced AI technologies across various healthcare domains for precision and personalized care.",
       "Home_Departments_FeatureIcon": {
         "Home_Departments_FeatureIcon_Icon_1": "Diabetes Analysis",
         "Home_Departments_FeatureIcon_Icon_2": "Asthma Analysis",
@@ -32,6 +32,7 @@
 
     "Home_Summary": {
       "Home_Summary_Title": "What we do?",
+      "Home_Summary_Subtitle": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
       "Home_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
       "Home_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
       "Home_Summary_Key_1": "Patient Data Privacy",
@@ -86,6 +87,7 @@
 
     "About_Summary": {
       "About_Summary_Title": "What we do?",
+      "About_Summary_Subtitle": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
       "About_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
       "About_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
       "About_Summary_Key_1": "Patient Data Privacy",

@@ -158,8 +158,8 @@
 
 .department-container {
   min-width: 250px;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 150px;
+  padding-bottom: 150px;
   background-color: #212529;
   color: white;
 }
@@ -502,6 +502,16 @@
   padding-bottom: 100px;
   background-color: #212529;
   color: white;
+}
+
+.summary-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+  text-align: center;
 }
 
 .summary-title {
@@ -867,7 +877,7 @@
 }
 
 .review-image-border img {
-  border: 4px solid #11accb;
+  border: 4px solid #197e92;
   padding: 10px;
   transition: padding 0.5s ease-in-out;
 }

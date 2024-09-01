@@ -67,7 +67,7 @@
 .back-to-home-text {
   font-size: 15px;
   margin: 0;
-  color: #9b9d9e;
+  color: white;
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -77,8 +77,9 @@
 .underline-expand {
   position: relative;
   display: inline-block;
-  color: #9b9d9e;
+  color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .underline-expand::after {
@@ -95,11 +96,6 @@
 .underline-expand:hover::after {
   width: 100px;
   left: calc(30% - 30px);
-}
-
-.back-to-home-text:hover {
-  color: white;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 1495px) {
@@ -203,6 +199,16 @@
   padding-bottom: 100px;
   background-color: #212529;
   color: white;
+}
+
+.about-summary-container h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+  text-align: center;
 }
 
 .about-summary-title {
@@ -407,11 +413,21 @@
 
 .service-container-main {
   min-width: 250px;
-  padding-top: 80px;
-  padding-bottom: 20px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   background-color: #212529;
   color: white;
   position: relative;
+}
+
+.service-container-main h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+  text-align: center;
 }
 
 .medical-services-section {
@@ -424,7 +440,8 @@
   padding-left: 50px;
 }
 
-.service-ecg-line img{
+.service-ecg-line img {
+  min-width: 250px;
   width: 100px;
 }
 
@@ -471,7 +488,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #05b8db;
+  background-color: #1d7da0;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -479,7 +496,7 @@
   transition: background-color 0.3s ease;
 }
 
-.service-icon .icon {
+.service-icon .s-icon {
   color: white;
   font-size: 24px;
 }
@@ -541,7 +558,7 @@
     height: 50px;
   }
 
-  .service-icon .icon {
+  .service-icon .s-icon {
     font-size: 20px;
   }
 
@@ -573,7 +590,7 @@
     height: 40px;
   }
 
-  .service-icon .icon {
+  .service-icon .s-icon {
     font-size: 18px;
   }
 
