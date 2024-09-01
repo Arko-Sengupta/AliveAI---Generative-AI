@@ -2,406 +2,213 @@ import logging
 import numpy as np
 import pandas as pd
 
+# Set Up Logging
 logging.basicConfig(level=logging.INFO)
-logging.basicConfig(level=logging.ERROR)
-logging.basicConfig(level=logging.WARNING)
+logger = logging.getLogger(__name__)
 
 np.random.seed(42)
 
 class DiabetesDataset:
-    
-    """Initialized Number of Sample Data"""
-    def __init__(self):
-        self.samples = None
-     
-    """
-    1. Getting Ages using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 50, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Age as 50.
-    3. scale = 40, Represents standard deviation of distribution that controls the spread of the generated age around
-    the Mean (10, 90).
-    4. size, Specifies the Random Ages to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 18 is the minimum value and any value less than 18 will be set to 18. Similarly 100 is the Maximum Value greater than 100
-    will be set to 100.
-    """
-    def Age(self):
+    """Generates synthetic data for diabetes research."""
+
+    def __init__(self, samples=1000):
+        """Initialize the Dataset with the number of Samples."""
+        self.samples = samples
+
+    def _generate_data(self, mean, scale, low, high):
+        """Generate Normally Distributed Data and Clip to a Specified Range."""
         try:
-            ages = np.random.normal(loc=50, scale=40, size=self.samples).astype(int)
-            ages = np.clip(ages, 18, 100)
-            return ages
+            data = np.random.normal(loc=mean, scale=scale, size=self.samples)
+            return np.clip(data, low, high)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-     
-    """
-    1. Getting Random Gender Array from the Given list of Array that selects gender randomly.
-    2. ["Male", "Female"], Initially moving forward with two choices.
-    3. size, Specifies the Random Genders to generate.
-    """  
-    def Gender(self):
-        try:
-            genders = np.random.choice(['Male', 'Female'], size=self.samples)
-            return genders
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-     
-    """
-    1. Getting Weights using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 60, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Weight as 60 Kgs.
-    3. scale = 40, Represents standard deviation of distribution that controls the spread of the generated weights around
-    the Mean (20, 100).
-    4. size, Specifies the Random Weights to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 40 is the minimum value and any value less than 40 will be set to 40. Similarly 110 is the Maximum Value and any value
-    greater than 110 will be set to 110.
-    """   
-    def Weight(self):
-        try:
-            self.weights = np.random.normal(loc=60, scale=40, size=self.samples)
-            self.weights = np.clip(self.weights, 40, 150)
-            return self.weights
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Heights using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 1.6, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Height as 1.6 Metres.
-    3. scale = 0.4, Represents standard deviation of distribution that controls the spread of the generated heights around
-    the Mean (1.2, 2.0).
-    4. size, Specifies the Random Heights to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 1.4 is the minimum value and any value less than 1.4 will be set to 1.4. Similarly 2.0 is the Maximum Value and any value
-    greater than 2.0 will be set to 2.0.
-    """    
-    def Height(self):
-        try:
-            self.heights = np.random.normal(loc=1.6, scale=0.4, size=self.samples)
-            self.heights = np.clip(self.heights, 1.4, 2.0)
-            return self.heights
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Family History Array from the Given list of Array that selects history randomly.
-    2. ["Yes", "No"], Initially moving forward with two choices.
-    3. size, Specifies the Random Family History to generate.
-    """    
-    def FamilyHistory(self):
-        try:
-            family_histories = np.random.choice(['Yes', 'No'], size=self.samples)
-            return family_histories
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
+            logger.error("Error Generating Data", exc_info=e)
             raise
-    
-    """
-    1. Getting Random Physical Activity Level Array from the Given list of Array that selects physical activity randomly.
-    2. ["Low", "Moderate", "High"], Initially moving forward with three choices.
-    3. size, Specifies the Random Physical Activity Level to generate.
-    """     
+
+    def Age(self):
+        """Generate Ages between 18 and 100."""
+        return self._generate_data(mean=50, scale=40, low=18, high=100)
+
+    def Gender(self):
+        """Generate Random Genders."""
+        try:
+            return np.random.choice(['Male', 'Female'], size=self.samples)
+        except Exception as e:
+            logger.error("Error Generating Genders", exc_info=e)
+            raise
+
+    def Weight(self):
+        """Generate Weights between 40 and 150 Kg."""
+        return self._generate_data(mean=60, scale=40, low=40, high=150)
+
+    def Height(self):
+        """Generate Heights between 1.4 and 2.0 Meters."""
+        return self._generate_data(mean=1.6, scale=0.4, low=1.4, high=2.0)
+
+    def FamilyHistory(self):
+        """Generate Family History of Diabetes."""
+        try:
+            return np.random.choice(['Yes', 'No'], size=self.samples)
+        except Exception as e:
+            logger.error("Error Generating Family History", exc_info=e)
+            raise
+
     def PhysicalActivityLevel(self):
+        """Generate Physical Activity Levels."""
         try:
-            activity_levels = np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
-            return activity_levels
+            return np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Diatary Habits Array from the Given list of Array that selects diatary habits randomly.
-    2. ['Flexitarian','Keto','Mediterranean','Paleo','Pescatarian','Non-Veg','Whole Food Plant-Based','Vegan','Vegetarian'], 
-    Initially moving forward with ten choices.
-    3. size, Specifies the Random Dietary Habits to generate.
-    """     
+            logger.error("Error Generating Physical Activity Levels", exc_info=e)
+            raise
+
     def DietaryHabits(self):
+        """Generate Dietary Habits."""
         try:
-            dietary_habits = np.random.choice(['Flexitarian',
-                                               'Keto',
-                                               'Mediterranean',
-                                               'Paleo',
-                                               'Pescatarian',
-                                               'Non-Veg',
-                                               'Whole Food Plant-Based',
-                                               'Vegan',
-                                               'Vegetarian'
-                                              ], size=self.samples)
-            return dietary_habits
+            return np.random.choice([
+                'Flexitarian', 'Keto', 'Mediterranean', 'Paleo', 'Pescatarian',
+                'Non-Veg', 'Whole Food Plant-Based', 'Vegan', 'Vegetarian'
+            ], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Ethinicity/Race Array from the Given list of Array that selects ethinicity/race randomly.
-    2. ['Caucasian', 'Asian', 'Hispanic/Latino', 'African/American','Mixed/Multiethnic','Middle Eastern/North African'], 
-    Initially moving forward with six choices.
-    3. size, Specifies the Ethinicity/Race to generate.
-    """  
-    def Ethinicity_Race(self):
+            logger.error("Error Generating Dietary Habits", exc_info=e)
+            raise
+
+    def Ethnicity_Race(self):
+        """Generate Ethnicities/Races."""
         try:
-            ethnicities = np.random.choice(['Caucasian', 
-                                            'Asian', 
-                                            'Hispanic/Latino', 
-                                            'African/American',
-                                            'Mixed/Multiethnic',
-                                            'Middle Eastern/North African'
-                                            ], size=self.samples)
-            return ethnicities
+            return np.random.choice([
+                'Caucasian', 'Asian', 'Hispanic/Latino', 'African/American',
+                'Mixed/Multiethnic', 'Middle Eastern/North African'
+            ], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Medication Used Array from the Given list of Array that selects medication used randomly.
-    2. ["Yes", "No"], Initially moving forward with two choices.
-    3. size, Specifies the Random Medication Used to generate.
-    """ 
+            logger.error("Error Generating Ethnicity/Race", exc_info=e)
+            raise
+
     def MedicationUse(self):
+        """Generate Medication Use Status."""
         try:
-            medication_uses = np.random.choice(['Yes', 'No'], size=self.samples)
-            return medication_uses
+            return np.random.choice(['Yes', 'No'], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Sleep Quality Array from the Given list of Array that selects sleep quality randomly.
-    2. ["Poor", "Fair", "Good", "Excellent"], Initially moving forward with four choices.
-    3. size, Specifies the Sleep Quality to generate.
-    """    
+            logger.error("Error Generating Medication Use", exc_info=e)
+            raise
+
     def SleepQuality(self):
+        """Generate Sleep Quality."""
         try:
-            sleep_qualities = np.random.choice(['Poor', 'Fair', 'Good', 'Excellent'], size=self.samples)
-            return sleep_qualities
+            return np.random.choice(['Poor', 'Fair', 'Good', 'Excellent'], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Stress Level Array from the Given list of Array that selects stress level randomly.
-    2. ["Low", "Moderate", "High"], Initially moving forward with three choices.
-    3. size, Specifies the Stress Level to generate.
-    """    
+            logger.error("Error Generating Sleep Quality", exc_info=e)
+            raise
+
     def StressLevel(self):
+        """Generate Stress Levels."""
         try:
-            stress_levels = np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
-            return stress_levels
+            return np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Waist Circumferences using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 85, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Waist circumference
-    as 85 cm.
-    3. scale = 10, Represents standard deviation of distribution that controls the spread of the generated waist circumferences around
-    the Mean (75, 95).
-    4. size, Specifies the Random Waist Circumferences to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 60 is the minimum value and any value less than 60 will be set to 60. Similarly 150 is the Maximum Value and any value
-    greater than 150 will be set to 150.
-    """    
+            logger.error("Error Generating Stress Levels", exc_info=e)
+            raise
+
     def WaistCircumference(self):
-        try:
-            self.waist_circumferences = np.random.normal(loc=85, scale=10, size=self.samples)
-            self.waist_circumferences = np.clip(self.waist_circumferences, 60, 150)
-            return self.waist_circumferences
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Waist Circumferences using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 103, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Hip circumference
-    as 103 cm.
-    3. scale = 15, Represents standard deviation of distribution that controls the spread of the generated hip circumferences around
-    the Mean (93, 113).
-    4. size, Specifies the Random Hip Circumferences to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 70 is the minimum value and any value less than 70 will be set to 70. Similarly 160 is the Maximum Value and any value
-    greater than 160 will be set to 160.
-    """     
+        """Generate Waist Circumferences between 60 and 150 cm."""
+        return self._generate_data(mean=85, scale=10, low=60, high=150)
+
     def HipCircumference(self):
-        try:
-            self.hip_circumferences = np.random.normal(loc=103, scale=15, size=self.samples)
-            self.hip_circumferences = np.clip(self.hip_circumferences, 70, 160)
-            return self.hip_circumferences
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting the Ratio of Waist Circumference and Hip Circumference.
-    2. Unit Considered is Centimeters.
-    """    
+        """Generate Hip Circumferences between 70 and 160 cm."""
+        return self._generate_data(mean=103, scale=15, low=70, high=160)
+
     def WaistToHipRatio(self):
+        """Calculate the Waist-to-Hip Ratio."""
         try:
-            waist_to_hip_ratios = self.waist_circumferences / self.hip_circumferences
-            return waist_to_hip_ratios
+            waist = self.WaistCircumference()
+            hip = self.HipCircumference()
+            return waist / hip
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Random Smoking Status Array from the Given list of Array that selects somking status randomly.
-    2. ["Non-Smoker", "Smoker"], Initially moving forward with two choices.
-    3. size, Specifies the Smoking Status to generate.
-    """    
+            logger.error("Error Calculating Waist-to-Hip Ratio", exc_info=e)
+            raise
+
     def SmokingStatus(self):
+        """Generate Smoking Status."""
         try:
-            smoking_statuses = np.random.choice(['Non-Smoker', 'Smoker'], size=self.samples)
-            return smoking_statuses
+            return np.random.choice(['Non-Smoker', 'Smoker'], size=self.samples)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Fasting Blood Glucose using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 95, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Fasting Blood Glucose
-    as 95 mg/dl.
-    3. scale = 12, Represents standard deviation of distribution that controls the spread of the generated hip circumferences around
-    the Mean (83, 107).
-    4. size, Specifies the Random Fasting Blood Glucose to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 60 is the minimum value and any value less than 60 will be set to 60. Similarly 140 is the Maximum Value and any value
-    greater than 140 will be set to 140.
-    """     
+            logger.error("Error Generating Smoking Status", exc_info=e)
+            raise
+
     def FastingBloodGlucose(self):
-        try:
-            fasting_glucose = np.random.normal(loc=95, scale=12, size=self.samples)
-            fasting_glucose = np.clip(fasting_glucose, 60, 140)      
-            return fasting_glucose
-        except Exception as e:
-            logging.error("An Error Occurred: ", exc_info=e)
-            raise e
-    
-    
-    """
-    1. Getting HbA1c using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 5.5, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average HbA1c
-    as 5.5 mg/dl.
-    3. scale = 1.0, Represents standard deviation of distribution that controls the spread of the generated HbA1c around
-    the Mean (4.5, 6.5).
-    4. size, Specifies the Random HbA1c to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 4.0 is the minimum value and any value less than 4.0 will be set to 4.0. Similarly 10.0 is the Maximum Value and any value
-    greater than 10.0 will be set to 10.0.
-    """     
+        """Generate Fasting Blood Glucose levels between 60 and 140 mg/dl."""
+        return self._generate_data(mean=95, scale=12, low=60, high=140)
+
     def HbA1c(self):
-        try:
-            hba1c_levels = np.random.normal(loc=5.5, scale=1.0, size=self.samples)
-            hba1c_levels = np.clip(hba1c_levels, 4.0, 10.0)
-            return hba1c_levels
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting the BMI using Weight and Height.
-    2. Unit Considered is Kg/m^2.
-    """      
+        """Generate HbA1c levels between 4.0 and 10.0."""
+        return self._generate_data(mean=5.5, scale=1.0, low=4.0, high=10.0)
+
     def BMI(self):
+        """Calculate BMI using weight and height."""
         try:
-            bmi = self.weights / (self.heights ** 2)
-            return bmi
+            weight = self.Weight()
+            height = self.Height()
+            return weight / (height ** 2)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    
-    """
-    1. Getting Cholesterol Level using Normal (Gaussian) Distribution through NumPy Random Function.
-    2. loc = 200, Represents the Mean (Average) of the Distribution. In this case we're considering it the Average Cholesterol Level
-    as 200 mg/dl.
-    3. scale = 40, Represents standard deviation of distribution that controls the spread of the generated cholesterol level around
-    the Mean (160, 240).
-    4. size, Specifies the Random Cholesterol Level to generate.
-    5. clip(), is a NumPy Method that limits (clips) the values in an Array to specified Minimum and Maximum.
-    6. Here 100 is the minimum value and any value less than 100 will be set to 100. Similarly 300 is the Maximum Value and any value
-    greater than 300 will be set to 300.
-    """     
+            logger.error("Error Calculating BMI", exc_info=e)
+            raise
+
     def CholesterolLevel(self):
+        """Generate Cholesterol Levels between 100 and 300 mg/dl."""
+        return self._generate_data(mean=200, scale=40, low=100, high=300)
+
+    def DiabetesStatus(self):
+        """Determine Diabetes Status based on various Conditions."""
         try:
-            cholesterol_levels = np.random.normal(loc=200, scale=40, size=self.samples)
-            cholesterol_levels = np.clip(cholesterol_levels, 100, 300)
-            return cholesterol_levels
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Getting Diabetes 0 or 1 in General Conditions.
-    2. For,
-            Cholesterol Level > 200
-            Fasting Blood Glucose >= 126
-            BMI >= 28
-            Waist to Hip Ratio >= 1
-            HbA1c >= 6.5
-    3. Conditions is a Boolean Array for all the Conditions.
-    4. sum(), Sums up the "True" Value for each Sample.
-    5. The condition then used to determine whether a sample is classified as having Diabetes ("1") or not ("0")
-    based on whether two or more conditions are "True".
-    """    
-    def DiabetesStatus(self, cholesterol_levels, fasting_glucose, bmi, waist_to_hip_ratios, hba1c_levels):
-        try:
+            cholesterol = self.CholesterolLevel()
+            fasting_glucose = self.FastingBloodGlucose()
+            bmi = self.BMI()
+            waist_to_hip_ratio = self.WaistToHipRatio()
+            hba1c = self.HbA1c()
+
             conditions = [
-                cholesterol_levels > 200,
+                cholesterol > 200,
                 fasting_glucose >= 126,
                 bmi >= 28,
-                waist_to_hip_ratios >= 1,
-                hba1c_levels >= 6.5
+                waist_to_hip_ratio >= 1,
+                hba1c >= 6.5
             ]
-            
+
             condition_sum = np.sum(conditions, axis=0)
-            diabetes_statuses = (condition_sum >= 2).astype(int)
-            return diabetes_statuses
+            return (condition_sum >= 2).astype(int)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-    
-    """
-    1. Gets all the Statistical Data and summerizes it into Relational Format.
-    """    
-    def PrepareData(self, samples=1000):
+            logger.error("Error Determining Diabetes Status", exc_info=e)
+            raise
+
+    def PrepareData(self):
+        """Generate the dataset and save it to an Excel file."""
         try:
-            self.samples = samples
-            
             data = pd.DataFrame({
-                       'Age': self.Age(),
-                       'Gender': self.Gender(),
-                       'Weight': self.Weight(),
-                       'Height': self.Height(),
-                       'Family History': self.FamilyHistory(),
-                       'Physical Activity Level': self.PhysicalActivityLevel(),
-                       'Dietary Habits': self.DietaryHabits(),
-                       'Ethnicity/Race': self.Ethinicity_Race(),
-                       'Medication Use': self.MedicationUse(),
-                       'Sleep Duration/Quality': self.SleepQuality(),
-                       'Stress Levels': self.StressLevel(),
-                       'Waist Circumference': self.WaistCircumference(),
-                       'Hip Circumference': self.HipCircumference(),
-                       'Smoking Status': self.SmokingStatus(),
-                       'Fasting Blood Glucose': self.FastingBloodGlucose(),
-                       'HbA1c': self.HbA1c(),
-                       'Waist-to-Hip Ratio': self.WaistToHipRatio(),
-                       'BMI': self.BMI(),
-                       'Cholesterol Level': self.CholesterolLevel(),
-                       'Diabetes': self.DiabetesStatus(self.CholesterolLevel(),
-                                                       self.FastingBloodGlucose(),
-                                                       self.BMI(),
-                                                       self.WaistToHipRatio(),
-                                                       self.HbA1c()
-                                                       )
-                   })
+                'Age': self.Age(),
+                'Gender': self.Gender(),
+                'Weight': self.Weight(),
+                'Height': self.Height(),
+                'Family History': self.FamilyHistory(),
+                'Physical Activity Level': self.PhysicalActivityLevel(),
+                'Dietary Habits': self.DietaryHabits(),
+                'Ethnicity/Race': self.Ethnicity_Race(),
+                'Medication Use': self.MedicationUse(),
+                'Sleep Quality': self.SleepQuality(),
+                'Stress Levels': self.StressLevel(),
+                'Waist Circumference': self.WaistCircumference(),
+                'Hip Circumference': self.HipCircumference(),
+                'Smoking Status': self.SmokingStatus(),
+                'Fasting Blood Glucose': self.FastingBloodGlucose(),
+                'HbA1c': self.HbA1c(),
+                'Waist-to-Hip Ratio': self.WaistToHipRatio(),
+                'BMI': self.BMI(),
+                'Cholesterol Level': self.CholesterolLevel(),
+                'Diabetes': self.DiabetesStatus()
+            })
             
-            data.to_excel('models-data\Diabetes_Analysis\DiabetesData.xlsx', index=False)
+            data.to_excel('DiabetesData.xlsx', index=False)
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
-        
-if __name__=="__main__":
+            logger.error("Error Preparing Data", exc_info=e)
+            raise
+
+if __name__ == "__main__":
     
-    Data = DiabetesDataset()
-    Data.PrepareData(100000)
+    dataset = DiabetesDataset(samples=100000)
+    dataset.PrepareData()
