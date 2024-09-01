@@ -83,7 +83,7 @@ const FormConstraints = ({
   isPassword,
   togglePassword,
 }) => {
-  const iconStyle = { color: "#009ab8" };
+  const iconStyle = { color: "#1e80a3" };
   return (
     <Form.Group controlId={controlId} className="mt-4">
       <InputGroup>

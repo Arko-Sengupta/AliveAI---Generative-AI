@@ -14,7 +14,7 @@ import {
   FaEyeSlash,
   FaHome,
   FaLock,
-  FaPhone,
+  FaMobile,
   FaUser,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -212,7 +212,7 @@ const FormConstraints = ({
   showPassword,
 }) => {
   const inputType = isPassword ? (showPassword ? "text" : "password") : type;
-  const iconStyle = { color: "#009ab8" };
+  const iconStyle = { color: "#1e80a3" };
 
   return (
     <Form.Group controlId="formName" className="my-3">
@@ -365,7 +365,7 @@ const SignUpForm = ({
               placeholder="Mobile Number"
               value={mobileNumber}
               onChange={(e) => handleMobileNumberFormat(e, setMobileNumber)}
-              icon={<FaPhone />}
+              icon={<FaMobile />}
             />
           </Col>
         </Row>
