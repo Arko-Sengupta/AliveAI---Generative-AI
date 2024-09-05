@@ -1,10 +1,10 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import StaticData from "./Static/StaticData.json";
-import Navbar from "./Components/Navbar";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
+import Navbar from "./Components/Navbar";
 import { AuthProvider } from "./Components/Routes/AuthContext";
 import PrivateRoute from "./Components/Routes/PrivateRoute";
+import StaticData from "./Static/StaticData.json";
 
 const Home = lazy(() => import("./Components/Home"));
 const About = lazy(() => import("./Components/About"));

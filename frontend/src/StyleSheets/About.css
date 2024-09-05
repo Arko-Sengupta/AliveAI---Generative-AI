@@ -503,6 +503,7 @@
   height: 60px;
   margin-right: 15px;
   transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .service-icon .s-icon {

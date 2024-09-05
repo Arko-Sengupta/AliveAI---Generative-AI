@@ -1,0 +1,637 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poetsen+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.contact-cover-image-with-overlay {
+  position: relative;
+}
+
+.contact-cover-image-with-overlay img {
+  min-width: 250px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-cover-overlay-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contact-cover-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  padding: 10px;
+}
+
+.contact-cover-overlay-text h1 {
+  font-size: 60px;
+  margin-bottom: 25px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.contact-cover-overlay-text h3 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.back-to-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.back-to-home-text {
+  font-size: 15px;
+  margin: 0;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.underline-expand {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.underline-expand::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  bottom: 0;
+  left: 50%;
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.underline-expand:hover::after {
+  width: 100px;
+  left: calc(30% - 30px);
+}
+
+@media only screen and (max-width: 1495px) {
+  .contact-cover-image-with-overlay img {
+    height: 800px;
+  }
+}
+
+@media only screen and (max-width: 1198px) {
+  .contact-cover-overlay-text {
+    width: 800px;
+  }
+
+  .contact-cover-overlay-text h1 {
+    font-size: 60px;
+  }
+
+  .contact-cover-overlay-text h3 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 805px) {
+  .contact-cover-overlay-text {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .contact-cover-overlay-text {
+    width: 500px;
+  }
+
+  .contact-cover-overlay-text h1 {
+    font-size: 30px;
+  }
+
+  .contact-cover-overlay-text h3 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 505px) {
+  .contact-cover-overlay-text {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .contact-cover-overlay-text {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .contact-cover-overlay-text {
+    width: 200px;
+  }
+
+  .contact-cover-overlay-text h1 {
+    font-size: 20px;
+  }
+
+  .contact-cover-overlay-text h3 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 275px) {
+  .contact-cover-overlay-text {
+    width: 100px;
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 200px) {
+  .contact-cover-overlay-text {
+    padding-left: 25px;
+  }
+}
+
+@media only screen and (max-width: 110px) {
+  .contact-cover-overlay-text {
+    padding-left: 80px;
+  }
+
+  .contact-cover-overlay-text h1 {
+    font-size: 15px;
+  }
+
+  .contact-cover-overlay-text h3 {
+    font-size: 10px;
+  }
+}
+
+/* Main container for the contact cards */
+.contact-container-main {
+  background-color: #212529;
+  padding-top: 100px;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding-inline: 100px;
+  background-color: #212529;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  font-family: "Quicksand", sans-serif;
+}
+
+.card {
+  background-color: #212529;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  height: 120px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.contact-cards-icon {
+  background-color: #10a6c9;
+  color: white;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #c0c0c0;
+  margin: 0;
+  text-align: start;
+}
+
+.contact-container-main h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+  color: white;
+}
+
+.contact-container-main-h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+  color: white;
+}
+
+.contact-container-main img {
+  margin: 0 auto;
+  min-width: 250px;
+  width: 100px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .contact-cards {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-inline: 50px;
+    gap: 10px;
+  }
+
+  .icon {
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-cards {
+    gap: 10px;
+  }
+
+  .icon {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    gap: 0px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+}
+
+/* Feedback container */
+
+.feedback-container-main {
+  background-color: #212529;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.feedback-container-main-h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+  color: white;
+}
+
+.feedback-container-main img {
+  margin: 0 auto;
+  min-width: 250px;
+  width: 100px;
+  display: block;
+}
+
+.feedback-container-main h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+  color: white;
+}
+
+.feedback-form-container h1 {
+  color: #069bbb;
+  padding-bottom: 20px;
+  padding-inline: 100px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 32px;
+}
+
+.feedback-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feedback-form form {
+  padding-inline: 100px;
+}
+
+/* Form group styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #888;
+}
+
+.form-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background-color: #10a6c9;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.form-button:hover {
+  background-color: #0d8db6;
+}
+
+@media (max-width: 850px) {
+  .feedback-form-container {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-form {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-form form {
+    padding-inline: 50px;
+  }
+
+  .feedback-form-container h1 {
+    padding-inline: 50px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-form-container h1 {
+    padding-inline: 20px;
+    font-size: 24px;
+  }
+
+  .feedback-form form {
+    padding-inline: 20px;
+  }
+}
+
+/* Counter component */
+
+.Counter-container-main {
+  min-width: 250px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  background-color: #176581;
+  color: white;
+  position: relative;
+}
+
+.Counter-container-main h6 {
+  min-width: 250px;
+  font-size: 15px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-inline: 20%;
+}
+
+.Counter-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  padding: 20px;
+}
+
+.Box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 140px;
+  border: 1px solid white;
+  text-align: center;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: width 0.3s ease;
+}
+
+.Box:hover {
+  cursor: pointer;
+  width: 220px;
+}
+
+.Box h2 {
+  font-size: 35px;
+  margin: 0;
+  padding-bottom: 5px;
+  font-family: "Lora", serif;
+  color: white;
+}
+
+.Box h3 {
+  font-size: 12px;
+  margin: 0;
+  font-family: "Lora", serif;
+  color: white;
+}
+
+.icon {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: white;
+  background-color: #176581;
+  padding: 2px 20px;
+  z-index: 1;
+  margin: 0;
+}
+
+.counter-container-h1 {
+  min-width: 250px;
+  font-size: 40px;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+}
+
+.Counter-container-main img {
+  margin: 0 auto;
+  min-width: 250px;
+  width: 100px;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .Counter-container {
+    gap: 100px;
+  }
+
+  .Counter-container-main h6 {
+    padding-inline: 10%;
+  }
+
+  .Box {
+    width: 170px;
+    height: 135px;
+  }
+
+  .Box h2 {
+    font-size: 38px;
+  }
+
+  .Box h3 {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 28px;
+    top: -18px;
+  }
+
+  .counter-container-h1 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Counter-container {
+    gap: 50px;
+  }
+
+  .Box {
+    width: 150px;
+    height: 130px;
+  }
+
+  .Box h2 {
+    font-size: 35px;
+  }
+
+  .Box h3 {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 28px;
+    top: -18px;
+  }
+
+  .counter-container-h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Counter-container {
+    gap: 10px;
+  }
+
+  .Counter-container-main h6 {
+    padding-inline: 0%;
+  }
+
+  .Box {
+    width: 140px;
+    height: 120px;
+  }
+
+  .Box h2 {
+    font-size: 32px;
+  }
+
+  .Box h3 {
+    font-size: 13px;
+  }
+
+  .icon {
+    font-size: 26px;
+    top: -16px;
+  }
+
+  .counter-container-h1 {
+    font-size: 28px;
+  }
+}

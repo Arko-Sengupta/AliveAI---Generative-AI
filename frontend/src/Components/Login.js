@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  InputGroup,
-  Row
-} from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -160,6 +153,9 @@ const Login = ({ StaticData }) => {
       : "Authentication Failed";
 
   const handleForgotPassword = async () => {
+    setEmail("");
+    setPassword("");
+
     const { value: email } = await Swal.fire({
       title: "Enter Account Email",
       html: `
@@ -180,6 +176,10 @@ const Login = ({ StaticData }) => {
 
         if (!emailRegex.test(email)) {
           Swal.showValidationMessage("Please enter a valid email address");
+          return false;
+        }
+        if (email != "arkosengupta9@gmail.com") {
+          Swal.showValidationMessage("Email does not exist");
           return false;
         }
 

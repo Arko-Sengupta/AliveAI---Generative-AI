@@ -1,9 +1,12 @@
 import React from "react";
+import ComingSoon2 from "./Utils/ComingSoon2";
 
 const Feature = () => {
-    return (
-        <h1>This is Feature</h1>
-    );
+  return (
+    <div>
+      <ComingSoon2 />
+    </div>
+  );
 };
 
 export default Feature;
