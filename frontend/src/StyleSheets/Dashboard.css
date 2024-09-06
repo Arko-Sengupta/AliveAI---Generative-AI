@@ -193,3 +193,84 @@
   background-color: #38bdf8 !important;
   color: white !important;
 }
+
+/* Coming soon 2 */
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #212529;
+  color: #ffffff;
+  font-family: "Cinzel Decorative", serif;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.content {
+  max-width: 500px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid #16a9cb;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.content h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  color: #00ffff;
+  letter-spacing: 2px;
+}
+
+.content p {
+  font-size: 20px;
+  margin-bottom: 0;
+  color: #d8d8d8;
+  font-weight: 300;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    padding: 30px;
+  }
+
+  .content h1 {
+    font-size: 56px;
+  }
+
+  .content p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .content h1 {
+    font-size: 48px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    max-width: 300px;
+    padding: 15px;
+  }
+
+  .content h1 {
+    font-size: 36px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+}
