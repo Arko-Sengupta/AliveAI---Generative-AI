@@ -67,17 +67,17 @@ const ContactCards = () => {
     {
       icon: <FontAwesomeIcon icon={faMapMarkerAlt} />,
       title: "OUR LOCATION",
-      text: ["795 South Park Avenue, Long Island, Newyork, NY 94107."],
+      text: ["1511 Bridges Court Fremont, CA-94536 USA"],
     },
     {
       icon: <FontAwesomeIcon icon={faEnvelope} />,
       title: "EMAIL ADDRESS",
-      text: ["enquery@domain.com", "help@yourdomain.com"],
+      text: ["enquiry@alive.ai", "enquiry@alive.ai"],
     },
     {
       icon: <FontAwesomeIcon icon={faPhone} />,
       title: "PHONE NUMBER",
-      text: ["+91 9891989100", "+91 0987213483"],
+      text: ["+1 987 654 321", "+1 987 654 321"],
     },
   ];
 
