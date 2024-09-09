@@ -16,6 +16,9 @@ logging.basicConfig(
 # Load Environment Variables
 load_dotenv(dotenv_path='.env')
 
+# Initialize SERVER PORT
+port = int(os.getenv('PORT', 5000))
+
 
 class UserQuery:
     """Handles Database Interaction for Storing User Queries."""
@@ -141,7 +144,7 @@ class UserQueryAPI:
     def run(self) -> None:
         """Runs the Flask App."""
         try:
-            self.app.run(debug=True, host='0.0.0.0')
+            self.app.run(debug=True, host='0.0.0.0', port=port)
         except Exception as e:
             logging.error("An Error Occurred while running the App: ", exc_info=True)
             raise e

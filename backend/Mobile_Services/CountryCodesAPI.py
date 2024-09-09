@@ -18,6 +18,9 @@ logging.basicConfig(
 # Load Environment Variables
 load_dotenv(dotenv_path='.env')
 
+# Initialize SERVER PORT
+port = int(os.getenv('PORT', 5000))
+
 class CountryCodes:
     """Handles Database Connection and Data Retrieval for Country Codes."""
     
@@ -129,7 +132,7 @@ class CountryCodesAPI:
     def run(self):
         """Runs the Flask App."""
         try:
-            self.app.run(debug=True, host='0.0.0.0')
+            self.app.run(debug=True, host='0.0.0.0', port=port)
         except Exception as e:
             logging.error("An error occurred while running the app", exc_info=True)
             raise e

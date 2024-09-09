@@ -16,6 +16,9 @@ logging.basicConfig(
 # Load Environment Variables
 load_dotenv(dotenv_path='.env')
 
+# Initialize SERVER PORT
+port = int(os.getenv('PORT', 5000))
+
 class Login:
     """Handles Database Interaction for User Login."""
     
@@ -136,7 +139,7 @@ class LoginAPI:
     def run(self) -> None:
         """Runs the Flask App."""
         try:
-            self.app.run(debug=True, host='0.0.0.0')
+            self.app.run(debug=True, host='0.0.0.0', port=port)
         except Exception:
             logging.error("An Error Occurred while running the App", exc_info=True)
 
