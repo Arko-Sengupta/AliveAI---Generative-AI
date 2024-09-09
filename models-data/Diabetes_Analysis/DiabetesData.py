@@ -8,176 +8,149 @@ logger = logging.getLogger(__name__)
 
 np.random.seed(42)
 
+
 class DiabetesDataset:
-    """Generates synthetic data for diabetes research."""
+    """Generates Synthetic Data for Diabetes Research."""
 
-    def __init__(self, samples=1000):
-        """Initialize the Dataset with the number of Samples."""
+    def __init__(self, samples: int = 1000) -> None:
+        """Initialize the Dataset with the Number of Samples."""
         self.samples = samples
+        logger.info(f"Initialized Diabetes Dataset with {samples} Samples.")
 
-    def _generate_data(self, mean, scale, low, high):
+    def Generate_Data(self, mean: float, scale: float, low: float, high: float, round_data: bool = True) -> np.ndarray:
         """Generate Normally Distributed Data and Clip to a Specified Range."""
         try:
             data = np.random.normal(loc=mean, scale=scale, size=self.samples)
-            return np.clip(data, low, high)
-        except Exception as e:
-            logger.error("Error Generating Data", exc_info=e)
+            clipped_data = np.clip(data, low, high)
+            logger.info(f"Generated Data with mean={mean}, scale={scale}, range=({low}, {high})")
+            if round_data:
+                return np.round(clipped_data)
+            return clipped_data
+        except Exception:
+            logger.error("Error Generating Data", exc_info=True)
+            raise
+        
+    def Generate_Categorical_Data(self, feature_name: str, categories: list) -> np.ndarray:
+        """Generate Random Categorical Data."""
+        try:
+            data = np.random.choice(categories, size=self.samples)
+            logger.info(f"Generated Categorical Data for {feature_name}.")
+            return data
+        except Exception:
+            logger.error(f"Error Generating {feature_name} Data", exc_info=True)
             raise
 
-    def Age(self):
+    def Age(self) -> np.ndarray:
         """Generate Ages between 18 and 100."""
-        return self._generate_data(mean=50, scale=40, low=18, high=100)
+        return self.Generate_Data(mean=50, scale=40, low=18, high=100)
 
-    def Gender(self):
+    def Gender(self) -> np.ndarray:
         """Generate Random Genders."""
         try:
-            return np.random.choice(['Male', 'Female'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Genders", exc_info=e)
+            genders = np.random.choice(['Male', 'Female'], size=self.samples)
+            logger.info("Generated Gender Data.")
+            return genders
+        except Exception:
+            logger.error("Error Generating Genders", exc_info=True)
             raise
 
-    def Weight(self):
+    def Weight(self) -> np.ndarray:
         """Generate Weights between 40 and 150 Kg."""
-        return self._generate_data(mean=60, scale=40, low=40, high=150)
+        return self.Generate_Data(mean=60, scale=40, low=40, high=150)
 
-    def Height(self):
+    def Height(self) -> np.ndarray:
         """Generate Heights between 1.4 and 2.0 Meters."""
-        return self._generate_data(mean=1.6, scale=0.4, low=1.4, high=2.0)
+        return self.Generate_Data(mean=1.6, scale=0.4, low=1.4, high=2.0, round_data=False)
 
-    def FamilyHistory(self):
+    def FamilyHistory(self) -> np.ndarray:
         """Generate Family History of Diabetes."""
-        try:
-            return np.random.choice(['Yes', 'No'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Family History", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Family History', ['Yes', 'No'])
 
-    def PhysicalActivityLevel(self):
+    def PhysicalActivityLevel(self) -> np.ndarray:
         """Generate Physical Activity Levels."""
-        try:
-            return np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Physical Activity Levels", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Physical Activity Level', ['Low', 'Moderate', 'High'])
 
-    def DietaryHabits(self):
+    def DietaryHabits(self) -> np.ndarray:
         """Generate Dietary Habits."""
-        try:
-            return np.random.choice([
-                'Flexitarian', 'Keto', 'Mediterranean', 'Paleo', 'Pescatarian',
-                'Non-Veg', 'Whole Food Plant-Based', 'Vegan', 'Vegetarian'
-            ], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Dietary Habits", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data(
+            'Dietary Habits',
+            ['Flexitarian', 'Keto', 'Mediterranean', 'Paleo', 'Pescatarian', 'Non-Veg', 'Whole Food Plant-Based', 'Vegan', 'Vegetarian']
+        )
 
-    def Ethnicity_Race(self):
+    def Ethnicity_Race(self) -> np.ndarray:
         """Generate Ethnicities/Races."""
-        try:
-            return np.random.choice([
-                'Caucasian', 'Asian', 'Hispanic/Latino', 'African/American',
-                'Mixed/Multiethnic', 'Middle Eastern/North African'
-            ], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Ethnicity/Race", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data(
+            'Ethnicity/Race',
+            ['Caucasian', 'Asian', 'Hispanic/Latino', 'African/American', 'Mixed/Multiethnic', 'Middle Eastern/North African']
+        )
 
-    def MedicationUse(self):
+    def MedicationUse(self) -> np.ndarray:
         """Generate Medication Use Status."""
-        try:
-            return np.random.choice(['Yes', 'No'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Medication Use", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Medication Use', ['Yes', 'No'])
 
-    def SleepQuality(self):
+    def SleepQuality(self) -> np.ndarray:
         """Generate Sleep Quality."""
-        try:
-            return np.random.choice(['Poor', 'Fair', 'Good', 'Excellent'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Sleep Quality", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Sleep Quality', ['Poor', 'Fair', 'Good', 'Excellent'])
 
-    def StressLevel(self):
+    def StressLevel(self) -> np.ndarray:
         """Generate Stress Levels."""
-        try:
-            return np.random.choice(['Low', 'Moderate', 'High'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Stress Levels", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Stress Levels', ['Low', 'Moderate', 'High'])
 
-    def WaistCircumference(self):
+    def WaistCircumference(self) -> np.ndarray:
         """Generate Waist Circumferences between 60 and 150 cm."""
-        return self._generate_data(mean=85, scale=10, low=60, high=150)
+        return self.Generate_Data(mean=85, scale=10, low=60, high=150)
 
-    def HipCircumference(self):
+    def HipCircumference(self) -> np.ndarray:
         """Generate Hip Circumferences between 70 and 160 cm."""
-        return self._generate_data(mean=103, scale=15, low=70, high=160)
+        return self.Generate_Data(mean=103, scale=15, low=70, high=160)
 
-    def WaistToHipRatio(self):
+    def WaistToHipRatio(self) -> np.ndarray:
         """Calculate the Waist-to-Hip Ratio."""
-        try:
-            waist = self.WaistCircumference()
-            hip = self.HipCircumference()
-            return waist / hip
-        except Exception as e:
-            logger.error("Error Calculating Waist-to-Hip Ratio", exc_info=e)
-            raise
+        waist = self.WaistCircumference()
+        hip = self.HipCircumference()
+        return np.divide(waist, hip, where=hip != 0)  # Prevent Division by Zero
 
-    def SmokingStatus(self):
+    def SmokingStatus(self) -> np.ndarray:
         """Generate Smoking Status."""
-        try:
-            return np.random.choice(['Non-Smoker', 'Smoker'], size=self.samples)
-        except Exception as e:
-            logger.error("Error Generating Smoking Status", exc_info=e)
-            raise
+        return self.Generate_Categorical_Data('Smoking Status', ['Non-Smoker', 'Smoker'])
 
-    def FastingBloodGlucose(self):
+    def FastingBloodGlucose(self) -> np.ndarray:
         """Generate Fasting Blood Glucose levels between 60 and 140 mg/dl."""
-        return self._generate_data(mean=95, scale=12, low=60, high=140)
+        return self.Generate_Data(mean=95, scale=12, low=60, high=140)
 
-    def HbA1c(self):
+    def HbA1c(self) -> np.ndarray:
         """Generate HbA1c levels between 4.0 and 10.0."""
-        return self._generate_data(mean=5.5, scale=1.0, low=4.0, high=10.0)
+        return self.Generate_Data(mean=5.5, scale=1.0, low=4.0, high=10.0, round_data=False)
 
-    def BMI(self):
-        """Calculate BMI using weight and height."""
-        try:
-            weight = self.Weight()
-            height = self.Height()
-            return weight / (height ** 2)
-        except Exception as e:
-            logger.error("Error Calculating BMI", exc_info=e)
-            raise
+    def BMI(self) -> np.ndarray:
+        """Calculate BMI using Weight and Height."""
+        weight = self.Weight()
+        height = self.Height()
+        return np.divide(weight, height ** 2, where=height != 0)  # Prevent Division by Zero
 
-    def CholesterolLevel(self):
+    def CholesterolLevel(self) -> np.ndarray:
         """Generate Cholesterol Levels between 100 and 300 mg/dl."""
-        return self._generate_data(mean=200, scale=40, low=100, high=300)
+        return self.Generate_Data(mean=200, scale=40, low=100, high=300)
 
-    def DiabetesStatus(self):
+    def DiabetesStatus(self) -> np.ndarray:
         """Determine Diabetes Status based on various Conditions."""
-        try:
-            cholesterol = self.CholesterolLevel()
-            fasting_glucose = self.FastingBloodGlucose()
-            bmi = self.BMI()
-            waist_to_hip_ratio = self.WaistToHipRatio()
-            hba1c = self.HbA1c()
+        cholesterol = self.CholesterolLevel()
+        fasting_glucose = self.FastingBloodGlucose()
+        bmi = self.BMI()
+        waist_to_hip_ratio = self.WaistToHipRatio()
+        hba1c = self.HbA1c()
 
-            conditions = [
-                cholesterol > 200,
-                fasting_glucose >= 126,
-                bmi >= 28,
-                waist_to_hip_ratio >= 1,
-                hba1c >= 6.5
-            ]
+        conditions = np.column_stack([
+            cholesterol > 200,
+            fasting_glucose >= 126,
+            bmi >= 28,
+            waist_to_hip_ratio >= 1,
+            hba1c >= 6.5
+        ])
+        
+        return (np.sum(conditions, axis=1) >= 2).astype(int)
 
-            condition_sum = np.sum(conditions, axis=0)
-            return (condition_sum >= 2).astype(int)
-        except Exception as e:
-            logger.error("Error Determining Diabetes Status", exc_info=e)
-            raise
-
-    def PrepareData(self):
+    def Prepare_Data(self) -> None:
         """Generate the dataset and save it to an Excel file."""
         try:
             data = pd.DataFrame({
@@ -202,13 +175,15 @@ class DiabetesDataset:
                 'Cholesterol Level': self.CholesterolLevel(),
                 'Diabetes': self.DiabetesStatus()
             })
-            
+
             data.to_excel('DiabetesData.xlsx', index=False)
-        except Exception as e:
-            logger.error("Error Preparing Data", exc_info=e)
+            logger.info("Data Saved Successfully to 'DiabetesData.xlsx'.")
+        except Exception:
+            logger.error("Error preparing data", exc_info=True)
             raise
+
 
 if __name__ == "__main__":
     
     dataset = DiabetesDataset(samples=100000)
-    dataset.PrepareData()
+    dataset.Prepare_Data()
