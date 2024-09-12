@@ -1,31 +1,31 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Swal from "sweetalert2";
-import CustomButton from "./Utils/CustomButton";
-import '../StyleSheets/DashboardMenu.css';
 import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button,
-  InputGroup,
-  Modal
-} from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
+  faAt,
+  faCircleInfo,
   faEdit,
+  faEnvelope,
   faEye,
   faEyeSlash,
   faFloppyDisk,
-  faAt,
-  faEnvelope,
+  faHouse,
   faLock,
   faPhone,
-  faHouse,
-  faCircleInfo,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  InputGroup,
+  Modal,
+  Row,
+} from "react-bootstrap";
+import Swal from "sweetalert2";
+import "../StyleSheets/DashboardMenu.css";
+import CustomButton from "./Utils/CustomButton";
 
 const FormGroup = ({
   label,
@@ -40,20 +40,20 @@ const FormGroup = ({
   error,
   additionalContent,
   labelIcon,
-  onLabelIconClick
+  onLabelIconClick,
 }) => (
-  <Form.Group as={Row} className="mb-3">
+  <Form.Group as={Row} className="mb-3 form-group-custom">
     <Form.Label column sm="3" className="info-label">
       {label}
       {labelIcon && (
         <FontAwesomeIcon
           icon={labelIcon}
-          style={{ marginLeft: '8px', cursor: 'pointer' }}
+          style={{ marginLeft: "8px", cursor: "pointer" }}
           onClick={onLabelIconClick}
         />
       )}
     </Form.Label>
-    <Col sm="8">
+    <Col sm="9" className="d-flex align-items-center">
       <InputGroup className={editField === name ? "editable-field" : ""}>
         <InputGroup.Text>
           <FontAwesomeIcon icon={icon} style={{ paddingRight: "6px" }} />
@@ -66,14 +66,16 @@ const FormGroup = ({
           onChange={handleChange}
         />
       </InputGroup>
-      {error && <div className="error-text">{error}</div>}
-      {additionalContent}
-    </Col>
-    <Col sm="1">
-      <Button variant="link" onClick={() => handleEdit(name)}>
+      <Button
+        variant="link"
+        className="ms-3 edit-icon"
+        onClick={() => handleEdit(name)}
+      >
         <FontAwesomeIcon icon={faEdit} />
       </Button>
     </Col>
+    {error && <div className="error-text">{error}</div>}
+    {additionalContent}
   </Form.Group>
 );
 
@@ -86,9 +88,14 @@ const FormModal = ({
   inputPlaceholder,
   inputOnChange,
   handleSubmit,
-  submitDisabled
+  submitDisabled,
 }) => (
-  <Modal show={showModal} onHide={closeModal} backdrop="static" keyboard={false}>
+  <Modal
+    show={showModal}
+    onHide={closeModal}
+    backdrop="static"
+    keyboard={false}
+  >
     <Modal.Header closeButton>
       <Modal.Title>{title}</Modal.Title>
     </Modal.Header>
@@ -137,7 +144,10 @@ const MenuGeneralInfo = () => {
 
   const [otpEmail, setOtpEmail] = useState("");
   const [otpPhone, setOtpPhone] = useState("");
-  const [verificationStatus, setVerificationStatus] = useState({emailVerified: false, phoneVerified: false});
+  const [verificationStatus, setVerificationStatus] = useState({
+    emailVerified: false,
+    phoneVerified: false,
+  });
 
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [showPhoneModal, setShowPhoneModal] = useState(false);
@@ -151,9 +161,9 @@ const MenuGeneralInfo = () => {
   const [passwordErrors, setPasswordErrors] = useState({});
 
   const countryCodes = [
-    { label: "+91 - India", value: "+91" },
-    { label: "+1 - USA", value: "+1" },
-    { label: "+44 - UK", value: "+44" },
+    { label: "+91", value: "+91" },
+    { label: "+1", value: "+1" },
+    { label: "+44", value: "+44" },
   ];
 
   // Form validation
@@ -163,13 +173,15 @@ const MenuGeneralInfo = () => {
       errors.fullName = "Name should contain only letters and spaces.";
     }
     if (!validateUsername(formData.username)) {
-      errors.username = "Username should start with a letter or underscore, and contain only lowercase letters, numbers, and underscores.";
+      errors.username =
+        "Username should start with a letter or underscore, and contain only lowercase letters, numbers, and underscores.";
     }
     if (!validateEmail(formData.email)) {
       errors.email = "Invalid email format.";
     }
     if (!validatePassword(formData.password)) {
-      errors.password = "Password should be 8-18 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.";
+      errors.password =
+        "Password should be 8-18 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.";
     }
     if (!validatePhoneNumber(formData.phoneNumber)) {
       errors.phoneNumber = "Phone number should be 10 digits long.";
@@ -214,9 +226,11 @@ const MenuGeneralInfo = () => {
   const handleSave = () => {
     if (Object.keys(changesMade).length > 0) {
       // If email/password is edited, they first need to be verified
-      const emailVerificationRequired = changesMade.email && !verificationStatus.emailVerified;
-      const phoneVerificationRequired = changesMade.phoneNumber && !verificationStatus.phoneVerified;
-  
+      const emailVerificationRequired =
+        changesMade.email && !verificationStatus.emailVerified;
+      const phoneVerificationRequired =
+        changesMade.phoneNumber && !verificationStatus.phoneVerified;
+
       // If not verified, throw an error
       if (emailVerificationRequired || phoneVerificationRequired) {
         Swal.fire({
@@ -228,25 +242,27 @@ const MenuGeneralInfo = () => {
         });
         return;
       }
-  
-      // Else save
-      setSaved(true);
-      setEditField(null);
-      setTimeout(() => {
-        setSaved(false);
-      }, 2000);
-  
-      let successMessage = "Your changes have been saved.";
-      Swal.fire({
-        icon: "success",
-        title: "Saved!",
-        text: successMessage,
-        timer: 4000,
-        showConfirmButton: false,
-      });
     }
+
+    // Else save
+    setSaved(true);
+
+    setEditField(null);
+
+    setTimeout(() => {
+      setSaved(false);
+    }, 2000);
+
+    let successMessage = "Your changes have been saved.";
+    Swal.fire({
+      icon: "success",
+      title: "Saved!",
+      text: successMessage,
+      timer: 4000,
+      showConfirmButton: false,
+    });
   };
-  
+
   // On clicking Edit button
   const handleEdit = (field) => {
     // If password is edited, open password form
@@ -283,7 +299,8 @@ const MenuGeneralInfo = () => {
     }
     // New password should be equal to confirm password field
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      errors.confirmPassword = "New password and confirm password do not match.";
+      errors.confirmPassword =
+        "New password and confirm password do not match.";
     }
     // Throw an error if the above conditions are not validated
     if (Object.keys(errors).length > 0) {
@@ -329,7 +346,7 @@ const MenuGeneralInfo = () => {
         showConfirmButton: false,
       });
     }
-    setOtpEmail("")
+    setOtpEmail("");
   };
 
   // Verify phone number
@@ -385,7 +402,7 @@ const MenuGeneralInfo = () => {
             <FontAwesomeIcon
               icon={faCircleInfo}
               style={{
-                paddingRight: "15px",
+                paddingRight: "2px",
                 paddingBottom: "1px",
                 color: "#1880a9",
                 fontSize: "0.75em",
@@ -400,14 +417,16 @@ const MenuGeneralInfo = () => {
           <Card className="info-card">
             <Card.Body>
               <Form>
-                <FormGroup label="Full Name" type="text"
+                <FormGroup
+                  label="Full Name"
+                  type="text"
                   value={formData.fullName}
                   name="fullName"
                   icon={faUser}
-                  readOnly={editField !== "fullName"} 
-                  editField={editField} 
-                  handleChange={handleChange} 
-                  handleEdit={handleEdit} 
+                  readOnly={editField !== "fullName"}
+                  editField={editField}
+                  handleChange={handleChange}
+                  handleEdit={handleEdit}
                   error={errors.fullName}
                 />
                 <FormGroup
@@ -435,8 +454,25 @@ const MenuGeneralInfo = () => {
                   error={errors.email}
                   additionalContent={
                     editField === "email" && (
-                      <Col sm="2" style={{paddingLeft: "80%", paddingTop: "10px" }}>
-                        <CustomButton variant="primary" textColor="white" bgColor="#1D9BCE" hoverColor="#3DD5F3" onClick={openEmailModal}>Verify</CustomButton>
+                      <Col
+                        sm="2"
+                        style={{
+                          display: "flex",
+                          justifyContent: "end",
+                          width: "100%",
+                          paddingTop: "10px",
+                          paddingInline: "50px",
+                        }}
+                      >
+                        <CustomButton
+                          variant="primary"
+                          textColor="white"
+                          bgColor="#1D9BCE"
+                          hoverColor="#3DD5F3"
+                          onClick={openEmailModal}
+                        >
+                          Verify
+                        </CustomButton>
                       </Col>
                     )
                   }
@@ -466,29 +502,34 @@ const MenuGeneralInfo = () => {
                   labelIcon={showPassword ? faEyeSlash : faEye}
                   onLabelIconClick={togglePasswordVisibility}
                 />
-                <Form.Group as={Row} className="mb-3">
+
+                <Form.Group as={Row} className="mb-3 form-group-custom">
                   <Form.Label column sm="3" className="info-label">
                     Phone Number
                   </Form.Label>
-                  <Col sm="8">
+                  <Col sm="9" className="d-flex align-items-center">
                     {editField === "phoneNumber" ? (
-                      <InputGroup className="mb-3">
-                        <Col sm="3">
-                          <Form.Select
-                            aria-label="Country Code"
-                            name="countryCode"
-                            value={formData.countryCode || ""}
-                            onChange={handleChange}
-                            style={{ height: "100%" }}
-                          >
-                            {countryCodes.map((code) => (
-                              <option key={code.value} value={code.value}>
-                                {code.label}
-                              </option>
-                            ))}
-                          </Form.Select>
-                        </Col>
-                        <Col sm="9">
+                      <InputGroup className="w-100">
+                        <div className="d-flex w-100">
+                          <Col className="pe-3">
+                            <Form.Select
+                              aria-label="Country Code"
+                              name="countryCode"
+                              value={formData.countryCode || ""}
+                              onChange={handleChange}
+                              style={{
+                                height: "100%",
+                                minWidth: "80px",
+                                maxWidth: "100px",
+                              }}
+                            >
+                              {countryCodes.map((code) => (
+                                <option key={code.value} value={code.value}>
+                                  {code.label}
+                                </option>
+                              ))}
+                            </Form.Select>
+                          </Col>
                           <Form.Control
                             type="text"
                             placeholder="Phone Number"
@@ -496,17 +537,10 @@ const MenuGeneralInfo = () => {
                             name="phoneNumber"
                             onChange={handleChange}
                           />
-                        </Col>
-                        {editField === "phoneNumber" && (
-                          <Col sm="2" style={{paddingLeft: "80%", paddingTop: "10px" }}>
-                            <CustomButton variant="primary" textColor="white" bgColor="#1D9BCE" hoverColor="#3DD5F3" onClick={openPhoneModal}>
-                          Verify
-                        </CustomButton>
-                        </Col>
-                      )}
+                        </div>
                       </InputGroup>
                     ) : (
-                      <InputGroup className="mb-3">
+                      <InputGroup className="w-100">
                         <InputGroup.Text>
                           <FontAwesomeIcon
                             icon={faPhone}
@@ -520,29 +554,50 @@ const MenuGeneralInfo = () => {
                         />
                       </InputGroup>
                     )}
-                    {errors.phoneNumber && (
-                      <div className="error-text">{errors.phoneNumber}</div>
-                    )}
-                    <FormModal
-                      showModal={showPhoneModal}
-                      closeModal={closePhoneModal}
-                      title="Phone Number Verification"
-                      inputType="number"
-                      inputValue={otpPhone}
-                      inputPlaceholder="Enter OTP"
-                      inputOnChange={(e) => setOtpPhone(e.target.value)}
-                      handleSubmit={handleVerifyPhone}
-                      submitDisabled={otpPhone.length !== 6}
-                    />
-                  </Col>
-                  <Col sm="1">
                     <Button
                       variant="link"
+                      className="ms-3 edit-icon"
                       onClick={() => handleEdit("phoneNumber")}
                     >
                       <FontAwesomeIcon icon={faEdit} />
                     </Button>
                   </Col>
+                  {errors.phoneNumber && (
+                    <div className="error-text">{errors.phoneNumber}</div>
+                  )}
+                  {editField === "phoneNumber" && (
+                    <Col
+                      sm="2"
+                      style={{
+                        display: "flex",
+                        justifyContent: "end",
+                        width: "100%",
+                        paddingTop: "10px",
+                        paddingInline: "50px",
+                      }}
+                    >
+                      <CustomButton
+                        variant="primary"
+                        textColor="white"
+                        bgColor="#1D9BCE"
+                        hoverColor="#3DD5F3"
+                        onClick={openPhoneModal}
+                      >
+                        Verify
+                      </CustomButton>
+                    </Col>
+                  )}
+                  <FormModal
+                    showModal={showPhoneModal}
+                    closeModal={closePhoneModal}
+                    title="Phone Number Verification"
+                    inputType="number"
+                    inputValue={otpPhone}
+                    inputPlaceholder="Enter OTP"
+                    inputOnChange={(e) => setOtpPhone(e.target.value)}
+                    handleSubmit={handleVerifyPhone}
+                    submitDisabled={otpPhone.length !== 6}
+                  />
                 </Form.Group>
                 <FormGroup
                   label="Address"
@@ -583,7 +638,10 @@ const MenuGeneralInfo = () => {
       </Row>
 
       {/* Password change form */}
-      <Modal show={showPasswordModal} onHide={() => setShowPasswordModal(false)}>
+      <Modal
+        show={showPasswordModal}
+        onHide={() => setShowPasswordModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Reset Password</Modal.Title>
         </Modal.Header>
@@ -631,10 +689,19 @@ const MenuGeneralInfo = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowPasswordModal(false)}>
+          <Button
+            variant="secondary"
+            onClick={() => setShowPasswordModal(false)}
+          >
             Cancel
           </Button>
-          <CustomButton variant="primary" textColor="white" bgColor="#1D9BCE" hoverColor="#3DD5F3" onClick={handlePasswordSave}>
+          <CustomButton
+            variant="primary"
+            textColor="white"
+            bgColor="#1D9BCE"
+            hoverColor="#3DD5F3"
+            onClick={handlePasswordSave}
+          >
             Save
           </CustomButton>
         </Modal.Footer>

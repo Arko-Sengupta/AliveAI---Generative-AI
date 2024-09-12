@@ -36,6 +36,31 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   padding-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.2em;
+    padding-top: 30px;
+  }
+
+  .dashboard-title-row {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .dashboard-title {
+    font-size: 1em;
+    padding-top: 20px;
+  }
+
+  .dashboard-title-row {
+    margin-bottom: 5px;
+  }
 }
 
 /* Donut Chart */
@@ -169,12 +194,14 @@
 
 .editable-field {
   background-color: #f0f8ff;
-  border: 2px solid #1D9BCE;
+  border: 2px solid #1d9bce;
 }
 
 .error-text {
   color: red;
   font-size: small;
+  text-align: end;
+  padding-inline: 50px;
 }
 
 /* Custom Buttom */
@@ -196,6 +223,28 @@
   border-color: grey;
 }
 
+@media (max-width: 575px) {
+  .form-group .col-sm-1 {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .form-group .col-sm-8 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .form-group .col-sm-8 .form-select,
+  .form-group .col-sm-8 .form-control {
+    width: 100%;
+  }
+
+  .form-group .btn-link {
+    padding-left: 10px;
+  }
+}
+
 /* Diabetes Analysis */
 
 .diabetes-form-title {
@@ -207,7 +256,7 @@
   letter-spacing: 0.1em;
 }
 
-.diabetes-form-title label{
+.diabetes-form-title label {
   padding-bottom: 5px;
 }
 
@@ -220,7 +269,7 @@
   color: #dee2e6;
 }
 
-option:first-child{
+option:first-child {
   color: #dee2e6;
 }
 
@@ -228,13 +277,14 @@ select.form-control {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url('https://static.thenounproject.com/png/551749-200.png') no-repeat right 1rem center/8px 10px;
+  background: url("https://static.thenounproject.com/png/551749-200.png")
+    no-repeat right 1rem center/8px 10px;
   padding-right: 2rem;
-  }
+}
 
 select.form-control:focus {
-border-color: #1D9BCE;
-box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
+  border-color: #1d9bce;
+  box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 }
 
 .chart-container-menu-diabetes {
@@ -278,7 +328,7 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 .left-diabetes {
   text-align: left;
 }
-  
+
 .right-diabetes {
   text-align: right;
 }
@@ -295,8 +345,8 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 }
 
 .report-label {
-  color: #1D9BCE;
-  font-weight: 500; 
+  color: #1d9bce;
+  font-weight: 500;
   font-size: 0.65em;
   display: inline-block;
   width: 120px;
@@ -304,10 +354,14 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: 50% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
 }
-  
+
 .report-value {
   font-size: 0.65em;
   display: inline-block;
@@ -321,8 +375,13 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #1880a9; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #1880a9;
+  }
 }
 
 /* ECG Animation Web */
@@ -332,7 +391,7 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
   position: absolute;
   left: 65%;
 }
-  
+
 .ecg-svg {
   width: 100%;
   height: 100%;
@@ -372,7 +431,7 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 
 .coming-soon-text-large {
   font-size: 72px;
-  color: #1D9BCE;
+  color: #1d9bce;
   opacity: 0.1;
   animation: fade-in-out 3s infinite;
   font-family: "Cinzel Decorative", serif;
@@ -406,6 +465,11 @@ box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
 }
 
 @keyframes fade-in-out {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
