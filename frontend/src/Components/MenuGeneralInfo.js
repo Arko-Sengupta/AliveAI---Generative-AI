@@ -166,52 +166,106 @@ const MenuGeneralInfo = () => {
     { label: "+44", value: "+44" },
   ];
 
-  // Form validation
   const validateForm = useCallback(() => {
     let errors = {};
+
     if (!validateName(formData.fullName)) {
-      errors.fullName = "Name should contain only letters and spaces.";
+      if (formData.fullName.trim().length === 0) {
+        errors.fullName = "Name cannot be empty.";
+      } else if (/[^a-zA-Z\s]/.test(formData.fullName)) {
+        errors.fullName = "Name should contain only letters and spaces.";
+      } else if (formData.fullName.trim().length > 30) {
+        errors.fullName = "Name cannot exceed 30 characters.";
+      }
     }
+
     if (!validateUsername(formData.username)) {
-      errors.username =
-        "Username should start with a letter or underscore, and contain only lowercase letters, numbers, and underscores.";
+      const username = formData.username.trim();
+
+      if (username.length === 0) {
+        errors.username = "Username cannot be empty.";
+      } else if (/^[0-9]/.test(username)) {
+        errors.username = "Username must not start with a number.";
+      } else if (/[^a-z0-9_]/.test(username)) {
+        errors.username =
+          "Username can only contain lowercase letters, numbers, and underscores.";
+      } else if (!/^[a-z_]/.test(username)) {
+        errors.username = "Username must start with a letter or an underscore.";
+      }
     }
+
     if (!validateEmail(formData.email)) {
-      errors.email = "Invalid email format.";
+      if (formData.email.trim().length === 0) {
+        errors.email = "Email cannot be empty.";
+      } else {
+        errors.email = "Invalid email format.";
+      }
     }
+
     if (!validatePassword(formData.password)) {
-      errors.password =
-        "Password should be 8-18 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.";
+      if (formData.password.trim().length === 0) {
+        errors.password = "Password cannot be empty.";
+      } else {
+        errors.password =
+          "Password should be 8-18 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.";
+      }
     }
+
     if (!validatePhoneNumber(formData.phoneNumber)) {
-      errors.phoneNumber = "Phone number should be 10 digits long.";
+      if (formData.phoneNumber.trim().length === 0) {
+        errors.phoneNumber = "Phone number cannot be empty.";
+      } else {
+        errors.phoneNumber = "Phone number should be exactly 10 digits.";
+      }
     }
+
+    if (!validateAddress(formData.address)) {
+      errors.address = "Address cannot be empty.";
+    }
+
     return errors;
   }, [formData]);
 
   const validateName = (name) => {
-    return /^[a-zA-Z\s]*$/.test(name) && name.length <= 30;
+    const trimmedName = name.trim();
+    const hasValidChars = /^[a-zA-Z\s]+$/.test(trimmedName);
+    const isNotEmpty = trimmedName.length > 0;
+    const isWithinMaxLength = trimmedName.length <= 30;
+
+    return isNotEmpty && hasValidChars && isWithinMaxLength;
   };
 
   const validateUsername = (username) => {
+    const trimmedUsername = username.trim();
     const usernameRegex = /^[a-z_][a-z0-9_]*$/;
-    return usernameRegex.test(username);
+    const isNotEmpty = trimmedUsername.length > 0;
+    const isValidPattern = usernameRegex.test(trimmedUsername);
+
+    return isNotEmpty && isValidPattern;
   };
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     return emailRegex.test(email);
   };
 
   const validatePassword = (password) => {
     const passwordRegex =
       /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])(?!.*\s).{8,18}$/;
+
     return passwordRegex.test(password);
   };
 
   const validatePhoneNumber = (phoneNumber) => {
     const numericPhone = phoneNumber.replace(/\D/g, "");
+
     return numericPhone.length === 10;
+  };
+
+  const validateAddress = (address) => {
+    // Check if the address is not empty or just spaces
+    return address.trim().length > 0;
   };
 
   useEffect(() => {
