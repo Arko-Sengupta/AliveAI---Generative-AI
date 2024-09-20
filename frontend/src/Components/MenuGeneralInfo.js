@@ -9,6 +9,7 @@ import {
   faHouse,
   faLock,
   faPhone,
+  faTrash,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +27,7 @@ import {
 import Swal from "sweetalert2";
 import "../StyleSheets/DashboardMenu.css";
 import CustomButton from "./Utils/CustomButton";
+import { useAuth } from "./Routes/AuthContext";
 
 const FormGroup = ({
   label,
@@ -137,7 +139,7 @@ const MenuGeneralInfo = () => {
   });
 
   const [editField, setEditField] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [saved, setSaved] = useState(false);
   const [changesMade, setChangesMade] = useState({});
   const [errors, setErrors] = useState({});
@@ -159,6 +161,14 @@ const MenuGeneralInfo = () => {
     confirmPassword: "",
   });
   const [passwordErrors, setPasswordErrors] = useState({});
+
+  const [showPassChange, setShowPassChange] = useState({
+    currentPassword: false,
+    newPassword: false,
+    confirmPassword: false,
+  });
+
+  const { logout } = useAuth();
 
   const countryCodes = [
     { label: "+91", value: "+91" },
@@ -317,6 +327,77 @@ const MenuGeneralInfo = () => {
     });
   };
 
+  const handleDelete = async () => {
+    const { value: otpValues } = await Swal.fire({
+      title: "Enter OTPs",
+      html: `
+        <input id="emailOtp" class="swal2-input" placeholder="Enter OTP sent to email" type="number" min='0'>
+        <input id="phoneOtp" class="swal2-input" placeholder="Enter OTP sent to phone" type="number" min='0'>
+      `,
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: "Verify",
+      cancelButtonText: "Cancel",
+      customClass: {
+        confirmButton: "btn-verify",
+      },
+      preConfirm: () => {
+        const emailOtp = Swal.getPopup().querySelector("#emailOtp").value;
+        const phoneOtp = Swal.getPopup().querySelector("#phoneOtp").value;
+
+        if (!/^\d{6}$/.test(emailOtp)) {
+          Swal.showValidationMessage("Email OTP must be exactly 6 digits");
+          return false;
+        }
+        if (!/^\d{6}$/.test(phoneOtp)) {
+          Swal.showValidationMessage("Phone OTP must be exactly 6 digits");
+          return false;
+        }
+        if (emailOtp !== "123456") {
+          Swal.showValidationMessage("Incorrect OTP for Email");
+          return false;
+        }
+        if (phoneOtp !== "654321") {
+          Swal.showValidationMessage("Incorrect OTP for Phone");
+          return false;
+        }
+        return { emailOtp, phoneOtp };
+      },
+    });
+
+    if (otpValues) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire("Deleted!", "Your account has been deleted.", "success");
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your account has been deleted.",
+              icon: "success",
+              timer: 3000,
+              customClass: {
+                confirmButton: "btn-blue",
+              },
+            });
+          }
+        })
+        .then(() => {
+          localStorage.removeItem("isLoggedIn");
+          setTimeout(() => {
+            logout();
+          }, [3000]);
+        });
+    }
+  };
+
   // On clicking Edit button
   const handleEdit = (field) => {
     // If password is edited, open password form
@@ -365,6 +446,12 @@ const MenuGeneralInfo = () => {
     setFormData({ ...formData, password: passwordForm.newPassword });
     setChangesMade({ ...changesMade, password: passwordForm.newPassword });
     setShowPasswordModal(false);
+    setPasswordForm({
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
+
     Swal.fire({
       icon: "success",
       title: "Password Changed!",
@@ -524,6 +611,7 @@ const MenuGeneralInfo = () => {
                           bgColor="#1D9BCE"
                           hoverColor="#3DD5F3"
                           onClick={openEmailModal}
+                          disabled={!validateEmail(formData.email)}
                         >
                           Verify
                         </CustomButton>
@@ -556,7 +644,6 @@ const MenuGeneralInfo = () => {
                   labelIcon={showPassword ? faEyeSlash : faEye}
                   onLabelIconClick={togglePasswordVisibility}
                 />
-
                 <Form.Group as={Row} className="mb-3 form-group-custom">
                   <Form.Label column sm="3" className="info-label">
                     Phone Number
@@ -636,6 +723,7 @@ const MenuGeneralInfo = () => {
                         bgColor="#1D9BCE"
                         hoverColor="#3DD5F3"
                         onClick={openPhoneModal}
+                        disabled={!validatePhoneNumber(formData.phoneNumber)}
                       >
                         Verify
                       </CustomButton>
@@ -671,9 +759,25 @@ const MenuGeneralInfo = () => {
       </Row>
       <Row
         className="save-button-row justify-content-end"
-        style={{ marginRight: "10px" }}
+        style={{ marginInline: "10px" }}
       >
-        <Col sm={8} className="text-end">
+        <Col
+          sm={8}
+          className="text-end d-flex justify-content-end gap-4 w-100 "
+        >
+          <CustomButton
+            textColor="white"
+            bgColor="#ef4444"
+            hoverColor="#dc2626"
+            onClick={handleDelete}
+          >
+            <FontAwesomeIcon
+              icon={faTrash}
+              className="ml-2"
+              style={{ paddingRight: "10px" }}
+            />
+            Delete
+          </CustomButton>
           <CustomButton
             textColor="white"
             bgColor="#1D9BCE"
@@ -703,39 +807,81 @@ const MenuGeneralInfo = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formCurrentPassword">
               <Form.Label>Current Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="currentPassword"
-                value={passwordForm.currentPassword}
-                onChange={handlePasswordChange}
-                isInvalid={!!passwordErrors.currentPassword}
-              />
+
+              <div className="d-flex justify-content-center align-items-center">
+                <Form.Control
+                  type={showPassChange.currentPassword ? "text" : "password"}
+                  name="currentPassword"
+                  value={passwordForm.currentPassword}
+                  onChange={handlePasswordChange}
+                  isInvalid={!!passwordErrors.currentPassword}
+                />
+                <FontAwesomeIcon
+                  icon={showPassChange.currentPassword ? faEyeSlash : faEye}
+                  style={{ marginLeft: "8px", cursor: "pointer" }}
+                  onClick={() =>
+                    setShowPassChange({
+                      ...showPassChange,
+                      currentPassword: !showPassChange.currentPassword,
+                    })
+                  }
+                />
+              </div>
+
               <Form.Control.Feedback type="invalid">
                 {passwordErrors.currentPassword}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formNewPassword">
               <Form.Label>New Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="newPassword"
-                value={passwordForm.newPassword}
-                onChange={handlePasswordChange}
-                isInvalid={!!passwordErrors.newPassword}
-              />
+
+              <div className="d-flex justify-content-center align-items-center">
+                <Form.Control
+                  type={showPassChange.newPassword ? "text" : "password"}
+                  name="newPassword"
+                  value={passwordForm.newPassword}
+                  onChange={handlePasswordChange}
+                  isInvalid={!!passwordErrors.newPassword}
+                />
+                <FontAwesomeIcon
+                  icon={showPassChange.newPassword ? faEyeSlash : faEye}
+                  style={{ marginLeft: "8px", cursor: "pointer" }}
+                  onClick={() =>
+                    setShowPassChange({
+                      ...showPassChange,
+                      newPassword: !showPassChange.newPassword,
+                    })
+                  }
+                />
+              </div>
+
               <Form.Control.Feedback type="invalid">
                 {passwordErrors.newPassword}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formConfirmPassword">
               <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="confirmPassword"
-                value={passwordForm.confirmPassword}
-                onChange={handlePasswordChange}
-                isInvalid={!!passwordErrors.confirmPassword}
-              />
+
+              <div className="d-flex justify-content-center align-items-center">
+                <Form.Control
+                  type={showPassChange.confirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  value={passwordForm.confirmPassword}
+                  onChange={handlePasswordChange}
+                  isInvalid={!!passwordErrors.confirmPassword}
+                />
+                <FontAwesomeIcon
+                  icon={showPassChange.confirmPassword ? faEyeSlash : faEye}
+                  style={{ marginLeft: "8px", cursor: "pointer" }}
+                  onClick={() =>
+                    setShowPassChange({
+                      ...showPassChange,
+                      confirmPassword: !showPassChange.confirmPassword,
+                    })
+                  }
+                />
+              </div>
+
               <Form.Control.Feedback type="invalid">
                 {passwordErrors.confirmPassword}
               </Form.Control.Feedback>
