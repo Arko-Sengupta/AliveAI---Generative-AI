@@ -26,8 +26,8 @@ import {
 } from "react-bootstrap";
 import Swal from "sweetalert2";
 import "../StyleSheets/DashboardMenu.css";
-import CustomButton from "./Utils/CustomButton";
 import { useAuth } from "./Routes/AuthContext";
+import CustomButton from "./Utils/CustomButton";
 
 const FormGroup = ({
   label,
@@ -205,6 +205,7 @@ const MenuGeneralInfo = () => {
     }
 
     if (!validateEmail(formData.email)) {
+      setVerificationStatus({ ...verificationStatus, emailVerified: false });
       if (formData.email.trim().length === 0) {
         errors.email = "Email cannot be empty.";
       } else {
@@ -222,6 +223,7 @@ const MenuGeneralInfo = () => {
     }
 
     if (!validatePhoneNumber(formData.phoneNumber)) {
+      setVerificationStatus({ ...verificationStatus, phoneVerified: false });
       if (formData.phoneNumber.trim().length === 0) {
         errors.phoneNumber = "Phone number cannot be empty.";
       } else {
@@ -371,9 +373,12 @@ const MenuGeneralInfo = () => {
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
         confirmButtonText: "Yes, delete it!",
+        customClass: {
+          cancelButton: "btn-blue",
+        },
       })
         .then((result) => {
           if (result.isConfirmed) {
@@ -632,7 +637,7 @@ const MenuGeneralInfo = () => {
                 />
                 <FormGroup
                   label="Password"
-                  type={showPassword ? "text" : "password"}
+                  type={!showPassword ? "text" : "password"}
                   value={formData.password}
                   name="password"
                   icon={faLock}
@@ -759,7 +764,7 @@ const MenuGeneralInfo = () => {
       </Row>
       <Row
         className="save-button-row justify-content-end"
-        style={{ marginInline: "10px" }}
+        style={{ marginInline: "10px", marginBottom: "50px" }}
       >
         <Col
           sm={8}
