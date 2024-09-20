@@ -7,6 +7,7 @@ import "../../StyleSheets/DashboardMenu.css";
 // width and height of the chart
 // inner and outer radius of the chart to determine the thickness of the donut
 // isGrayedOut to conditionally gray out the chart
+
 const DonutChart = ({
   data,
   width,
@@ -16,6 +17,7 @@ const DonutChart = ({
   isGrayedOut,
 }) => {
   const ref = useRef();
+  const initialRender = useRef(true);
 
   const label1 = data[0].label;
   const value1 = data[0].value;
@@ -24,41 +26,50 @@ const DonutChart = ({
   const value2 = data[1].value;
 
   useEffect(() => {
-    // Set the height and width of the svg section
-    const svg = d3
-      .select(ref.current)
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    const drawChart = () => {
+      // Clear any previous chart content
+      d3.select(ref.current).selectAll("*").remove();
 
-    // Color scheme of the donut sections
-    const color = d3
-      .scaleOrdinal()
-      .domain(data.map((d) => d.label))
-      .range(isGrayedOut ? ["#B0B0B0", "#D3D3D3"] : ["#1D9BCE", "#3DD5F3"]);
+      // Set the height and width of the svg section
+      const svg = d3
+        .select(ref.current)
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    // Pie generator
-    const pie = d3.pie().value((d) => d.value);
+      // Color scheme of the donut sections
+      const color = d3
+        .scaleOrdinal()
+        .domain(data.map((d) => d.label))
+        .range(isGrayedOut ? ["#B0B0B0", "#D3D3D3"] : ["#1D9BCE", "#3DD5F3"]);
 
-    // Arc generator
-    const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+      // Pie generator
+      const pie = d3.pie().value((d) => d.value);
 
-    // Enter selection for paths
-    const paths = svg
-      .selectAll("path")
-      .data(pie(data))
-      .enter()
-      .append("path")
-      .attr("d", arc)
-      .attr("fill", (d) => color(d.data.label))
-      .attr("stroke", "white")
-      .style("stroke-width", "2px")
-      .attr("transform", "rotate(0)");
+      // Arc generator
+      const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
 
-    // Apply animation if not grayed out
-    if (!isGrayedOut) {
-      paths
+      // Draw the paths for the chart
+      svg
+        .selectAll("path")
+        .data(pie(data))
+        .enter()
+        .append("path")
+        .attr("d", arc)
+        .attr("fill", (d) => color(d.data.label))
+        .attr("stroke", "white")
+        .style("stroke-width", "2px")
+        .attr("transform", "rotate(0)");
+    };
+
+    const applyDonutAnimation = () => {
+      const svg = d3.select(ref.current).select("g");
+
+      const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+
+      svg
+        .selectAll("path")
         .transition()
         .duration(2000)
         .attrTween("d", function (d) {
@@ -70,19 +81,27 @@ const DonutChart = ({
         .attrTween("transform", function () {
           return d3.interpolateString("rotate(0 0,0)", "rotate(360 0,0)"); // Proper rotation format
         });
+    };
+
+    if (initialRender.current && !isGrayedOut) {
+      drawChart();
+      setTimeout(applyDonutAnimation, 0);
+      initialRender.current = false;
+    } else {
+      drawChart();
     }
   }, [data, width, height, innerRadius, outerRadius, isGrayedOut]);
 
   return (
     <div className={`chart-container ${isGrayedOut ? "grayed-out" : ""}`}>
-      <svg ref={ref}></svg>
+      <svg ref={ref} />
       <div className="donut-labels">
         {/* Left label styling */}
         <div className="donut-label left">
           <span
             className="color-box"
             style={{ backgroundColor: isGrayedOut ? "#B0B0B0" : "#1D9BCE" }}
-          ></span>{" "}
+          />
           {label1}: {value1}%
         </div>
         {/* Right label styling */}
@@ -90,7 +109,7 @@ const DonutChart = ({
           <span
             className="color-box"
             style={{ backgroundColor: isGrayedOut ? "#D3D3D3" : "#3DD5F3" }}
-          ></span>{" "}
+          />
           {label2}: {value2}%
         </div>
       </div>
