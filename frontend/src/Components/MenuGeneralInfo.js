@@ -558,10 +558,14 @@ const MenuGeneralInfo = () => {
     );
     setButtonStatus(isFormDataSameAsApiData);
 
+    console.log(errors);
+
     if (Object.keys(errors).length != 0) {
+      console.log(errors);
+
       setButtonStatus(true);
     }
-  }, [formData, apiData]);
+  }, [formData, apiData, errors]);
 
   return (
     <Container fluid>
