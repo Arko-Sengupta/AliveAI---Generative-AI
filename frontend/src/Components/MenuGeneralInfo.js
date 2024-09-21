@@ -107,6 +107,7 @@ const FormModal = ({
         value={inputValue}
         onChange={inputOnChange}
         placeholder={inputPlaceholder}
+        min={0}
       />
     </Modal.Body>
     <Modal.Footer>
@@ -138,6 +139,8 @@ const MenuGeneralInfo = () => {
     address: "1234 Delhi, India",
   });
 
+  const [apiData, setApiData] = useState(formData); // Temporary state to compare data with the input fields data, Remove after API integration.
+
   const [editField, setEditField] = useState(null);
   const [showPassword, setShowPassword] = useState(true);
   const [saved, setSaved] = useState(false);
@@ -160,6 +163,7 @@ const MenuGeneralInfo = () => {
     newPassword: "",
     confirmPassword: "",
   });
+
   const [passwordErrors, setPasswordErrors] = useState({});
 
   const [showPassChange, setShowPassChange] = useState({
@@ -169,6 +173,8 @@ const MenuGeneralInfo = () => {
   });
 
   const { logout } = useAuth();
+
+  const [buttonStatus, setButtonStatus] = useState(true);
 
   const countryCodes = [
     { label: "+91", value: "+91" },
@@ -318,6 +324,10 @@ const MenuGeneralInfo = () => {
     setTimeout(() => {
       setSaved(false);
     }, 2000);
+
+    setApiData(formData);
+    setButtonStatus(true);
+    setVerificationStatus({ emailVerified: false, phoneVerified: false });
 
     let successMessage = "Your changes have been saved.";
     Swal.fire({
@@ -512,7 +522,7 @@ const MenuGeneralInfo = () => {
         showConfirmButton: false,
       });
     } else {
-      setVerificationStatus({ ...verificationStatus, emailVerified: true });
+      setVerificationStatus({ ...verificationStatus, phoneVerified: false });
       Swal.fire({
         icon: "error",
         title: "Invalid OTP",
@@ -524,21 +534,22 @@ const MenuGeneralInfo = () => {
     setOtpPhone("");
   };
 
-  const openEmailModal = () => {
-    setShowEmailModal(true);
-  };
+  useEffect(() => {
+    const fieldsToCompare = [
+      "fullName",
+      "username",
+      "email",
+      "password",
+      "phoneNumber",
+      "address",
+    ];
 
-  const closeEmailModal = () => {
-    setShowEmailModal(false);
-  };
+    const isFormDataSameAsApiData = fieldsToCompare.every(
+      (field) => formData[field] === apiData[field]
+    );
 
-  const openPhoneModal = () => {
-    setShowPhoneModal(true);
-  };
-
-  const closePhoneModal = () => {
-    setShowPhoneModal(false);
-  };
+    setButtonStatus(isFormDataSameAsApiData);
+  }, [formData, apiData]);
 
   return (
     <Container fluid>
@@ -615,7 +626,7 @@ const MenuGeneralInfo = () => {
                           textColor="white"
                           bgColor="#1D9BCE"
                           hoverColor="#3DD5F3"
-                          onClick={openEmailModal}
+                          onClick={() => setShowEmailModal(true)}
                           disabled={!validateEmail(formData.email)}
                         >
                           Verify
@@ -626,9 +637,9 @@ const MenuGeneralInfo = () => {
                 />
                 <FormModal
                   showModal={showEmailModal}
-                  closeModal={closeEmailModal}
+                  closeModal={() => setShowEmailModal(false)}
                   title="Email Verification"
-                  inputType="text"
+                  inputType="number"
                   inputValue={otpEmail}
                   inputPlaceholder="Enter OTP"
                   inputOnChange={(e) => setOtpEmail(e.target.value)}
@@ -727,7 +738,7 @@ const MenuGeneralInfo = () => {
                         textColor="white"
                         bgColor="#1D9BCE"
                         hoverColor="#3DD5F3"
-                        onClick={openPhoneModal}
+                        onClick={() => setShowPhoneModal(true)}
                         disabled={!validatePhoneNumber(formData.phoneNumber)}
                       >
                         Verify
@@ -736,7 +747,7 @@ const MenuGeneralInfo = () => {
                   )}
                   <FormModal
                     showModal={showPhoneModal}
-                    closeModal={closePhoneModal}
+                    closeModal={() => setShowPhoneModal(false)}
                     title="Phone Number Verification"
                     inputType="number"
                     inputValue={otpPhone}
@@ -787,7 +798,7 @@ const MenuGeneralInfo = () => {
             textColor="white"
             bgColor="#1D9BCE"
             hoverColor="#3DD5F3"
-            disabled={Object.keys(errors).length > 0 || !editField}
+            disabled={buttonStatus}
             onClick={handleSave}
           >
             <FontAwesomeIcon
@@ -822,7 +833,7 @@ const MenuGeneralInfo = () => {
                   isInvalid={!!passwordErrors.currentPassword}
                 />
                 <FontAwesomeIcon
-                  icon={showPassChange.currentPassword ? faEyeSlash : faEye}
+                  icon={showPassChange.currentPassword ? faEye : faEyeSlash}
                   style={{ marginLeft: "8px", cursor: "pointer" }}
                   onClick={() =>
                     setShowPassChange({
@@ -849,7 +860,7 @@ const MenuGeneralInfo = () => {
                   isInvalid={!!passwordErrors.newPassword}
                 />
                 <FontAwesomeIcon
-                  icon={showPassChange.newPassword ? faEyeSlash : faEye}
+                  icon={showPassChange.newPassword ? faEye : faEyeSlash}
                   style={{ marginLeft: "8px", cursor: "pointer" }}
                   onClick={() =>
                     setShowPassChange({
@@ -876,7 +887,7 @@ const MenuGeneralInfo = () => {
                   isInvalid={!!passwordErrors.confirmPassword}
                 />
                 <FontAwesomeIcon
-                  icon={showPassChange.confirmPassword ? faEyeSlash : faEye}
+                  icon={showPassChange.confirmPassword ? faEye : faEyeSlash}
                   style={{ marginLeft: "8px", cursor: "pointer" }}
                   onClick={() =>
                     setShowPassChange({
