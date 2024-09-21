@@ -425,6 +425,15 @@ const MenuGeneralInfo = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "email") {
+      setVerificationStatus({ ...verificationStatus, emailVerified: false });
+    }
+
+    if (name === "phoneNumber") {
+      setVerificationStatus({ ...verificationStatus, phoneVerified: false });
+    }
+
     setFormData({ ...formData, [name]: value });
     setChangesMade({ ...changesMade, [name]: value });
   };
@@ -547,8 +556,11 @@ const MenuGeneralInfo = () => {
     const isFormDataSameAsApiData = fieldsToCompare.every(
       (field) => formData[field] === apiData[field]
     );
-
     setButtonStatus(isFormDataSameAsApiData);
+
+    if (Object.keys(errors).length != 0) {
+      setButtonStatus(true);
+    }
   }, [formData, apiData]);
 
   return (
