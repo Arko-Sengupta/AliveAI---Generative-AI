@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  InputGroup,
-  Row
-} from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import {
   FaAt,
   FaEnvelope,
@@ -28,6 +21,13 @@ const countryCodes = [
   { name: "United Kingdom", code: "+44" },
   { name: "India", code: "+91" },
 ];
+
+const nameRegex = /^[a-zA-Z\s]+$/,
+  usernameRegex = /^[a-z][a-z0-9_]*$/,
+  emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  passwordRegex =
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])(?!.*\s).{8,}$/,
+  mobileRegex = /^[0-9]{10}$/;
 
 // Backend Components
 const handleSignUp = async (
@@ -52,23 +52,22 @@ const handleSignUp = async (
 ) => {
   e.preventDefault();
   try {
-    if (name === "") {
-      setName("");
+    if (name === "" || !nameRegex.test(name)) {
       setSignUpMessage("Please Enter a Valid Name");
       setShow(true);
-    } else if (username === "" || handleUsernameFormat(username)) {
+    } else if (username === "" || !usernameRegex.test(username)) {
       setUsername("");
       setSignUpMessage("Please Enter a Valid Username");
       setShow(true);
-    } else if (email === "" || handleEmailFormat(email)) {
+    } else if (email === "" || !emailRegex.test(email)) {
       setEmail("");
       setSignUpMessage("Please Enter a Valid Email");
       setShow(true);
-    } else if (password === "" || handlePasswordFormat(password)) {
+    } else if (password === "" || !passwordRegex.test(password)) {
       setPassword("");
       setSignUpMessage("Please Enter a Valid Password");
       setShow(true);
-    } else if (mobileNumber === "" || mobileNumber.length < 10) {
+    } else if (mobileNumber === "" || !mobileRegex.test(mobileNumber)) {
       setMobileNumber("");
       setSignUpMessage("Please Enter a Valid Mobile Number");
       setShow(true);
