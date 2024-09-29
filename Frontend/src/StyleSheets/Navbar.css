@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Hamburger Button */
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.line-lg {
+  width: 80%;
+  height: 2px;
+  background-color: #3dd5f3;
+}
+
+.line-md {
+  width: 50%;
+  height: 2px;
+  background-color: #3dd5f3;
+}
+
+/* Logo */
+
+.logo-container {
+  height: 60px;
+  width: 100%;
+}
+
+/* Dropdown Items */
+.nav-dropdown-item {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-dropdown-item span{
+  color: #9B9D9E;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.nav-dropdown-item span:hover{
+  color: white;
+}
+
+.underline-expand {
+  position: relative;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+}
+
+.underline-expand::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  bottom: 0;
+  left: 50%;
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.underline-expand:hover::after {
+  width: 100px;
+  left: calc(30% - 30px);
+}

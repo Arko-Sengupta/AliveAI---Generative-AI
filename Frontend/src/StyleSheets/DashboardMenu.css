@@ -1,0 +1,475 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poetsen+One&display=swap");
+
+/* Menu Dashboard */
+
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.dashboard-title-row {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.dashboard-title {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.5em;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.1em;
+  background: linear-gradient(90deg, #1d9bce, #3dd5f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.2em;
+    padding-top: 30px;
+  }
+
+  .dashboard-title-row {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .dashboard-title {
+    font-size: 1em;
+    padding-top: 20px;
+  }
+
+  .dashboard-title-row {
+    margin-bottom: 5px;
+  }
+}
+
+/* Donut Chart */
+.chart-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.row .col-md-6 {
+  padding: 10px;
+}
+
+.chart-container:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.chart-container.grayed-out:hover {
+  cursor: default;
+  transform: none;
+  z-index: 1;
+}
+
+.donut-labels {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: absolute;
+  bottom: 0.35em;
+}
+
+.donut-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.45em;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.color-box {
+  width: 2em;
+  height: 2em;
+  margin-right: 5px;
+}
+
+/* Line chart and Bar Chart */
+
+.line-chart-container,
+.bar-chart-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.line-chart-container:hover,
+.bar-chart-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Menu General Info */
+
+.info-card-row,
+.save-button-row {
+  margin-top: 20px;
+}
+
+.info-card {
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.info-card .form-group {
+  display: flex;
+  align-items: center;
+}
+
+.info-card .form-label {
+  font-weight: 600;
+  color: #1d9bce;
+}
+
+.info-card .form-control {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.info-card .btn-link {
+  color: #1d9bce;
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.info-card .btn-link:hover {
+  color: #3dd5f3;
+  text-decoration: none;
+}
+
+.editable-field {
+  background-color: #f0f8ff;
+  border: 2px solid #1d9bce;
+}
+
+.error-text {
+  color: red;
+  font-size: small;
+  text-align: end;
+  padding-inline: 50px;
+}
+
+/* Custom Buttom */
+.custom-button {
+  color: var(--text-color, white);
+  background-color: var(--bg-color, #1d9bce);
+  border-color: var(--bg-color, #1d9bce);
+}
+
+.custom-button:hover {
+  background-color: var(--hover-color, #1d9bce);
+  border-color: var(--hover-color, #1d9bce);
+}
+
+.custom-button:disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+  border-color: grey;
+}
+
+@media (max-width: 575px) {
+  .form-group .col-sm-1 {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .form-group .col-sm-8 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .form-group .col-sm-8 .form-select,
+  .form-group .col-sm-8 .form-control {
+    width: 100%;
+  }
+
+  .form-group .btn-link {
+    padding-left: 10px;
+  }
+}
+
+/* Diabetes Analysis */
+
+.diabetes-form-title {
+  height: 7vh;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 0.8em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.1em;
+}
+
+.diabetes-form-title label {
+  padding-bottom: 5px;
+}
+
+.form-control::placeholder {
+  color: #dee2e6;
+  opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #dee2e6;
+}
+
+option:first-child {
+  color: #dee2e6;
+}
+
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("https://static.thenounproject.com/png/551749-200.png")
+    no-repeat right 1rem center/8px 10px;
+  padding-right: 2rem;
+}
+
+select.form-control:focus {
+  border-color: #1d9bce;
+  box-shadow: 0 0 0 0.2rem rgba(29, 155, 206, 0.25);
+}
+
+.chart-container-menu-diabetes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.chart-container-menu-diabetes:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.labels-menu-diabetes {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: absolute;
+  bottom: 0.35em;
+}
+
+.label-diabetes {
+  display: flex;
+  align-items: center;
+  font-size: 0.5em;
+  margin-bottom: 10px;
+}
+
+.left-diabetes {
+  text-align: left;
+}
+
+.right-diabetes {
+  text-align: right;
+}
+
+.color-box-menu-diabetes {
+  width: 2em;
+  height: 2em;
+  margin-right: 5px;
+}
+
+.report-item {
+  display: flex;
+  margin: 5px 0;
+}
+
+.report-label {
+  color: #1d9bce;
+  font-weight: 500;
+  font-size: 0.65em;
+  display: inline-block;
+  width: 120px;
+  margin-right: 10px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+.report-value {
+  font-size: 0.65em;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  border-right: 0.15em solid transparent;
+  animation: typing 2s steps(30, end) forwards, blink-caret 0.75s;
+  animation-delay: var(--animation-delay);
+  box-sizing: border-box;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #1880a9;
+  }
+}
+
+/* ECG Animation Web */
+
+.ecg-container {
+  height: fit-content;
+  position: absolute;
+  left: 65%;
+}
+
+.ecg-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.beat-loader {
+  stroke: #1880a9;
+  stroke-dasharray: 175;
+  stroke-dashoffset: 350;
+  animation: draw 3s linear infinite;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ECG Animation Mobile */
+
+.ecg-container-mobile {
+  height: fit-content;
+  position: absolute;
+  left: 45%;
+}
+
+/* Coming Soon Css */
+
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.coming-soon-text-large {
+  font-size: 72px;
+  color: #1d9bce;
+  opacity: 0.1;
+  animation: fade-in-out 3s infinite;
+  font-family: "Cinzel Decorative", serif;
+  font-style: normal;
+  margin: 0; /* Remove any default margin */
+}
+
+/* Media queries for responsive font size */
+@media (max-width: 1200px) {
+  .coming-soon-text-large {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  .coming-soon-text-large {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coming-soon-text-large {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .coming-soon-text-large {
+    font-size: 24px;
+  }
+}
+
+@keyframes fade-in-out {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
