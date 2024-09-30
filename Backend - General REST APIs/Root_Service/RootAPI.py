@@ -16,7 +16,7 @@ class Root:
     def __init__(self) -> None:
         pass
     
-    def root_template(self) -> str:
+    def RootTemplate(self) -> str:
         """Generate the HTML content for the Root Page."""
         try:
             html_content = f"""
@@ -89,15 +89,15 @@ class RootAPI:
         self.blueprint.add_url_rule(
             rule='/',
             endpoint='Root',
-            view_func=self.root_temp,
+            view_func=self.RootTemp,
             methods=['GET']
         )
         self.app.register_blueprint(self.blueprint)
 
-    def root_temp(self) -> Response:
+    def RootTemp(self) -> Response:
         """Handle the Root request and return the HTML Response."""
         try:
-            html_content = self.root.root_template()
+            html_content = self.root.RootTemplate()
             return Response(html_content, mimetype='text/html')
         except Exception as e:
             logging.error("An Error Occurred in root_temp", exc_info=e)
