@@ -20,8 +20,8 @@ class UnitConverter:
     def __init__(self) -> None:
         pass
     
-    def circumference_convert(self, circumference: float, unit: str) -> tuple:
-        """Convert circumference to centimeters."""
+    def Circumference_Convert(self, circumference: float, unit: str) -> tuple:
+        """Convert circumference to Centimeters."""
         try:
             if unit == "cm":
                 return circumference, unit
@@ -35,7 +35,7 @@ class UnitConverter:
             logging.error("Error Occurred in Circumference Conversion: ", exc_info=e)
             raise e
 
-    def glucose_convert(self, blood_glucose: float, unit: str) -> tuple:
+    def Glucose_Convert(self, blood_glucose: float, unit: str) -> tuple:
         """Convert Blood Glucose to mg/dl."""
         try:
             if unit == "mg/dl":
@@ -46,6 +46,19 @@ class UnitConverter:
                 return blood_glucose, "Unknown"
         except Exception as e:
             logging.error("Error Occurred in Glucose Conversion: ", exc_info=e)
+            raise e
+        
+    def Height_Convert(self, height:float, unit: str) -> float:
+        """Convert Height to Meter."""
+        try:
+            if unit == "m":
+                return height, unit
+            elif unit == "ft":
+                return height*0.3048, "m"
+            else:
+                return height, "Unknown"
+        except Exception as e:
+            logging.error("An Error Occured in Height Conversion: ", exc_info=e)
             raise e
 
 
@@ -68,21 +81,33 @@ class UnitConverterAPI:
         )
 
     def Convert_Units(self) -> Response:
-        """Handles the conversion of units based on incoming request data."""
+        """Handles the Conversion of Units based on Incoming request Data."""
         try:
             request_data = request.get_json()
 
             if not self.Authenticate_Request(request_data):
-                logging.warning("Request authentication failed.")
+                logging.warning("Request Authentication Failed.")
                 return jsonify({
                     "success": False,
                     "message": "Authentication Failed."
                 }), 403
 
             converted_data = {
-                "Hip Circumference": self.unit_convert.circumference_convert(*request_data["Hip Circumference"]),
-                "Waist Circumference": self.unit_convert.circumference_convert(*request_data["Waist Circumference"]),
-                "Fasting Blood Glucose": self.unit_convert.glucose_convert(*request_data["Fasting Blood Glucose"])
+                "Age": request_data["Age"],
+                "Gender": request_data["Gender"],
+                "Weight": request_data["Weight"],
+                "Height": self.unit_convert.Height_Convert(*request_data["Height"]),
+                "Family History": request_data["Family History"],
+                "Physical Activity Level": request_data["Physical Activity Level"],
+                "Dietary Habits": request_data["Dietary Habits"],
+                "Ethnicity/Race": request_data["Ethinicity/Race"],
+                "Medication Use": request_data["Medication Use"],
+                "Sleep Quality": request_data["Sleep Quality"],
+                "Stress Levels": request_data["Stress Levels"],
+                "Hip Circumference": self.unit_convert.Circumference_Convert(*request_data["Hip Circumference"]),
+                "Waist Circumference": self.unit_convert.Circumference_Convert(*request_data["Waist Circumference"]),
+                "Smoking Status": request_data["Smoking Status"],
+                "Fasting Blood Glucose": self.unit_convert.Glucose_Convert(*request_data["Fasting Blood Glucose"])    
             }
 
             response = {
