@@ -33,6 +33,7 @@ const handleLogin = async (
     // Temporary Email & Password for Test
     if (userEmail === "" || userEmail !== "arkosengupta9@gmail.com") {
       setEmail("");
+      setPassword("");
       setloginMessage("Please Enter Valid Email");
       setShow(true);
     } else if (userPassword === "" || userPassword !== "Arko@1234") {
@@ -92,19 +93,11 @@ const FormConstraints = ({
             onClick={togglePassword}
             style={{ cursor: "pointer" }}
           >
-            {type === "password" ? <FaEye /> : <FaEyeSlash />}
+            {type === "password" ? <FaEyeSlash /> : <FaEye />}
           </InputGroup.Text>
         )}
       </InputGroup>
     </Form.Group>
-  );
-};
-
-const LoginButton = ({ StaticData }) => {
-  return (
-    <Button variant="outline-info" type="submit" className="w-100 mt-4">
-      {StaticData.Login.Login_Button}
-    </Button>
   );
 };
 
@@ -122,7 +115,9 @@ const LoginDashboardNavigate = ({ StaticData, navigate, onForgotPassword }) => {
           </span>
         </div>
       </div>
-      <LoginButton StaticData={StaticData} />
+      <Button variant="outline-info" type="submit" className="w-100 mt-4">
+        {StaticData.Login.Login_Button}
+      </Button>
       <div className="mt-3 text-center">
         <p>
           {StaticData.Login.Login_Account_Exists}&nbsp;
