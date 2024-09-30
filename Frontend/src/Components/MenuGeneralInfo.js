@@ -417,6 +417,12 @@ const MenuGeneralInfo = () => {
   const handleEdit = (field) => {
     // If password is edited, open password form
     if (field === "password") {
+      setPasswordForm({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setPasswordErrors({});
       setShowPasswordModal(true);
     } else {
       setEditField(field);

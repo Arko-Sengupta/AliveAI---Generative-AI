@@ -23,7 +23,7 @@ const countryCodes = [
 ];
 
 const nameRegex = /^[a-zA-Z\s]+$/,
-  usernameRegex = /^[a-z][a-z0-9_]*$/,
+  usernameRegex = /^[a-z_][a-z0-9_]*$/,
   emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   passwordRegex =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])(?!.*\s).{8,}$/,
