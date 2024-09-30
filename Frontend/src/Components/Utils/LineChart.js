@@ -2,10 +2,6 @@ import * as d3 from "d3";
 import React, { useEffect, useRef } from "react";
 import "../../StyleSheets/DashboardMenu.css";
 
-// Render a Line Chart component facilitating 2 line data
-// Props - x axis and y axis labels
-// data for line 1 and line 2
-
 const LineChart = ({
   xAxisLabels,
   yAxisLabels,
@@ -16,6 +12,24 @@ const LineChart = ({
 }) => {
   const ref = useRef();
   const initialRender = useRef(true);
+  const currentHeight = useRef(300);
+
+  const handleResize = () => {
+    if (window.matchMedia("(max-width: 480px)").matches) {
+      currentHeight.current = 200;
+    } else {
+      currentHeight.current = 300;
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const drawChart = () => {
@@ -25,11 +39,11 @@ const LineChart = ({
       const margin = { top: 20, right: 30, bottom: 40, left: 40 };
       const containerWidth = ref.current.parentElement.clientWidth;
       const width = containerWidth - margin.left - margin.right;
-      const height = 300 - margin.top - margin.bottom;
+      const height = currentHeight.current - margin.top - margin.bottom;
 
       const g = svg
         .attr("width", containerWidth)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("height", currentHeight.current)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
