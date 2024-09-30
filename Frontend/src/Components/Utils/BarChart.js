@@ -1,6 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
-import "../../StyleSheets/DashboardMenu.css";
+import { useEffect, useRef, useState } from "react";
 
 const BarChart = ({
   data,
@@ -12,13 +11,13 @@ const BarChart = ({
 }) => {
   const ref = useRef();
   const hasAnimated = useRef(true);
-  const currentHeight = useRef(height);
+  const [currentHeight, setCurrentHeight] = useState(height);
 
   const handleResize = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-      currentHeight.current = 200;
+      setCurrentHeight(200);
     } else {
-      currentHeight.current = 300;
+      setCurrentHeight(300);
     }
   };
 
@@ -93,7 +92,7 @@ const BarChart = ({
     const margin = { top: 20, right: 30, bottom: 40, left: 30 };
     const containerWidth = ref.current.parentElement.clientWidth;
     const innerWidth = containerWidth - margin.left - margin.right;
-    const innerHeight = currentHeight.current - margin.top - margin.bottom;
+    const innerHeight = currentHeight - margin.top - margin.bottom;
 
     const x = d3
       .scaleBand()
@@ -124,7 +123,7 @@ const BarChart = ({
         .attr("y", (d) => y(d.value))
         .attr("height", (d) => innerHeight - y(d.value));
     }
-  }, [data, yAxisLabels, xAxisLabels, width, userValueData]);
+  }, [data, yAxisLabels, xAxisLabels, currentHeight, userValueData]);
 
   const isHighlighted = (label, userValueData) => {
     const [start, end] = label.split("-").map(Number);
@@ -136,7 +135,7 @@ const BarChart = ({
       className="bar-chart-container"
       style={{
         width: "100%",
-        height: `${currentHeight.current}px`,
+        height: `${currentHeight}px`,
         paddingLeft: "10px",
       }}
     >
