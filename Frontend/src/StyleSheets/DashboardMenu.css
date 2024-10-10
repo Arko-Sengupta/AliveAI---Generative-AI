@@ -414,8 +414,6 @@ select.form-control:focus {
 
 .ecg-container-mobile {
   height: fit-content;
-  position: absolute;
-  left: 45%;
 }
 
 /* Coming Soon Css */

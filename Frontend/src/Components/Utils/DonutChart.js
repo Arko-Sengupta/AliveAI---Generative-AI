@@ -1,3 +1,5 @@
+import { faMagnifyingGlassChart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as d3 from "d3";
 import React, { useEffect, useRef } from "react";
 import "../../StyleSheets/DashboardMenu.css";
@@ -15,6 +17,7 @@ const DonutChart = ({
   innerRadius,
   outerRadius,
   isGrayedOut,
+  isHeadingrequired,
 }) => {
   const ref = useRef();
   const initialRender = useRef(true);
@@ -94,6 +97,27 @@ const DonutChart = ({
 
   return (
     <div className={`chart-container ${isGrayedOut ? "grayed-out" : ""}`}>
+      {isHeadingrequired && (
+        <h2
+          style={{
+            color: "#1880a9",
+            fontWeight: "bold",
+            fontFamily: "Cinzel Decorative",
+            fontSize: "25px",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faMagnifyingGlassChart}
+            style={{
+              paddingRight: "15px",
+              paddingBottom: "1px",
+              color: "#1880a9",
+              fontSize: "0.75em",
+            }}
+          />
+          Analysis
+        </h2>
+      )}
       <svg ref={ref} />
       <div className="donut-labels">
         {/* Left label styling */}

@@ -61,7 +61,7 @@ const MenuData = [
 // Web Dashboard Menu Items
 const WebMenuItem = ({ icon, text, isActive, onClick }) => (
   <li>
-    <h6 className={`menu-item ${isActive ? "active" : ""}`} onClick={onClick}>
+    <h6 className={`menu-item ${isActive ? "active text-white" : ""}`} onClick={onClick}>
       <FontAwesomeIcon icon={icon} className="dashboard-faIcon" size="1x" />
       {text}
     </h6>
@@ -71,7 +71,7 @@ const WebMenuItem = ({ icon, text, isActive, onClick }) => (
 // Web Dashboard Sub-Menu Items
 const WebSubMenuItem = ({ icon, text, isActive, onClick }) => (
   <li>
-    <h6 className={`submenu-item ${isActive ? "active" : ""}`} onClick={onClick}>
+    <h6 className={`submenu-item ${isActive ? "active text-white" : ""}`} onClick={onClick}>
       <FontAwesomeIcon icon={icon} className="dashboard-faIcon" size="1x" />
       {text}
     </h6>
@@ -94,17 +94,17 @@ const WebMenuList = ({ toggleSubMenu, setActiveMenu, activeMenu }) => {
           {item.submenuItems ? (
             <li>
               <h6
-                className={`dashboard-menu-header ${activeMenu === item.path ? "active" : ""}`}
+                className={`dashboard-menu-header ${activeMenu === item.path ? "active text-white" : ""}`}
                 onClick={() => toggleSubMenu(item.path)}
               >
                 <FontAwesomeIcon icon={item.icon} className="dashboard-faIcon" size="1x" />
                 {item.text}{" "}
                 <FontAwesomeIcon
                   icon={faAngleDown}
-                  className={`arrow-icon ${activeMenu === item.path ? "arrow-icon-active" : ""}`}
+                  className={`arrow-icon ${activeMenu === item.path ? "arrow-icon-active " : ""}`}
                 />
               </h6>
-              <ul className={`dashboard-submenu ${activeMenu === item.path ? "active" : ""}`}>
+              <ul className={`dashboard-submenu ${activeMenu === item.path ? "active text-white" : ""}`}>
                 {item.submenuItems.map((subItem, subIndex) => (
                   <WebSubMenuItem
                     key={subIndex}

@@ -1,17 +1,16 @@
 import {
   faChartArea,
   faFileLines,
-  faMagnifyingGlassChart,
   faNotesMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as d3 from "d3";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 import "../StyleSheets/DashboardMenu.css";
 import CustomButton from "./Utils/CustomButton";
+import DonutChart from "./Utils/DonutChart";
 import ECGAnimation from "./Utils/ECGAnimation";
 
 // Donut chart data
@@ -101,106 +100,6 @@ const smokingStatus = [
   { value: "nonsmoker", label: "Non-Smoker" },
 ];
 
-// TODO: Replace this DonutChart with Utils donut chart
-// Donut Chart of Menu Diabetes needs a title, hence causing an issue
-const DonutChart = ({
-  data,
-  width = 200,
-  height = 200,
-  innerRadius = 45,
-  outerRadius = 75,
-}) => {
-  const ref = useRef();
-
-  const label1 = data[0].label;
-  const value1 = data[0].value;
-
-  const label2 = data[1].label;
-  const value2 = data[1].value;
-
-  useEffect(() => {
-    const svg = d3
-      .select(ref.current)
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-    const color = d3
-      .scaleOrdinal()
-      .domain(data.map((d) => d.label))
-      .range(["#1D9BCE", "#3DD5F3"]);
-
-    const pie = d3.pie().value((d) => d.value);
-
-    const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
-
-    svg
-      .selectAll("path")
-      .data(pie(data))
-      .enter()
-      .append("path")
-      .attr("d", arc)
-      .attr("fill", (d) => color(d.data.label))
-      .attr("stroke", "white")
-      .style("stroke-width", "2px")
-      .attr("transform", "rotate(0)")
-      .transition()
-      .duration(2000)
-      .attrTween("d", function (d) {
-        var interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
-        return function (t) {
-          return arc(interpolate(t));
-        };
-      })
-      .attrTween("transform", function () {
-        return d3.interpolateString("rotate(0, 0)", "rotate(360, 0)");
-      });
-  }, [data, width, height, innerRadius, outerRadius]);
-
-  return (
-    <div className="chart-container-menu-diabetes">
-      <h2
-        style={{
-          color: "#1880a9",
-          fontWeight: "bold",
-          fontFamily: "Cinzel Decorative",
-          fontSize: "25px",
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faMagnifyingGlassChart}
-          style={{
-            paddingRight: "15px",
-            paddingBottom: "1px",
-            color: "#1880a9",
-            fontSize: "0.75em",
-          }}
-        />
-        Analysis
-      </h2>
-      <svg ref={ref}></svg>
-      <div className="labels-menu-diabetes">
-        <div className="label-diabetes left-diabetes">
-          <span
-            className="color-box-menu-diabetes"
-            style={{ backgroundColor: "#1D9BCE" }}
-          ></span>{" "}
-          {label1}: {value1}%
-        </div>
-        <div className="label-diabetes right-diabetes">
-          <span
-            className="color-box-menu-diabetes"
-            style={{ backgroundColor: "#3DD5F3" }}
-          ></span>{" "}
-          {label2}: {value2}%
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Reusable Input field component
 const InputField = ({
   label,
   name,
@@ -581,8 +480,9 @@ const MenuDiabetes = () => {
           </CustomButton>
         </Col>
       </Row>
-
-      {showECG && <ECGAnimation />}
+      <div className="d-flex justify-content-center align-items-center">
+        {showECG && <ECGAnimation />}
+      </div>
       {showReport && (
         <Row>
           <Col md={6}>
@@ -632,6 +532,11 @@ const MenuDiabetes = () => {
                     label: key,
                     value: data[key],
                   }))}
+                width={220}
+                height={240}
+                innerRadius={25}
+                outerRadius={45}
+                isHeadingrequired={true}
               />
             ))}
           </Col>
