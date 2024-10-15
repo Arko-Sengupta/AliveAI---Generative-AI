@@ -163,6 +163,16 @@ if __name__ == "__main__":
     X = dataset.drop(columns=['Cholesterol Level', 'Diabetes'])
     y = dataset['Cholesterol Level']
     
+    # Initialize and Fit the Random Forest Predictor
+    predictor = RandomForestPredictor(data=dataset)
+    predictor.fit(X, y, n_trees=100)
+    
+    # with open('model.pkl', 'wb') as file:
+    #     pickle.dump(predictor, file)
+    
+    # Evaluate the Model on the Test Set
+    # predictor.Evaluate(X, y)
+    
     # X_new = {
     #     "Age": 18,
     #     "Gender": "Female",
@@ -186,15 +196,5 @@ if __name__ == "__main__":
     # 
     # X_new = pd.DataFrame([X_new])
     
-    # Initialize and Fit the Random Forest Predictor
-    predictor = RandomForestPredictor(data=dataset)
-    predictor.fit(X, y, n_trees=100)
-    
     # p = predictor.Predict(X_new)
     # print(p)
-    
-    # with open('model.pkl', 'wb') as file:
-    #     pickle.dump(predictor, file)
-
-    # Evaluate the Model on the Test Set
-    # predictor.Evaluate(X, y)
