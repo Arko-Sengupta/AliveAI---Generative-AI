@@ -1,5 +1,6 @@
 
 # Ignore Files
+/Delete_Services/.env
 /Mobile_Services/.env
 /Email_Services/.env
 /Login_Services/.env
