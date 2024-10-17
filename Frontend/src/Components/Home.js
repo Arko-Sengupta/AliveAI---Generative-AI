@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Button, Col, Container, Image, Modal, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/Home.css";
@@ -366,7 +366,7 @@ const galleryImages = [
 ];
 
 // Render ImageComponent
-const renderImageRow = (images) => (
+const renderImageRow = (images, handleImageClick) => (
   <Row>
     {images.map((src, index) => (
       <Col className="mt-2" key={index} xs={6} sm={6} md={3} lg={3}>
@@ -375,16 +375,36 @@ const renderImageRow = (images) => (
           alt={`Gallery image ${index + 1}`}
           fluid
           className="image-hover-effect"
+          onClick={() => handleImageClick(src)} // Add click event
         />
       </Col>
     ))}
   </Row>
 );
 
+// Modal Component to display larger image
+const ImageModal = ({ show, src, handleClose }) => (
+  <Modal show={show} onHide={handleClose} centered size="lg">
+    <Modal.Body className="text-center">
+      <Image src={src} alt="Large gallery image" fluid />
+    </Modal.Body>
+  </Modal>
+);
+
 // Gallery Component [Main]
 const Gallery = ({ StaticData }) => {
   const { Home_Gallery_Title, Home_Gallery_Sub_Title } =
     StaticData.Home.Home_Gallery;
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (src) => {
+    setSelectedImage(src);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <Container fluid className="text-center gallery-container">
@@ -404,9 +424,18 @@ const Gallery = ({ StaticData }) => {
         </SlideUp>
       </Row>
       <Container className="gallery-images mt-5">
-        <SlideUp>{renderImageRow(galleryImages.slice(0, 4))}</SlideUp>
-        <SlideUp>{renderImageRow(galleryImages.slice(4))}</SlideUp>
+        <SlideUp>
+          {renderImageRow(galleryImages.slice(0, 4), handleImageClick)}
+        </SlideUp>
+        <SlideUp>
+          {renderImageRow(galleryImages.slice(4), handleImageClick)}
+        </SlideUp>
       </Container>
+      <ImageModal
+        show={showModal}
+        src={selectedImage}
+        handleClose={handleCloseModal}
+      />
     </Container>
   );
 };
@@ -462,7 +491,13 @@ const Counter = () => {
         observer.unobserve(counterRef.current);
       }
     };
-  }, [hasStarted, targetPatients, targetSpecialists, targetLocations, duration]);
+  }, [
+    hasStarted,
+    targetPatients,
+    targetSpecialists,
+    targetLocations,
+    duration,
+  ]);
 
   return (
     <div ref={counterRef} className="Counter-container-main">
@@ -476,7 +511,10 @@ const Counter = () => {
       </Row>
       <Row className="text-center py-2">
         <SlideUp>
-          <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+          <h6>
+            Meet the passionate innovators behind AliveAI, dedicated to
+            transforming the future of intelligent solutions.
+          </h6>
         </SlideUp>
       </Row>
       <SlideUp>
