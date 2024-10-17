@@ -1,13 +1,15 @@
 import {
-    faArrowLeft,
-    faBuilding,
-    faEnvelope,
-    faFaceSmile,
-    faMapMarkerAlt, faPhone,
-    faUser,
+  faArrowLeft,
+  faBuilding,
+  faEnvelope,
+  faFaceSmile,
+  faMapMarkerAlt,
+  faPhone,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import SlideUp from "../Components/Animations/SlideUp";
@@ -118,7 +120,32 @@ const ContactCards = () => {
   );
 };
 
+const containerStyle = {
+  width: "100%",
+  height: "400px",
+};
+
+const center = {
+  lat: 37.575452,
+  lng: -122.000254,
+};
+
 const Feedback = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "", //API key here
+  });
+
+  const mapRef = useRef(null);
+
+  const onLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
+  const onUnmount = useCallback(() => {
+    mapRef.current = null;
+  }, []);
+
   return (
     <div className="feedback-container-main">
       <SlideUp>
@@ -143,42 +170,56 @@ const Feedback = () => {
           <div className="underlineBox-1">
             <div className="underline"></div>
           </div>
-          <div className="feedback-form">
-            <form>
-              <div className="form-group">
-                <input
-                  type="text"
-                  id="full-name"
-                  name="full-name"
-                  placeholder="Full Name"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <textarea
-                  id="description"
-                  name="description"
-                  rows="4"
-                  placeholder="Description"
-                  required
-                ></textarea>
-              </div>
-              <button className="form-button" type="submit">
-                Send Message
-              </button>
-            </form>
-          </div>
-          <div className="feedback-map">
-            {/* Map or additional content here */}
+          <div className="form-and-map">
+            <div className="feedback-form">
+              <form>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="full-name"
+                    name="full-name"
+                    placeholder="Full Name"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Description"
+                    required
+                  ></textarea>
+                </div>
+                <button className="form-button" type="submit">
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <div className="feedback-map">
+              {isLoaded ? (
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={12}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                >
+                  <MarkerF position={center} />
+                </GoogleMap>
+              ) : (
+                <div>Loading map...</div>
+              )}
+            </div>
           </div>
         </div>
       </SlideUp>
