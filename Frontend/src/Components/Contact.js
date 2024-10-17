@@ -133,7 +133,7 @@ const center = {
 const Feedback = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "", //API key here
+    googleMapsApiKey: "AIzaSyBpfcjPCcxgD3x4dpjSGGQByWU6pieib_k", //API key here
   });
 
   const mapRef = useRef(null);
@@ -217,7 +217,7 @@ const Feedback = () => {
                   <MarkerF position={center} />
                 </GoogleMap>
               ) : (
-                <div>Loading map...</div>
+                <div>Loading Location...</div>
               )}
             </div>
           </div>
