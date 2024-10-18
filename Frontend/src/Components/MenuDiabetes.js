@@ -480,7 +480,10 @@ const MenuDiabetes = () => {
           </CustomButton>
         </Col>
       </Row>
-      <div className="d-flex justify-content-center align-items-center">
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ marginTop: "20px" }}
+      >
         {showECG && <ECGAnimation />}
       </div>
       {showReport && (

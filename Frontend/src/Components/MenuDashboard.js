@@ -104,7 +104,12 @@ const MenuDashboard = () => {
           <Col xs={12} lg={6}>
             <Row className="chart-row">
               {donutData.map((data, index) => (
-                <Col key={data.id} xs={6} className="chart-col">
+                <Col
+                  key={data.id}
+                  xs={6}
+                  className="chart-col"
+                  style={{ marginBottom: "20px" }}
+                >
                   <DonutChart
                     data={Object.keys(data)
                       .filter((key) => key !== "id")

@@ -77,7 +77,6 @@
   position: relative;
   transition: transform 0.3s ease-in-out;
   z-index: 1;
-  margin-bottom: 20px;
 }
 
 .row .col-md-6 {

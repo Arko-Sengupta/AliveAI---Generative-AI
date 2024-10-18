@@ -19,7 +19,6 @@ import "../StyleSheets/Home.css";
 import ContactCoverImg from "../Utils/Images/Contact Images/Contact Us Cover Background.jpg";
 import ECGLine from "../Utils/Images/Home Images/ECG Line Image.png";
 import ECGTransparentLine from "../Utils/Images/Home Images/ECG Transparent Line.png";
-import Credential from "../Static/Credential.json";
 
 const Cover = () => {
   const [displayedText, setDisplayedText] = useState("");
@@ -134,7 +133,7 @@ const center = {
 const Feedback = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: Credential["Google Map Secret Key"], //API key here
+    googleMapsApiKey: "", //API key here
   });
 
   const mapRef = useRef(null);
