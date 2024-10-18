@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,13 @@ import {
   faComments,
   faListCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -44,7 +50,13 @@ const MenuData = [
     icon: faHeartbeat,
     text: "Health Analysis",
     path: "health-analysis",
-    submenuItems: [{ icon: faNotesMedical, text: "Diabetes Analysis", path: "diabetes-analysis" }],
+    submenuItems: [
+      {
+        icon: faNotesMedical,
+        text: "Diabetes Analysis",
+        path: "diabetes-analysis",
+      },
+    ],
   },
   {
     icon: faComments,
@@ -61,7 +73,10 @@ const MenuData = [
 // Web Dashboard Menu Items
 const WebMenuItem = ({ icon, text, isActive, onClick }) => (
   <li>
-    <h6 className={`menu-item ${isActive ? "active text-white" : ""}`} onClick={onClick}>
+    <h6
+      className={`menu-item ${isActive ? "active text-white" : ""}`}
+      onClick={onClick}
+    >
       <FontAwesomeIcon icon={icon} className="dashboard-faIcon" size="1x" />
       {text}
     </h6>
@@ -71,7 +86,10 @@ const WebMenuItem = ({ icon, text, isActive, onClick }) => (
 // Web Dashboard Sub-Menu Items
 const WebSubMenuItem = ({ icon, text, isActive, onClick }) => (
   <li>
-    <h6 className={`submenu-item ${isActive ? "active text-white" : ""}`} onClick={onClick}>
+    <h6
+      className={`submenu-item ${isActive ? "active text-white" : ""}`}
+      onClick={onClick}
+    >
       <FontAwesomeIcon icon={icon} className="dashboard-faIcon" size="1x" />
       {text}
     </h6>
@@ -94,17 +112,29 @@ const WebMenuList = ({ toggleSubMenu, setActiveMenu, activeMenu }) => {
           {item.submenuItems ? (
             <li>
               <h6
-                className={`dashboard-menu-header ${activeMenu === item.path ? "active text-white" : ""}`}
+                className={`dashboard-menu-header ${
+                  activeMenu === item.path ? "active text-white" : ""
+                }`}
                 onClick={() => toggleSubMenu(item.path)}
               >
-                <FontAwesomeIcon icon={item.icon} className="dashboard-faIcon" size="1x" />
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="dashboard-faIcon"
+                  size="1x"
+                />
                 {item.text}{" "}
                 <FontAwesomeIcon
                   icon={faAngleDown}
-                  className={`arrow-icon ${activeMenu === item.path ? "arrow-icon-active " : ""}`}
+                  className={`arrow-icon ${
+                    activeMenu === item.path ? "arrow-icon-active " : ""
+                  }`}
                 />
               </h6>
-              <ul className={`dashboard-submenu ${activeMenu === item.path ? "active text-white" : ""}`}>
+              <ul
+                className={`dashboard-submenu ${
+                  activeMenu === item.path ? "active text-white" : ""
+                }`}
+              >
                 {item.submenuItems.map((subItem, subIndex) => (
                   <WebSubMenuItem
                     key={subIndex}
@@ -112,7 +142,9 @@ const WebMenuList = ({ toggleSubMenu, setActiveMenu, activeMenu }) => {
                     text={subItem.text}
                     path={`${item.path}/${subItem.path}`}
                     isActive={activeMenu === `${item.path}/${subItem.path}`}
-                    onClick={() => handleMenuClick(`${item.path}/${subItem.path}`)}
+                    onClick={() =>
+                      handleMenuClick(`${item.path}/${subItem.path}`)
+                    }
                   />
                 ))}
               </ul>
@@ -134,10 +166,27 @@ const WebMenuList = ({ toggleSubMenu, setActiveMenu, activeMenu }) => {
 
 const WebDashboard = () => {
   const [activeMenu, setActiveMenu] = useState("menuDashboard");
+  const location = useLocation();
 
   const toggleSubMenu = (path) => {
     setActiveMenu(activeMenu === path ? null : path);
   };
+
+  useEffect(() => {
+    if (location.pathname === "/dashboard/menuDashboard") {
+      setActiveMenu("menuDashboard");
+    } else if (location.pathname.startsWith("/dashboard/general-info")) {
+      setActiveMenu("general-info");
+    } else if (location.pathname.startsWith("/dashboard/health-analysis")) {
+      setActiveMenu("health-analysis");
+    } else if (location.pathname.startsWith("/dashboard/diabetes-analysis")) {
+      setActiveMenu("diabetes-analysis");
+    } else if (location.pathname.startsWith("/dashboard/chatbot")) {
+      setActiveMenu("chatbot");
+    } else if (location.pathname.startsWith("/dashboard/appointments")) {
+      setActiveMenu("appointments");
+    }
+  }, [location.pathname]);
 
   return (
     <Container fluid>
@@ -147,7 +196,11 @@ const WebDashboard = () => {
             <h3>Welcome to the Dashboard!</h3>
           </Row>
           <Row>
-            <WebMenuList toggleSubMenu={toggleSubMenu} setActiveMenu={setActiveMenu} activeMenu={activeMenu} />
+            <WebMenuList
+              toggleSubMenu={toggleSubMenu}
+              setActiveMenu={setActiveMenu}
+              activeMenu={activeMenu}
+            />
           </Row>
         </Col>
         <Col>
@@ -181,7 +234,7 @@ const useStyles = {
     flexDirection: "row",
     overflowX: "auto",
     minHeight: "auto",
-    padding: "0 8px"
+    padding: "0 8px",
   },
   menuButton: {
     color: "gray",
@@ -206,7 +259,7 @@ const useStyles = {
     color: "white",
     height: "100vh",
     padding: 0,
-  }
+  },
 };
 
 const MobileDashboard = () => {
@@ -216,6 +269,7 @@ const MobileDashboard = () => {
   const [submenuItems, setSubmenuItems] = useState([]);
   const [submenuBasePath, setSubmenuBasePath] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleMenuClick = (path) => {
     setActiveMenu(path);
@@ -240,6 +294,22 @@ const MobileDashboard = () => {
     handleSubMenuClose();
   };
 
+  useEffect(() => {
+    if (location.pathname === "/dashboard/menuDashboard") {
+      setActiveMenu("menuDashboard");
+    } else if (location.pathname.startsWith("/dashboard/general-info")) {
+      setActiveMenu("general-info");
+    } else if (location.pathname.startsWith("/dashboard/health-analysis")) {
+      setActiveMenu("health-analysis");
+    } else if (location.pathname.startsWith("/dashboard/diabetes-analysis")) {
+      setActiveMenu("diabetes-analysis");
+    } else if (location.pathname.startsWith("/dashboard/chatbot")) {
+      setActiveMenu("chatbot");
+    } else if (location.pathname.startsWith("/dashboard/appointments")) {
+      setActiveMenu("appointments");
+    }
+  }, [location.pathname]);
+
   return (
     <Container fluid sx={classes.container}>
       <AppBar position="static" sx={classes.appBar}>
@@ -259,13 +329,18 @@ const MobileDashboard = () => {
             >
               <Typography
                 sx={
-                  activeMenu.startsWith(item.path) ? classes.activeMenuText : classes.menuText
+                  activeMenu.startsWith(item.path)
+                    ? classes.activeMenuText
+                    : classes.menuText
                 }
               >
                 {item.text}
               </Typography>
               {item.submenuItems && (
-                <FontAwesomeIcon icon={faAngleDown} style={{margin:"5px", fontSize: "0.5em"}}/>
+                <FontAwesomeIcon
+                  icon={faAngleDown}
+                  style={{ margin: "5px", fontSize: "0.5em" }}
+                />
               )}
             </IconButton>
           ))}
