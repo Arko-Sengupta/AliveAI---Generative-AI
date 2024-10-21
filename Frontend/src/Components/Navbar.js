@@ -168,6 +168,9 @@ const MobileNavbar = ({ StaticData }) => {
   const { isAuthenticated, logout } = useAuth();
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const handleLinkClick = () => {
+    setShowOffcanvas(false);
+  };
 
   return (
     <>
@@ -197,6 +200,7 @@ const MobileNavbar = ({ StaticData }) => {
                 className="w-50 me-2"
                 variant="outline-info"
                 size="sm"
+                onClick={handleLinkClick}
               >
                 Dashboard
               </Button>
@@ -224,15 +228,15 @@ const MobileNavbar = ({ StaticData }) => {
             </Container>
           )}
           <Nav className="flex-column ms-3 mt-2">
-            <Nav.Link as={Link} to="/" className="me-4">
+            <Nav.Link as={Link} to="/" className="me-4" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faHome} className="me-2" />
               {StaticData.Header.Header_Link_1}
             </Nav.Link>
-            <Nav.Link as={Link} to="/about" className="me-4">
+            <Nav.Link as={Link} to="/about" className="me-4" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faCircleInfo} className="me-2" />
               {StaticData.Header.Header_Link_2}
             </Nav.Link>
-            <Nav.Link as={Link} to="/contact" className="me-4">
+            <Nav.Link as={Link} to="/contact" className="me-4" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faAddressBook} className="me-2" />
               {StaticData.Header.Header_Link_3}
             </Nav.Link>
@@ -246,7 +250,7 @@ const MobileNavbar = ({ StaticData }) => {
             </Nav.Link>
             {showDropdown && (
               <Nav className="flex-column ms-3 mt-2">
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -254,7 +258,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Diabetes Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -262,7 +266,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Asthma Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -270,7 +274,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Cardiovascular Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -278,7 +282,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Arthritis Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -286,7 +290,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Heart and Strokes Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -294,7 +298,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Migraine Control Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}
@@ -302,7 +306,7 @@ const MobileNavbar = ({ StaticData }) => {
                   />
                   Bronchitis Analysis
                 </Nav.Link>
-                <Nav.Link as={Link} to="/features" className="me-4">
+                <Nav.Link as={Link} to="/features" className="me-4" onClick={handleLinkClick}>
                   <FontAwesomeIcon
                     className="fa-xs"
                     icon={faChevronRight}

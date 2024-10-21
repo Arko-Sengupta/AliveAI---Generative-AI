@@ -362,12 +362,12 @@ select.form-control:focus {
 }
 
 .report-value {
-  font-size: 0.65em;
+  font-size: 0.7em;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  border-right: 0.15em solid transparent;
+  border-right: 0.6em solid transparent;
   animation: typing 2s steps(30, end) forwards, blink-caret 0.75s;
   animation-delay: var(--animation-delay);
   box-sizing: border-box;
@@ -379,7 +379,7 @@ select.form-control:focus {
     border-color: transparent;
   }
   50% {
-    border-color: #1880a9;
+    border-color: black;
   }
 }
 

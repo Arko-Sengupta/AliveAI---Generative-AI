@@ -18,20 +18,25 @@ const donutData = [{ id: "1", Diabetic: 25, "Non-Diabetic": 75 }];
 
 // TODO: JSON to be replaced with API data
 const reportData = {
-  Name: "Arko Sengupta",
-  Email: "arko.sengupta@ex.com",
-  HbA1c: "value 1",
-  "Waist-to-hip ratio": "value 2",
-  BMI: "value 3",
+  "Name": "Arko Sengupta",
+  "Email": "arkosengupta9@gmail.com",
+  "HbA1c": "value 1",
+  "Waist-to-Hip Ratio": "value 2",
+  "BMI": "value 3",
   "Cholesterol Level": "value 4",
   "Diabetic Category": "Pre Diabetic",
   "Diabetic Percentage": "25",
 };
 
 // Select options
-const ageOptions = Array.from({ length: 110 }, (_, i) => ({
-  value: i + 1,
-  label: i + 1,
+const ageOptions = Array.from({ length: 100 - 18 + 1 }, (_, i) => ({
+  value: i + 18,
+  label: i + 18,
+}));
+
+const weightOptions = Array.from({ length: 150 - 40 + 1 }, (_, i) => ({
+  value: i + 40,
+  label: i + 40,
 }));
 
 const yesNoOptions = [
@@ -40,14 +45,14 @@ const yesNoOptions = [
 ];
 
 const dietaryOptions = [
-  { value: "nonveg", label: "Non-Vegetarian" },
+  { value: "nonveg", label: "Non-Veg" },
   { value: "veg", label: "Vegetarian" },
   { value: "keto", label: "Keto" },
   { value: "medi", label: "Mediterranean" },
   { value: "paleo", label: "Paleo" },
   { value: "vegan", label: "Vegan" },
   { value: "flexi", label: "Flexitarian" },
-  { value: "wholefood", label: "Whole Food Plant-based" },
+  { value: "wholefood", label: "Whole Food Plant-Based" },
   { value: "pesca", label: "Pescatarian" },
 ];
 
@@ -64,14 +69,13 @@ const generalUnits = [
 ];
 
 const fastingGlucoseUnits = [
-  { value: "unit1", label: "Unit 1" },
-  { value: "unit2", label: "Unit 2" },
+  { value: "mg/dL", label: "mg/dL" },
+  { value: "mg/L", label: "mg/L" },
 ];
 
 const genderOptions = [
   { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "transgender", label: "Transgender" },
+  { value: "female", label: "Female" }
 ];
 
 const heightUnits = [
@@ -285,7 +289,7 @@ const MenuDiabetes = () => {
       Swal.fire({
         icon: "warning",
         title: "Incorrect Input",
-        text: `The field '${name}' cannot be negative.`,
+        text: `The Field '${name}' cannot be Negative.`,
         timer: 3000,
         showConfirmButton: false,
       });
@@ -301,6 +305,7 @@ const MenuDiabetes = () => {
     let missingFields = Object.entries(formFields).filter(
       ([key, value]) => value === ""
     );
+
     if (missingFields.length > 0) {
       Swal.fire({
         icon: "warning",
@@ -309,15 +314,142 @@ const MenuDiabetes = () => {
         timer: 3000,
         showConfirmButton: false,
       });
-    } else {
-      setShowECG(true);
-      setShowReport(false);
-      setTimeout(() => {
-        setShowECG(false);
-        setShowReport(true);
-      }, 5000);
+      return; // Ensure to return after showing the alert
     }
+
+    const { Height, HeightUnit, HipCircumference, HipCircumferenceUnit, WaistCircumference, WaistCircumferenceUnit, FastingGlucose, FastingGlucoseUnit } = formFields;
+
+    // Validate Height
+    if (HeightUnit === "m") {
+      if (Height < 1.4 || Height > 2.0) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Height",
+          text: "Height should be between 1.4 and 2.0 m",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (HeightUnit === "ft") {
+      if (Height < 4.6 || Height > 6.5) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Height",
+          text: "Height should be between 4.6 and 6.5 ft",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    }
+
+    // Validate Hip Circumference
+    if (HipCircumferenceUnit === "cm") {
+      if (HipCircumference < 70 || HipCircumference > 160) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Hip Circumference",
+          text: "Hip Circumference should be between 70 and 160 cm",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (HipCircumferenceUnit === "m") {
+      if (HipCircumference < 0.7 || HipCircumference > 1.6) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Hip Circumference",
+          text: "Hip Circumference should be between 0.7 and 1.6 m",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (HipCircumferenceUnit === "in") {
+      if (HipCircumference < 27.5 || HipCircumference > 63) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Hip Circumference",
+          text: "Hip Circumference should be between 27.5 and 63 in",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    }
+
+    // Validate Waist Circumference
+    if (WaistCircumferenceUnit === "cm") {
+      if (WaistCircumference < 60 || WaistCircumference > 150) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Waist Circumference",
+          text: "Waist Circumference should be between 60 and 150 cm",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (WaistCircumferenceUnit === "m") {
+      if (WaistCircumference < 0.6 || WaistCircumference > 1.5) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Waist Circumference",
+          text: "Waist Circumference should be between 0.6 and 1.5 m",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (WaistCircumferenceUnit === "in") {
+      if (WaistCircumference < 23.5 || WaistCircumference > 69) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Waist Circumference",
+          text: "Waist Circumference should be between 23.5 and 69 in",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    }
+
+    // Validate Fasting Glucose
+    if (FastingGlucoseUnit === "mg/dL") {
+      if (FastingGlucose < 60 || FastingGlucose > 140) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Fasting Glucose",
+          text: "Fasting Blood Glucose should be between 60 and 140 mg/dL",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    } else if (FastingGlucoseUnit === "mg/L") {
+      if (FastingGlucose < 600 || FastingGlucose > 1400) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Fasting Glucose",
+          text: "Fasting Blood Glucose should be between 600 and 1400 mg/L",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return;
+      }
+    }
+
+    // Proceed if all validations pass
+    setShowECG(true);
+    setShowReport(false);
+    setTimeout(() => {
+      setShowECG(false);
+      setShowReport(true);
+    }, 5000);
   };
+
 
   return (
     <Container fluid>
@@ -356,9 +488,8 @@ const MenuDiabetes = () => {
           <InputField
             label="Weight (Kgs)"
             name="Weight"
-            type="number"
-            placeholder="Enter Weight"
-            min="1"
+            type="select"
+            options={weightOptions}
             handleChange={handleInputChange}
           />
           <InputField
