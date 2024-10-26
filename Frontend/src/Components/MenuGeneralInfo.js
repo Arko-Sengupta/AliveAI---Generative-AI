@@ -566,7 +566,7 @@ const MenuGeneralInfo = () => {
 
     console.log(errors);
 
-    if (Object.keys(errors).length != 0) {
+    if (Object.keys(errors).length !== 0) {
       console.log(errors);
 
       setButtonStatus(true);

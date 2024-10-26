@@ -173,7 +173,7 @@ const Login = ({ StaticData }) => {
           Swal.showValidationMessage("Please enter a valid email address");
           return false;
         }
-        if (email != "arkosengupta9@gmail.com") {
+        if (email !== "arkosengupta9@gmail.com") {
           Swal.showValidationMessage("Email does not exist");
           return false;
         }
