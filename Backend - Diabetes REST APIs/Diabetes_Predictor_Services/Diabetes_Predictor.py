@@ -62,13 +62,13 @@ class DiabetesPredictor:
             response.raise_for_status()
             return response.json()
         except requests.exceptions.HTTPError as http_err:
-            print(f"HTTP Error Occurred: {http_err}")
+            logging.error("HTTP Error Occurred: ", exc_info=http_err)
         except requests.exceptions.ConnectionError as conn_err:
-            print(f"Connection Error Occurred: {conn_err}")
+            logging.error("Connection Error Occurred: ", exc_info=conn_err)
         except requests.exceptions.Timeout as timeout_err:
-            print(f"Timeout Error Occurred: {timeout_err}")
+            logging.error("Timeout Error Occurred: ", exc_info=timeout_err)
         except requests.exceptions.RequestException as req_err:
-            print(f"Request Error Occurred: {req_err}")
+            logging.error("Request Error Occurred: ", exc_info=req_err)
         return None
     
     def Diabetes_Analyze(self, request_data):
