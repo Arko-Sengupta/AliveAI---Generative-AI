@@ -165,12 +165,18 @@ const Feedback = () => {
         icon: "error",
         title: "Empty Fields",
         text: "Please fill in all form fields before submitting.",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
       });
     } else {
       Swal.fire({
         icon: "success",
         title: "Message Sent",
         text: "Thank you for your feedback!",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
       });
       setFormData({ fullName: "", email: "", description: "" });
     }
