@@ -7,7 +7,7 @@ import {
   faUserMd,
   faFaceSmile,
   faUser,
-  faBuilding
+  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef, useEffect, useState } from "react";
@@ -169,7 +169,7 @@ const MedicalServices = ({ StaticData }) => {
     { icon: faClipboardList, text: "Patient Registration Data" },
     { icon: faCalendarAlt, text: "Health Check-Ups Analysis" },
     { icon: faComments, text: "Chatbot for Health Suggestions" },
-    { icon: faUserMd, text: "Doctor's Appointment" }
+    { icon: faUserMd, text: "Doctor's Appointment" },
   ];
 
   return (
@@ -185,8 +185,11 @@ const MedicalServices = ({ StaticData }) => {
         </Row>
         <Row className="py-2">
           <SlideUp>
-            <h6>Comprehensive AI-Powered Healthcare Services. Offering cutting-edge solutions for diagnostics,
-              treatment planning, and patient management across all medical fields.</h6>
+            <h6>
+              Comprehensive AI-Powered Healthcare Services. Offering
+              cutting-edge solutions for diagnostics, treatment planning, and
+              patient management across all medical fields.
+            </h6>
           </SlideUp>
         </Row>
         <SlideUp>
@@ -227,7 +230,6 @@ const MedicalServices = ({ StaticData }) => {
     </div>
   );
 };
-
 
 // Counter Component
 const Counter = () => {
@@ -271,16 +273,24 @@ const Counter = () => {
       threshold: 0.5,
     });
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const currentRef = counterRef.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [hasStarted, targetPatients, targetSpecialists, targetLocations, duration]);
+  }, [
+    hasStarted,
+    targetPatients,
+    targetSpecialists,
+    targetLocations,
+    duration,
+  ]);
 
   return (
     <div ref={counterRef} className="Counter-container-main">
@@ -295,7 +305,10 @@ const Counter = () => {
         </Row>
         <Row className="text-center py-2">
           <SlideUp>
-            <h6>Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.</h6>
+            <h6>
+              Meet the passionate innovators behind AliveAI, dedicated to
+              transforming the future of intelligent solutions.
+            </h6>
           </SlideUp>
         </Row>
         <SlideUp>

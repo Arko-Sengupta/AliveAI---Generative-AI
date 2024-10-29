@@ -482,13 +482,15 @@ const Counter = () => {
       threshold: 0.5,
     });
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const observedRef = counterRef.current;
+
+    if (observedRef) {
+      observer.observe(observedRef);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (observedRef) {
+        observer.unobserve(observedRef);
       }
     };
   }, [
