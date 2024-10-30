@@ -211,7 +211,10 @@ const MenuGeneralInfo = () => {
     }
 
     if (!validateEmail(formData.email)) {
-      setVerificationStatus({ ...verificationStatus, emailVerified: false });
+      setVerificationStatus((prevStatus) => ({
+        ...prevStatus,
+        emailVerified: false,
+      }));
       if (formData.email.trim().length === 0) {
         errors.email = "Email cannot be empty.";
       } else {
@@ -229,7 +232,10 @@ const MenuGeneralInfo = () => {
     }
 
     if (!validatePhoneNumber(formData.phoneNumber)) {
-      setVerificationStatus({ ...verificationStatus, phoneVerified: false });
+      setVerificationStatus((prevStatus) => ({
+        ...prevStatus,
+        phoneVerified: false,
+      }));
       if (formData.phoneNumber.trim().length === 0) {
         errors.phoneNumber = "Phone number cannot be empty.";
       } else {
@@ -566,7 +572,7 @@ const MenuGeneralInfo = () => {
 
     console.log(errors);
 
-    if (Object.keys(errors).length != 0) {
+    if (Object.keys(errors).length !== 0) {
       console.log(errors);
 
       setButtonStatus(true);

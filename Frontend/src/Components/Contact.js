@@ -12,6 +12,7 @@ import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import SlideUp from "../Components/Animations/SlideUp";
 import "../StyleSheets/About.css";
 import "../StyleSheets/Contact.css";
@@ -133,18 +134,53 @@ const center = {
 const Feedback = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "", //API key here
+    googleMapsApiKey: "", // Add your API key here
   });
 
   const mapRef = useRef(null);
-
   const onLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
-
   const onUnmount = useCallback(() => {
     mapRef.current = null;
   }, []);
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    description: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { fullName, email, description } = formData;
+
+    if (!fullName || !email || !description) {
+      Swal.fire({
+        icon: "error",
+        title: "Empty Fields",
+        text: "Please fill in all form fields before submitting.",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Message Sent",
+        text: "Thank you for your feedback!",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+      setFormData({ fullName: "", email: "", description: "" });
+    }
+  };
 
   return (
     <div className="feedback-container-main">
@@ -172,14 +208,15 @@ const Feedback = () => {
           </div>
           <div className="form-and-map">
             <div className="feedback-form">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
                     id="full-name"
-                    name="full-name"
+                    name="fullName"
                     placeholder="Full Name"
-                    required
+                    value={formData.fullName}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
@@ -188,7 +225,8 @@ const Feedback = () => {
                     id="email"
                     name="email"
                     placeholder="Email"
-                    required
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
@@ -197,7 +235,8 @@ const Feedback = () => {
                     name="description"
                     rows="4"
                     placeholder="Description"
-                    required
+                    value={formData.description}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <button className="form-button" type="submit">
@@ -269,13 +308,15 @@ const Counter = () => {
       threshold: 0.5,
     });
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const currentRef = counterRef.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [

@@ -11,9 +11,10 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "../StyleSheets/Footer.css";
 
 // Frontend UI
@@ -98,6 +99,42 @@ const WebFooterFeatureList = ({ Footer }) => {
 
 // Web Footer Enquiry Form Component [Main]
 const WebFooterEnquiry = ({ Footer }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+
+    if (!name || !email || !message) {
+      Swal.fire({
+        icon: "error",
+        title: "Empty Fields",
+        text: "Please fill in all form fields before submitting.",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Message Sent",
+        text: "Thank you for your enquiry!",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+      setFormData({ name: "", email: "", message: "" });
+    }
+  };
+
   return (
     <Col>
       <Row className="w-footer-title text-center">
@@ -106,18 +143,30 @@ const WebFooterEnquiry = ({ Footer }) => {
           <div className="underline"></div>
         </div>
       </Row>
-      {["Your Name", "Your Email", ""].map((placeholder, index) => (
+      {["Your Name", "Your Email", "Your Message"].map((placeholder, index) => (
         <Row className="col-8 mt-2" key={index}>
           <Form.Control
             style={{ marginLeft: "80px" }}
-            type={
-              placeholder
-                ? placeholder === "Your Email"
-                  ? "email"
-                  : "text"
-                : "text"
-            }
+            type={placeholder === "Your Email" ? "email" : "text"}
+            as={placeholder === "Your Message" ? "textarea" : "input"}
             placeholder={placeholder}
+            name={
+              placeholder === "Your Email"
+                ? "email"
+                : placeholder === "Your Name"
+                ? "name"
+                : "message"
+            }
+            value={
+              formData[
+                placeholder === "Your Email"
+                  ? "email"
+                  : placeholder === "Your Name"
+                  ? "name"
+                  : "message"
+              ]
+            }
+            onChange={handleChange}
           />
         </Row>
       ))}
@@ -125,6 +174,7 @@ const WebFooterEnquiry = ({ Footer }) => {
         <Button
           className="w-footer-form-button col-4 mt-2"
           variant="outline-info"
+          onClick={handleSubmit}
         >
           {Footer.Footer_Col_3.Footer_Col_3_Query_Form_Button}
         </Button>
@@ -250,27 +300,79 @@ const MobFooterFeature = ({ Footer, featureKeys }) => {
   );
 };
 
-// Form Input Component
-const FormInputRow = ({ placeholder, type = "text" }) => (
-  <Row className="m-footer-form mt-2">
-    <Form.Control className="mx-auto" type={type} placeholder={placeholder} />
-  </Row>
-);
-
-// Mobile Footer Enquiry Form [Main]
 const MobFooterEnquiry = ({ Footer }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+
+    if (!name || !email || !message) {
+      Swal.fire({
+        icon: "error",
+        title: "Empty Fields",
+        text: "Please fill in all form fields before submitting.",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Message Sent",
+        text: "Thank you for your enquiry!",
+        customClass: {
+          confirmButton: "btn-blue",
+        },
+      });
+      setFormData({ name: "", email: "", message: "" });
+    }
+  };
+
   return (
     <Col>
       <SectionHeader title={Footer.Footer_Col_3.Footer_Col_3_Title} />
-      {["Your Name", "Your Email", ""].map((placeholder, index) => (
-        <FormInputRow
-          key={index}
-          placeholder={placeholder}
-          type={placeholder === "Your Email" ? "email" : "text"}
+      <Row className="m-footer-form mt-2">
+        <Form.Control
+          className="mx-auto"
+          type="text"
+          placeholder="Your Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
         />
-      ))}
+      </Row>
+      <Row className="m-footer-form mt-2">
+        <Form.Control
+          className="mx-auto"
+          type="email"
+          placeholder="Your Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+      </Row>
+      <Row className="m-footer-form mt-2">
+        <Form.Control
+          className="mx-auto"
+          as="textarea"
+          placeholder="Your Message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+        />
+      </Row>
+
       <Row className="m-footer-form-button">
-        <Button className="mt-2" variant="outline-info">
+        <Button className="mt-2" variant="outline-info" onClick={handleSubmit}>
           {Footer.Footer_Col_3.Footer_Col_3_Query_Form_Button}
         </Button>
       </Row>
