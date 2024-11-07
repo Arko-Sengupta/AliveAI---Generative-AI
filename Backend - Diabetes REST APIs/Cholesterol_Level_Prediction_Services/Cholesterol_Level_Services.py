@@ -25,7 +25,7 @@ class CholesterolLevel:
         try:
             # Dummy Value
             users_data["Cholesterol Level"] = 205
-            return users_data, True
+            return users_data
         except Exception as e:
             logging.error("Error Occurred in Cholesterol Level Prediction: ", exc_info=e)
             raise e
@@ -57,9 +57,11 @@ class CholesterolPredictionAPI:
                 logging.warning("Request Authentication Failed.")
                 return jsonify({
                     "success": False,
+                    "data": {},
                     "message": "Authentication Failed."
                 }), 403
 
+            request_data = request_data["data"]
             users_data = self.cholesterol_level.Cholesterol_Predict(request_data)
 
             response = {
@@ -73,6 +75,7 @@ class CholesterolPredictionAPI:
             logging.error('An Error Occurred while Cholesterol Level Prediction: ', exc_info=e)
             return jsonify({
                 "success": False,
+                "data": {},
                 "message": "Failed to Predict Cholesterol"
             }), 500
 

@@ -35,7 +35,7 @@ class DiabetesCategory:
             elif users_data["Diabetes"] > 0.75 and users_data["Diabetes"] <= 1.0:
                 users_data["Diabetes Category"] = "Type-3 Diabetes"
             
-            return users_data, True
+            return users_data
         except Exception as e:
             logging.error("Error Occurred in Diabetes Category Prediction: ", exc_info=e)
             raise e
@@ -67,9 +67,11 @@ class DiabetesPredictionAPI:
                 logging.warning("Request Authentication Failed.")
                 return jsonify({
                     "success": False,
+                    "data": {},
                     "message": "Authentication Failed."
                 }), 403
 
+            request_data = request_data["data"]
             users_data = self.diabetes_category.Diabetes_Predict(request_data)
 
             response = {
@@ -83,6 +85,7 @@ class DiabetesPredictionAPI:
             logging.error('An Error Occurred while Diabetes Category Prediction: ', exc_info=e)
             return jsonify({
                 "success": False,
+                "data": {},
                 "message": "Failed to Predict Diabetes"
             }), 500
 

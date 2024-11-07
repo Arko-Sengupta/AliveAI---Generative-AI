@@ -56,9 +56,15 @@ class DiabetesPredictor:
             logging.error("An Error Occured: ", exc_info=e)
             raise e
 
-    def Unit_Converter(self, url, request_data):
+    def Unit_Converter(self, request_data):
         try:
-            response = requests.post(url, json=request_data)
+            request_data = {
+                "user": self.Diabetes_Main_AuthName,
+                "password": self.Diabetes_Main_AuthPassword,
+                "token": self.Unit_Converter_AuthToken,
+                "data": request_data
+            }
+            response = requests.post(self.Unit_Converter_Endpoint, json=request_data)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.HTTPError as http_err:
@@ -69,7 +75,7 @@ class DiabetesPredictor:
             logging.error("Timeout Error Occurred: ", exc_info=timeout_err)
         except requests.exceptions.RequestException as req_err:
             logging.error("Request Error Occurred: ", exc_info=req_err)
-        return None
+        return {}
     
     def Diabetes_Analyze(self, request_data):
         try:
@@ -80,14 +86,13 @@ class DiabetesPredictor:
             if not bool:
                 return bool, "Features or Values Missing", request_data_copy
             
-            # Convert the User Data to standard Units           
-            request_data["token"] = self.Unit_Converter_AuthToken
-            request_data = self.Unit_Converter(self.Unit_Converter_Endpoint, request_data)
+            # Convert the User Data to Standard Units           
+            request_data = self.Unit_Converter(request_data)
             if request_data["success"] == False:
                 return False, "Error Occured while Unit Conversion", request_data_copy
-            request_data = request_data["data"]
             
             # Calculate Derived Features
+            request_data = request_data["data"]
             
             # Predict Cholesterol Level
             # request_data["user"] = self.Diabetes_Main_AuthName
@@ -126,9 +131,11 @@ class DiabetesPredictorAPI:
                 logging.warning("Request Authentication Failed.")
                 return jsonify({
                     "success": False,
+                    "data": {},
                     "message": "Authentication Failed."
                 }), 403
 
+            request_data = request_data["data"]
             bool, message, prediction = self.diabetes_predictor.Diabetes_Analyze(request_data)
 
             response = {
@@ -142,7 +149,8 @@ class DiabetesPredictorAPI:
             logging.error('An Error Occurred while Diabetes Prediction: ', exc_info=e)
             return jsonify({
                 "success": False,
-                "message": "Failed to Predict Diabetes"
+                "data": {},
+                "message": f"Failed to Predict Diabetes: {e}"
             }), 500
 
     def run(self) -> None:

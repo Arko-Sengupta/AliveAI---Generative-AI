@@ -89,9 +89,11 @@ class UnitConverterAPI:
                 logging.warning("Request Authentication Failed.")
                 return jsonify({
                     "success": False,
+                    "data": {},
                     "message": "Authentication Failed."
                 }), 403
 
+            request_data = request_data["data"]
             converted_data = {
                 "Age": request_data["Age"],
                 "Gender": request_data["Gender"],
@@ -121,6 +123,7 @@ class UnitConverterAPI:
             logging.error('An Error Occurred while Converting Units: ', exc_info=e)
             return jsonify({
                 "success": False,
+                "data": {},
                 "message": "Failed to Convert Units"
             }), 500
 
