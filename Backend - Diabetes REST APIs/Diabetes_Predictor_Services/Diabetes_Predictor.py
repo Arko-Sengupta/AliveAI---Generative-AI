@@ -20,102 +20,130 @@ port = int(os.getenv('PORT', 5000))
 class DiabetesPredictor:
     def __init__(self) -> None:
         self.keys = [
-                     "Age",
-                     "Gender",
-                     "Weight",
-                     "Height",
-                     "Family History",
-                     "Physical Activity Level",
-                     "Dietary Habits",
-                     "Ethinicity/Race",
-                     "Medication Use",
-                     "Sleep Quality",
-                     "Stress Levels",
-                     "Waist Circumference",
-                     "Hip Circumference",
-                     "Smoking Status",
-                     "Fasting Blood Glucose"
-                     ]
+            "Age", "Gender", "Weight", "Height", "Family History", "Physical Activity Level",
+            "Dietary Habits", "Ethinicity/Race", "Medication Use", "Sleep Quality", "Stress Levels",
+            "Waist Circumference", "Hip Circumference", "Smoking Status", "Fasting Blood Glucose"
+        ]
         self.Diabetes_Main_AuthName = os.getenv("AUTH_NAME")
         self.Diabetes_Main_AuthPassword = os.getenv("AUTH_PASSWORD")
         self.Diabetes_Main_AuthToken = os.getenv("AUTH_TOKEN")
         self.Unit_Converter_AuthToken = os.getenv("UNIT_AUTH_TOKEN")
         self.Unit_Converter_Endpoint = os.getenv("UNIT_URL")
-    
-    def Iterate_None(self, request_data):
-        try:
-            for key in self.keys:
-                if key not in request_data.keys():
-                    return False, request_data
-                
-            for value in request_data.values():
-                if value == None or value == "":
-                    return False, request_data
-            return True, request_data
-        except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
+        self.Cholesterol_Level_AuthToken = os.getenv("CHOL_AUTH_TOKEN")
+        self.Cholesterol_Level_Endpoint = os.getenv("CHOL_URL")
+        self.Diabetes_Cat_AuthToken = os.getenv("DIA_AUTH_TOKEN")
+        self.Diabetes_Cat_Endpoint = os.getenv("DIA_URL")
+        
+    def Handle_Request_Error(self, error: Exception) -> dict:
+        """Handles and Logs Errors that Occur during API Requests."""
+        logging.error("An Error Occurred: ", exc_info=error)
+        return {"success": False, "message": str(error), "data": {}}
 
-    def Unit_Converter(self, request_data):
+    def Unit_Remover(self, request_data: dict) -> dict:
+        """Removes Units from certain columns in the Request Data."""
+        unit_columns = ["Fasting Blood Glucose", "Height", "Waist Circumference", "Hip Circumference"]
+        for col in unit_columns:
+            request_data[col] = request_data[col][0]
+        return request_data
+    
+    def Iterate_None(self, request_data: dict) -> tuple:
+        """Checks if all required keys are present and have Valid Values."""
+        for key in self.keys:
+            if key not in request_data.keys():
+                return False, request_data
+            
+        for value in request_data.values():
+            if value == None or value == "":
+                return False, request_data
+        return True, request_data
+
+    def Unit_Converter(self, request_data: dict) -> dict:
+        """Converts user data to standard units via an external service."""
+        payload = {
+            "user": self.Diabetes_Main_AuthName,
+            "password": self.Diabetes_Main_AuthPassword,
+            "token": self.Unit_Converter_AuthToken,
+            "data": request_data
+        }
         try:
-            request_data = {
-                "user": self.Diabetes_Main_AuthName,
-                "password": self.Diabetes_Main_AuthPassword,
-                "token": self.Unit_Converter_AuthToken,
-                "data": request_data
-            }
-            response = requests.post(self.Unit_Converter_Endpoint, json=request_data)
+            response = requests.post(self.Unit_Converter_Endpoint, json=payload)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.HTTPError as http_err:
-            logging.error("HTTP Error Occurred: ", exc_info=http_err)
-        except requests.exceptions.ConnectionError as conn_err:
-            logging.error("Connection Error Occurred: ", exc_info=conn_err)
-        except requests.exceptions.Timeout as timeout_err:
-            logging.error("Timeout Error Occurred: ", exc_info=timeout_err)
-        except requests.exceptions.RequestException as req_err:
-            logging.error("Request Error Occurred: ", exc_info=req_err)
-        return {}
-    
-    def Diabetes_Analyze(self, request_data):
+        except requests.exceptions.RequestException as e:
+            return self.Handle_Request_Error(e)
+
+    def Cholesterol_Prediction(self, request_data: dict) -> dict:
+        """Predicts cholesterol levels based on the request data."""
+        payload = {
+            "user": self.Diabetes_Main_AuthName,
+            "password": self.Diabetes_Main_AuthPassword,
+            "token": self.Cholesterol_Level_AuthToken,
+            "data": request_data
+        }
         try:
-            request_data_copy = request_data
-            
-            # Check whether all the Features are present with it's values.
-            bool, request_data = self.Iterate_None(request_data)
-            if not bool:
-                return bool, "Features or Values Missing", request_data_copy
-            
-            # Convert the User Data to Standard Units           
-            request_data = self.Unit_Converter(request_data)
-            if request_data["success"] == False:
-                return False, "Error Occured while Unit Conversion", request_data_copy
-            
+            response = requests.post(self.Cholesterol_Level_Endpoint, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            return self.Handle_Request_Error(e)
+
+    def Diabetes_Prediction(self, request_data: dict) -> dict:
+        """Predicts diabetes category based on the request data."""
+        payload = {
+            "user": self.Diabetes_Main_AuthName,
+            "password": self.Diabetes_Main_AuthPassword,
+            "token": self.Diabetes_Cat_AuthToken,
+            "data": request_data
+        }
+        try:
+            response = requests.post(self.Diabetes_Cat_Endpoint, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            return self.Handle_Request_Error(e)
+
+    def diabetes_analyze(self, request_data: dict) -> tuple:
+        """Analyzes the diabetes data, performs predictions, and returns the results."""
+        try:
+            valid, request_data = self.Iterate_None(request_data)
+            if not valid:
+                return False, "Features or Values Missing", request_data
+
+            # Convert units
+            response = self.Unit_Converter(request_data)
+            if not response.get("success", False):
+                return False, "Error Occurred while Unit Conversion", request_data
+
+            # Clean and Normalize Data
+            request_data = self.Unit_Remover(response["data"])
+
             # Calculate Derived Features
-            request_data = request_data["data"]
-            
-            # Predict Cholesterol Level
-            # request_data["user"] = self.Diabetes_Main_AuthName
-            # request_data["password"] = self.Diabetes_Main_AuthPassword
-            # request_data["token"] = self.Diabetes_Main_AuthToken
-            
-            return True, "Diabetes Prediction Success!", request_data
+            request_data["HbA1c"] = (request_data["Fasting Blood Glucose"] + 46.7) / 28.7
+            request_data["Waist-to-Hip Ratio"] = request_data["Waist Circumference"] / request_data["Hip Circumference"]
+            request_data["BMI"] = request_data["Weight"] / (request_data["Height"] ** 2)
+
+            # Predict Cholesterol and Diabetes
+            request_data = self.Cholesterol_Prediction(request_data)
+            diabetes_response = self.Diabetes_Prediction(request_data["data"])
+
+            return True, "Diabetes Prediction Success!", diabetes_response.get("data", {})
         except Exception as e:
-            logging.error("An Error Occured: ", exc_info=e)
-            raise e
+            logging.error("An error occurred during diabetes analysis: ", exc_info=e)
+            return self.Handle_Request_Error(e)
+
 
 class DiabetesPredictorAPI:
     
     def __init__(self) -> None:
         """Initializes the Flask App and sets up the Blueprint."""
         self.app = Flask(__name__)
-        self.diabetes_predictor = DiabetesPredictor()
+        self.Diabetes_Predictor = DiabetesPredictor()
         self.blueprint = Blueprint('diabetes_predictor', __name__)
         self.blueprint.add_url_rule('/diabetes_predictor', 'diabetes_predictor', self.Diabetes_Predict, methods=['POST'])
         self.app.register_blueprint(self.blueprint)
         
     def Authenticate_Request(self, req_data: dict) -> bool:
-        """Authenticates the Incoming Request based on Environment-Stored Credentials."""
+        """Authenticates the Incoming request using Environment-Stored Credentials."""
         return (
             req_data.get("user") == os.getenv("AUTH_NAME") and
             req_data.get("password") == os.getenv("AUTH_PASSWORD") and
@@ -123,34 +151,25 @@ class DiabetesPredictorAPI:
         )
 
     def Diabetes_Predict(self) -> Response:
-        """Predicts the Diabetes based on Incoming request Data."""
+        """Predicts Diabetes based on Incoming Request Data."""
         try:
             request_data = request.get_json()
 
             if not self.Authenticate_Request(request_data):
-                logging.warning("Request Authentication Failed.")
-                return jsonify({
-                    "success": False,
-                    "data": {},
-                    "message": "Authentication Failed."
-                }), 403
+                logging.warning("Request authentication failed.")
+                return jsonify({"success": False, "message": "Authentication Failed.", "data": {}}), 403
 
             request_data = request_data["data"]
-            bool, message, prediction = self.diabetes_predictor.Diabetes_Analyze(request_data)
+            success, message, prediction = self.Diabetes_Predictor.diabetes_analyze(request_data)
 
-            response = {
-                "success": bool,
-                "data": prediction,
-                "message": message
-            }
-            return jsonify(response), 200
+            return jsonify({"success": success, "message": message, "data": prediction}), 200
 
         except Exception as e:
-            logging.error('An Error Occurred while Diabetes Prediction: ', exc_info=e)
+            logging.error('An error occurred during diabetes prediction: ', exc_info=e)
             return jsonify({
                 "success": False,
-                "data": {},
-                "message": f"Failed to Predict Diabetes: {e}"
+                "message": f"Failed to predict diabetes: {e}",
+                "data": {}
             }), 500
 
     def run(self) -> None:
@@ -164,5 +183,5 @@ class DiabetesPredictorAPI:
 
 if __name__ == '__main__':
     
-    diabetes_predictor_api = DiabetesPredictorAPI()
-    diabetes_predictor_api.run()
+    Diabetes_Predictor_api = DiabetesPredictorAPI()
+    Diabetes_Predictor_api.run()
