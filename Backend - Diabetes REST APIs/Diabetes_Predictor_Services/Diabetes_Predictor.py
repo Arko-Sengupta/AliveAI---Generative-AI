@@ -135,7 +135,7 @@ class DiabetesPredictor:
 
             return True, "Diabetes Prediction Success!", diabetes_response.get("data", {})
         except Exception as e:
-            logging.error("An error occurred during diabetes analysis: ", exc_info=e)
+            logging.error("An Error Occurred during Diabetes Analysis: ", exc_info=e)
             return self.Handle_Request_Error(e)
 
 class DiabetesPredictorAPI:
@@ -171,7 +171,7 @@ class DiabetesPredictorAPI:
             return jsonify({"success": success, "message": message, "data": prediction}), 200
 
         except Exception as e:
-            logging.error('An error occurred during diabetes prediction: ', exc_info=e)
+            logging.error('An Error Occurred during Diabetes Prediction: ', exc_info=e)
             return jsonify({
                 "success": False,
                 "message": f"Failed to predict diabetes: {e}",
