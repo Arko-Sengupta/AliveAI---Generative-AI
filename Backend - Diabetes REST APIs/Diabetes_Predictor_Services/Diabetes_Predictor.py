@@ -105,14 +105,16 @@ class DiabetesPredictor:
     def diabetes_analyze(self, request_data: dict) -> tuple:
         """Analyzes the diabetes data, performs predictions, and returns the results."""
         try:
+            request_data_copy = request_data
+            
             valid, request_data = self.Iterate_None(request_data)
             if not valid:
-                return False, "Features or Values Missing", request_data
+                return False, "Features or Values Missing", request_data_copy
 
             # Convert units
             response = self.Unit_Converter(request_data)
             if not response.get("success", False):
-                return False, "Error Occurred while Unit Conversion", request_data
+                return False, "Error Occurred while Unit Conversion", request_data_copy
 
             # Clean and Normalize Data
             request_data = self.Unit_Remover(response["data"])
@@ -124,13 +126,17 @@ class DiabetesPredictor:
 
             # Predict Cholesterol and Diabetes
             request_data = self.Cholesterol_Prediction(request_data)
+            if not response.get("success", False):
+                return False, "Error Occurred while Cholesterol Prediction", request_data_copy
+            
             diabetes_response = self.Diabetes_Prediction(request_data["data"])
+            if not response.get("success", False):
+                return False, "Error Occurred while Diabetes Prediction", request_data_copy
 
             return True, "Diabetes Prediction Success!", diabetes_response.get("data", {})
         except Exception as e:
             logging.error("An error occurred during diabetes analysis: ", exc_info=e)
             return self.Handle_Request_Error(e)
-
 
 class DiabetesPredictorAPI:
     
