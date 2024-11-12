@@ -1,7 +1,10 @@
 import os
+import pickle
 import logging
+import pandas as pd
 from dotenv import load_dotenv
 from flask import Blueprint, Flask, jsonify, request, Response
+from RandomForest import RandomForestPredictor
 
 # Set Up Logging
 logging.basicConfig(
@@ -23,8 +26,11 @@ class CholesterolLevel:
     def Cholesterol_Predict(self, users_data: dict) -> tuple:
         """Predicts the Cholesterol Level based on User's General Data."""
         try:
-            # Dummy Value
-            users_data["Cholesterol Level"] = 205
+            X_new = pd.DataFrame([users_data])
+            with open('model.pkl', 'rb') as file:
+                predictor = pickle.load(file)
+            
+            users_data["Cholesterol Level"] = predictor.predict(X_new)
             return users_data
         except Exception as e:
             logging.error("Error Occurred in Cholesterol Level Prediction: ", exc_info=e)
