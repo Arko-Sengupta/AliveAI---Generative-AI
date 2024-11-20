@@ -1,7 +1,10 @@
 import os
+import pickle
 import logging
+import pandas as pd
 from dotenv import load_dotenv
 from flask import Blueprint, Flask, jsonify, request, Response
+from LogisticRegression import LogisticRegressionPredictor
 
 # Set Up Logging
 logging.basicConfig(
@@ -23,8 +26,11 @@ class DiabetesCategory:
     def Diabetes_Predict(self, users_data: dict) -> tuple:
         """Predicts the Diabetes Category based on User's General Data."""
         try:
-            # Dummy Value
-            users_data["Diabetes"] = 0.97654
+            X_new = pd.DataFrame([users_data])
+            with open('lr_model.pkl', 'rb') as file:
+                predictor = pickle.load(file)
+                
+            users_data["Diabetes"] = predictor.predict(X_new)[0]
             
             if users_data["Diabetes"] <= 0.25:
                 users_data["Diabetes Category"] = "Pre-Diabetic"
