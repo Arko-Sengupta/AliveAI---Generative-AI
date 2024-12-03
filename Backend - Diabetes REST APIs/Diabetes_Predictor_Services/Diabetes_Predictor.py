@@ -88,13 +88,13 @@ class DiabetesPredictor:
             return self.Handle_Request_Error(e)
 
     def Diabetes_Prediction(self, request_data: dict) -> dict:
-        """Predicts diabetes category based on the request data."""
+        """Predicts diabetes category based on the request data."""        
         payload = {
             "user": self.Diabetes_Main_AuthName,
             "password": self.Diabetes_Main_AuthPassword,
             "token": self.Diabetes_Cat_AuthToken,
             "data": request_data
-        }
+        }   
         try:
             response = requests.post(self.Diabetes_Cat_Endpoint, json=payload)
             response.raise_for_status()
@@ -126,11 +126,24 @@ class DiabetesPredictor:
 
             # Predict Cholesterol and Diabetes
             request_data = self.Cholesterol_Prediction(request_data)
-            if not response.get("success", False):
+            if not request_data.get("success", False):
                 return False, "Error Occurred while Cholesterol Prediction", request_data_copy
+            request_data["data"]["Ethinicity/Race"] = request_data["data"].pop("Ethnicity/Race")
             
-            diabetes_response = self.Diabetes_Prediction(request_data["data"])
-            if not response.get("success", False):
+            # Prepare Data for Diabetes Prediction
+            diabetes_data = {}
+            for key in [
+                           'Age', 'Gender', 'Weight', 'Height', 'Family History',
+                           'Physical Activity Level', 'Dietary Habits', 'Ethinicity/Race',
+                           'Medication Use', 'Sleep Quality', 'Stress Levels',
+                           'Waist Circumference', 'Hip Circumference', 'Smoking Status',
+                           'Fasting Blood Glucose', 'HbA1c', 'Waist-to-Hip Ratio',
+                           'BMI', 'Cholesterol Level'
+                       ]:
+                diabetes_data[key] = request_data["data"][key]
+            
+            diabetes_response = self.Diabetes_Prediction(diabetes_data)
+            if not diabetes_response.get("success", False):
                 return False, "Error Occurred while Diabetes Prediction", request_data_copy
 
             return True, "Diabetes Prediction Success!", diabetes_response.get("data", {})
@@ -162,7 +175,7 @@ class DiabetesPredictorAPI:
             request_data = request.get_json()
 
             if not self.Authenticate_Request(request_data):
-                logging.warning("Request authentication failed.")
+                logging.warning("Request Authentication Failed.")
                 return jsonify({"success": False, "message": "Authentication Failed.", "data": {}}), 403
 
             request_data = request_data["data"]
