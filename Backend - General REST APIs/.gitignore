@@ -6,3 +6,6 @@
 /Login_Services/.env
 /SignUp_Services/.env
 /Query_Services/.env
+/Forget_Password_Services/.env
+/Update_Password_Services/.env
+/Update_Data_Services/.env

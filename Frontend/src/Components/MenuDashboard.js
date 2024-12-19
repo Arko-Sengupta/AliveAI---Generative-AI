@@ -10,25 +10,25 @@ import LineChart from "./Utils/LineChart";
 const MenuDashboard = () => {
   // Donut Chart properties
   const donutData = [
-    { id: "1", Diabetic: 25, "Non-Diabetic": 75 },
-    { id: "2", Risk: 25, Health: 75 },
-    { id: "3", Risk: 25, Health: 75 },
-    { id: "4", Risk: 25, Health: 75 },
-    { id: "5", Risk: 25, Health: 75 },
-    { id: "6", Risk: 25, Health: 75 },
-    { id: "7", Risk: 25, Health: 75 },
-    { id: "8", Risk: 25, Health: 75 },
+    { id: "1", "Diabetic": 25, "Non-Diabetic": 75 },
+    { id: "2", "Asthmatic": 0, "Non-Asthmatic": 100 },
+    { id: "3", "Cadiovas": 0, "Healthy-Cadiovas": 100 },
+    { id: "4", "Arthritic": 0, "Non-Arthritic": 100 },
+    { id: "5", "Stroke": 0, "Non-Stroke": 100 },
+    { id: "6", "Migrane": 0, "Non-Migrane": 100 },
+    { id: "7","Bronchitic": 0, "Non-Bronchitic": 100 },
+    { id: "8", "Liver": 0, "Healthy-Liver": 100 },
   ];
 
   const features = [
-    "Diabetic",
-    "Feature 2",
-    "Feature 3",
-    "Feature 4",
-    "Feature 5",
-    "Feature 6",
-    "Feature 7",
-    "Feature 8",
+    "Diabetes",
+    "Asthma",
+    "Cadiovascular",
+    "Arthritis",
+    "Heart & Stroke ",
+    "Migrane",
+    "Bronchitis",
+    "Liver Condition",
   ];
 
   // Common properties for Line and Bar chart
@@ -37,7 +37,7 @@ const MenuDashboard = () => {
 
   // Line Chart properties
   const peopleData = features.map(() => 25);
-  const userData = [75, 35, 20, 50, 45, 85, 10, 95];
+  const userData = [25, 0, 0, 0, 0, 0, 0, 0];
   const featureLabel = "Health Features";
 
   // Bar Chart properties
