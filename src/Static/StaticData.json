@@ -1,0 +1,430 @@
+{
+  "Header": {
+    "Header_Link_1": "Home",
+    "Header_Link_2": "About Us",
+    "Header_Link_3": "Contact Us",
+    "Header_Link_4": "Feature",
+    "Header_Login_Button": "Login",
+    "Header_SignUp_Button": "SignUp"
+  },
+
+  "Home": {
+    "Home_Cover": {
+      "Home_Cover_Title": "Are you ready for the biggest revolution of the century?",
+      "Home_Cover_Sub_Title": "Alive AI is here. Start your Medical Diagnosis Today.",
+      "Home_Cover_Learn_More_Button": "Learn More"
+    },
+
+    "Home_Departments": {
+      "Home_Departments_Title": "Our Departments",
+      "Home_Departments_Sub_Title": "Specialized Medical Departments. Integrating advanced AI technologies across various healthcare domains for precision and personalized care.",
+      "Home_Departments_FeatureIcon": {
+        "Home_Departments_FeatureIcon_Icon_1": "Diabetes Analysis",
+        "Home_Departments_FeatureIcon_Icon_2": "Asthma Analysis",
+        "Home_Departments_FeatureIcon_Icon_3": "Cardiovascular Analysis",
+        "Home_Departments_FeatureIcon_Icon_4": "Arthritis Analysis",
+        "Home_Departments_FeatureIcon_Icon_5": "Heart and Strokes Analysis",
+        "Home_Departments_FeatureIcon_Icon_6": "Migraine Control Analysis",
+        "Home_Departments_FeatureIcon_Icon_7": "Bronchitis Analysis",
+        "Home_Departments_FeatureIcon_Icon_8": "Liver Condition Analysis"
+      }
+    },
+
+    "Home_Summary": {
+      "Home_Summary_Title": "What we do?",
+      "Home_Summary_Subtitle": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
+      "Home_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
+      "Home_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
+      "Home_Summary_Key_1": "Patient Data Privacy",
+      "Home_Summary_Key_2": "Health Diagnosis",
+      "Home_Summary_Key_3": "Assure Quality Treatment",
+      "Home_Summary_Read_More_Button": "Read More"
+    },
+
+    "Home_Founders": {
+      "Home_Founders_Title": "Meet Our Founders",
+      "Home_Founders_Sub_Title": "Meet the Visionaries Behind AliveAI. Harnessing AI to Revolutionize Healthcare with Cutting-Edge Medical Insights and Personalized Patient Care.",
+      "Home_Founders_Members": {
+        "Home_Founders_Members_Member_1": "Member 1",
+        "Home_Founders_Members_Member_2": "Member 2",
+        "Home_Founders_Members_Member_3": "Member 3",
+        "Home_Founders_Members_Member_4": "Member 4"
+      },
+      "Home_Founders_Designations": {
+        "Home_Founders_Designations_Designation_1": "Designation 1",
+        "Home_Founders_Designations_Designation_2": "Designation 2",
+        "Home_Founders_Designations_Designation_3": "Designation 3",
+        "Home_Founders_Designations_Designation_4": "Designation 4"
+      }
+    },
+
+    "Home_Review": {
+      "Home_Review_Title": "Our Patients Say About Us",
+      "Home_Review_Sub_Title": "AliveAI Patient Pulse: Real-time Feedback Hub — Amplify Patient Voices, Enhance Care, and Drive Continuous Improvement Efforts!",
+      "Home_Review_Patient_1": {
+        "Home_Review_Patient_Name": "J.K.Rowling",
+        "Home_Review_Patient_Designation": "Author & Philanthropist",
+        "Home_Review_Patient_Review": "AliveAI has transformed our clinic's diagnostic process. The AI's accuracy and user-friendly interface have significantly improved patient outcomes!"
+      },
+      "Home_Review_Patient_2": {
+        "Home_Review_Patient_Name": "Jerry Springer",
+        "Home_Review_Patient_Designation": "Primary News Anchor & Managing Editor",
+        "Home_Review_Patient_Review": "AliveAI is indispensable in my daily practice. It saves time on paperwork and provides highly accurate diagnostic suggestions!"
+      }
+    },
+
+    "Home_Gallery": {
+      "Home_Gallery_Title": "Our Gallery",
+      "Home_Gallery_Sub_Title": "Explore AliveAI's Gallery: Showcasing Innovative Medical IT Solutions and Advanced Technologies for Enhanced Healthcare and Patient Outcomes."
+    }
+  },
+
+  "About": {
+    "About_Cover": {
+      "About_Cover_Title": "Home -> About Us",
+      "About_Cover_Sub_Title": "Alive AI: Revolutionizing Healthcare with Intelligent Solutions. Transforming Health through Cutting-edge AI Technology."
+    },
+
+    "About_Summary": {
+      "About_Summary_Title": "What we do?",
+      "About_Summary_Subtitle": "Revolutionizing Healthcare. Your Gateway to Personalized Medicine and AI-driven Health Insights for a Brighter Future in Wellness.",
+      "About_Summary_Content_P1": "AliveAI is a comprehensive solution designed to streamline healthcare processes, enhance patient care, and improve efficiency for healthcare providers. With a user-friendly interface and robust features, our platform integrates electronic health records (EHR), medical billing, scheduling, telemedicine, and patient communication tools into one cohesive system.",
+      "About_Summary_Content_P2": "AliveAI prioritizes security and compliance with healthcare regulations, ensuring patient data remains protected at all times. By leveraging advanced technology, we aim to empower healthcare professionals to deliver superior care while optimizing administrative workflows.",
+      "About_Summary_Key_1": "Patient Data Privacy",
+      "About_Summary_Key_2": "Health Diagnosis",
+      "About_Summary_Key_3": "Assure Quality Treatment",
+      "About_Summary_Read_More_Button": "Read More"
+    }
+  },
+
+  "Login": {
+    "Login_Signup_Account": "Sign into your Account",
+    "Login_Button": "Login",
+    "Login_Forgot_Password": "Forgot Password?",
+    "Login_Account_Exists": "Don't have an account?",
+    "Login_Signup": "Register Here"
+  },
+
+  "SignUp": {
+    "SignUp_Create_Account": "Create a New Account",
+    "SignUp_Button": "Sign Up",
+    "SingUp_Account_Exist": "Already have an account?",
+    "SignUp_Login_Redirect": "Login Here"
+  },
+
+  "Footer": {
+    "Footer_Col_1": {
+      "Footer_Col_1_Title": "Find Us",
+      "Footer_Col_1_Description": "Locate us easily! Find AliveAI HQ. Seamless integration, precise directions, and real-time updates. Explore now!",
+      "Footer_Col_1_Address": "1511 Bridges Court Fremont, CA-94536 USA",
+      "Footer_Col_1_Mail": "enquiry@alive.ai",
+      "Footer_Col_1_Phone": "+1 987 654 321"
+    },
+
+    "Footer_Col_2": {
+      "Footer_Col_2_Title": "Quick Links",
+      "Footer_Col_2_Feature_1": "Diabetes Analysis",
+      "Footer_Col_2_Feature_2": "Asthma Analysis",
+      "Footer_Col_2_Feature_3": "Cardiovascular Analysis",
+      "Footer_Col_2_Feature_4": "Arthritis Analysis",
+      "Footer_Col_2_Feature_5": "Heart and Strokes Analysis",
+      "Footer_Col_2_Feature_6": "Migraine Control Analysis",
+      "Footer_Col_2_Feature_7": "Bronchitis Analysis",
+      "Footer_Col_2_Feature_8": "Liver Condition Analysis"
+    },
+
+    "Footer_Col_3": {
+      "Footer_Col_3_Title": "Ask Query",
+      "Footer_Col_3_Query_Form_Button": "Send"
+    },
+
+    "Footer_Copyright": {
+      "Footer_Copyright_Title": "Copyright © 2024 | AliveAI"
+    }
+  },
+
+  "Credentials": {
+    "googleMapApiKey": "AIzaSyA4iceFh32hLv0jrF4pRhXRaJHVEmlmyCY",
+    "testEmail": "arkosengupta9@gmail.com",
+    "testPassword": "Arko@1234",
+    "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiZW1haWwiOiJ0ZXN0dXNlckBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjEwNzU4MjI2LCJleHAiOjE2MTA3NjE4MjZ9.02F2ZuK3GOl9BptxIjJh1AZLa_Eklj4P9hZjCv7uPVU",
+    "emailOtp": "123456",
+    "phoneOtp": "654321"
+  },
+
+  "Dashboard": {
+    "Dashboard_Menu_Dashboard": "Dashboard",
+    "Dashboard_Menu_General_Info": "General Information",
+    "Dashboard_Menu_Health_Analysis": "Health Analysis",
+    "Dashboard_Menu_Diabetes": "Diabetes Analysis",
+    "Dashboard_Menu_Chatbot": "Chatbot",
+    "Dashboard_Menu_Appointments": "Appointments",
+    "Dashboard_Welcome": "Welcome to the Dashboard!"
+  },
+
+  "UserDashboard": {
+    "UserDashboard_Title": "USER DASHBOARD"
+  },
+
+  "GeneralInfo": {
+    "GeneralInfo_Title": "USER GENERAL INFORMATION",
+    "GeneralInfo_FullName": "Full Name",
+    "GeneralInfo_Username": "Username",
+    "GeneralInfo_Email": "Email",
+    "GeneralInfo_Password": "Password",
+    "GeneralInfo_Phone": "Phone Number",
+    "GeneralInfo_Address": "Address",
+    "GeneralInfo_CountryCode": "Country Code",
+    "GeneralInfo_Verify": "Verify",
+    "GeneralInfo_Cancel": "Cancel",
+    "GeneralInfo_Save": "Save",
+    "GeneralInfo_Saved": "Saved",
+    "GeneralInfo_Delete": "Delete",
+    "GeneralInfo_EmailVerification": "Email Verification",
+    "GeneralInfo_PhoneVerification": "Phone Number Verification",
+    "GeneralInfo_EnterOtp": "Enter OTP",
+    "GeneralInfo_ResetPassword": "Reset Password",
+    "GeneralInfo_CurrentPassword": "Current Password",
+    "GeneralInfo_NewPassword": "New Password",
+    "GeneralInfo_ConfirmPassword": "Confirm Password",
+    "GeneralInfo_Err_NameEmpty": "Name cannot be empty.",
+    "GeneralInfo_Err_NameLettersOnly": "Name should contain only letters and spaces.",
+    "GeneralInfo_Err_NameMaxLength": "Name cannot exceed 30 characters.",
+    "GeneralInfo_Err_UsernameEmpty": "Username cannot be empty.",
+    "GeneralInfo_Err_UsernameStartNumber": "Username must not start with a number.",
+    "GeneralInfo_Err_UsernameChars": "Username can only contain lowercase letters, numbers, and underscores.",
+    "GeneralInfo_Err_UsernameStartChar": "Username must start with a letter or an underscore.",
+    "GeneralInfo_Err_EmailEmpty": "Email cannot be empty.",
+    "GeneralInfo_Err_EmailInvalid": "Invalid email format.",
+    "GeneralInfo_Err_PasswordEmpty": "Password cannot be empty.",
+    "GeneralInfo_Err_PasswordFormat": "Password should be 8-18 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.",
+    "GeneralInfo_Err_PhoneEmpty": "Phone number cannot be empty.",
+    "GeneralInfo_Err_PhoneDigits": "Phone number should be exactly 10 digits.",
+    "GeneralInfo_Err_AddressEmpty": "Address cannot be empty.",
+    "GeneralInfo_Alert_VerificationRequired_Title": "Verification Required",
+    "GeneralInfo_Alert_VerificationRequired_Text": "Please verify your email and/or phone number before saving.",
+    "GeneralInfo_Alert_Saved_Title": "Saved!",
+    "GeneralInfo_Alert_Saved_Text": "Your changes have been saved.",
+    "GeneralInfo_Alert_EnterOtps_Title": "Enter OTPs",
+    "GeneralInfo_Alert_EnterOtps_EmailPlaceholder": "Enter OTP sent to email",
+    "GeneralInfo_Alert_EnterOtps_PhonePlaceholder": "Enter OTP sent to phone",
+    "GeneralInfo_Alert_EmailOtpDigits": "Email OTP must be exactly 6 digits",
+    "GeneralInfo_Alert_PhoneOtpDigits": "Phone OTP must be exactly 6 digits",
+    "GeneralInfo_Alert_IncorrectEmailOtp": "Incorrect OTP for Email",
+    "GeneralInfo_Alert_IncorrectPhoneOtp": "Incorrect OTP for Phone",
+    "GeneralInfo_Alert_ConfirmDelete_Title": "Are you sure?",
+    "GeneralInfo_Alert_ConfirmDelete_Text": "You won't be able to revert this!",
+    "GeneralInfo_Alert_ConfirmDelete_Button": "Yes, delete it!",
+    "GeneralInfo_Alert_Deleted_Title": "Deleted!",
+    "GeneralInfo_Alert_Deleted_Text": "Your account has been deleted.",
+    "GeneralInfo_Alert_PasswordChanged_Title": "Password Changed!",
+    "GeneralInfo_Alert_PasswordChanged_Text": "Your password has been changed successfully.",
+    "GeneralInfo_Alert_EmailVerified_Title": "Email Verified!",
+    "GeneralInfo_Alert_EmailVerified_Text": "Your email has been verified successfully.",
+    "GeneralInfo_Alert_PhoneVerified_Title": "Phone Number Verified!",
+    "GeneralInfo_Alert_PhoneVerified_Text": "Your phone number has been verified successfully.",
+    "GeneralInfo_Alert_InvalidOtp_Title": "Invalid OTP",
+    "GeneralInfo_Alert_InvalidEmailOtp_Text": "Please enter the correct OTP sent to your email.",
+    "GeneralInfo_Alert_InvalidPhoneOtp_Text": "Please enter the correct OTP sent to your phone number.",
+    "GeneralInfo_Err_CurrentPasswordIncorrect": "Current password is incorrect.",
+    "GeneralInfo_Err_PasswordMismatch": "New password and confirm password do not match."
+  },
+
+  "DiabetesAnalysis": {
+    "DiabetesAnalysis_Title": "DIABETES ANALYSIS",
+    "DiabetesAnalysis_Age": "Age",
+    "DiabetesAnalysis_Weight": "Weight (Kgs)",
+    "DiabetesAnalysis_FamilyHistory": "Family History",
+    "DiabetesAnalysis_DietaryHabits": "Dietary Habits",
+    "DiabetesAnalysis_MedicationUse": "Medication Use",
+    "DiabetesAnalysis_StressLevels": "Stress Levels",
+    "DiabetesAnalysis_HipCircumference": "Hip Circumference",
+    "DiabetesAnalysis_EnterHipCircumference": "Enter Hip Circumference",
+    "DiabetesAnalysis_FastingGlucose": "Fasting Glucose",
+    "DiabetesAnalysis_EnterFastingGlucose": "Enter Fasting Glucose",
+    "DiabetesAnalysis_Gender": "Gender",
+    "DiabetesAnalysis_Height": "Height",
+    "DiabetesAnalysis_EnterHeight": "Enter Height",
+    "DiabetesAnalysis_PhysicalActivityLevel": "Physical Activity Level",
+    "DiabetesAnalysis_EthnicityRace": "Ethnicity/Race",
+    "DiabetesAnalysis_SleepDurationQuality": "Sleep Duration/Quality",
+    "DiabetesAnalysis_WaistCircumference": "Waist Circumference",
+    "DiabetesAnalysis_EnterWaistCircumference": "Enter Waist Circumference",
+    "DiabetesAnalysis_SmokingStatus": "Smoking Status",
+    "DiabetesAnalysis_Analysis": "Analysis",
+    "DiabetesAnalysis_Report": "Report",
+    "DiabetesAnalysis_Select": "Select",
+    "DiabetesAnalysis_NoOptions": "No options available",
+    "DiabetesAnalysis_NoUnits": "No units available",
+    "DiabetesAnalysis_Alert_IncorrectInput_Title": "Incorrect Input",
+    "DiabetesAnalysis_Alert_MissingFields_Title": "Missing Fields",
+    "DiabetesAnalysis_Alert_MissingFields_Text": "Please fill all the fields.",
+    "DiabetesAnalysis_Alert_InvalidHeight": "Invalid Height",
+    "DiabetesAnalysis_Alert_HeightM": "Height should be between 1.4 and 2.0 m",
+    "DiabetesAnalysis_Alert_HeightFt": "Height should be between 4.6 and 6.5 ft",
+    "DiabetesAnalysis_Alert_InvalidHipCircumference": "Invalid Hip Circumference",
+    "DiabetesAnalysis_Alert_HipCm": "Hip Circumference should be between 70 and 160 cm",
+    "DiabetesAnalysis_Alert_HipM": "Hip Circumference should be between 0.7 and 1.6 m",
+    "DiabetesAnalysis_Alert_HipIn": "Hip Circumference should be between 27.5 and 63 in",
+    "DiabetesAnalysis_Alert_InvalidWaistCircumference": "Invalid Waist Circumference",
+    "DiabetesAnalysis_Alert_WaistCm": "Waist Circumference should be between 60 and 150 cm",
+    "DiabetesAnalysis_Alert_WaistM": "Waist Circumference should be between 0.6 and 1.5 m",
+    "DiabetesAnalysis_Alert_WaistIn": "Waist Circumference should be between 23.5 and 69 in",
+    "DiabetesAnalysis_Alert_InvalidFastingGlucose": "Invalid Fasting Glucose",
+    "DiabetesAnalysis_Alert_GlucoseMgDl": "Fasting Blood Glucose should be between 60 and 140 mg/dL",
+    "DiabetesAnalysis_Alert_GlucoseMgL": "Fasting Blood Glucose should be between 600 and 1400 mg/L"
+  },
+
+  "Contact": {
+    "Contact_Cover_Title": "Home -> Contact Us",
+    "Contact_Cover_AnimatedText": "Locate us easily! Find AliveAI HQ. Seamless integration, precise directions, and real-time updates. Explore now!",
+    "Contact_BackToHome": "Back to Home",
+    "Contact_OurOffice": "Our Office",
+    "Contact_OurOffice_Description": "Get in touch with us easily through our office locations, direct emails, and quick phone support for assistance.",
+    "Contact_Card_Location_Title": "OUR LOCATION",
+    "Contact_Card_Location_Address": "1511 Bridges Court Fremont, CA-94536 USA",
+    "Contact_Card_Email_Title": "EMAIL ADDRESS",
+    "Contact_Card_Email_Value": "enquiry@alive.ai",
+    "Contact_Card_Phone_Title": "PHONE NUMBER",
+    "Contact_Card_Phone_Value": "+1 987 654 321",
+    "Contact_Feedback": "Feedback",
+    "Contact_Feedback_Description": "Share your experience and suggestions with us through our feedback form to help improve our services and care.",
+    "Contact_Form_Title": "GET IN TOUCH",
+    "Contact_Form_Name_Placeholder": "Full Name",
+    "Contact_Form_Email_Placeholder": "Email",
+    "Contact_Form_Description_Placeholder": "Description",
+    "Contact_Form_Submit": "Send Message",
+    "Contact_Alert_EmptyFields_Title": "Empty Fields",
+    "Contact_Alert_EmptyFields_Text": "Please fill in all form fields before submitting.",
+    "Contact_Alert_MessageSent_Title": "Message Sent",
+    "Contact_Alert_MessageSent_Text": "Thank you for your feedback!",
+    "Contact_MapLoading": "Loading Location...",
+    "Contact_OurTeam": "Our Team",
+    "Contact_OurTeam_Description": "Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.",
+    "Contact_Counter_Patients": "PATIENTS",
+    "Contact_Counter_Specialists": "SPECIALISTS",
+    "Contact_Counter_Locations": "LOCATIONS"
+  },
+
+  "Navbar": {
+    "Navbar_Feature_1": "Diabetes Analysis",
+    "Navbar_Feature_2": "Asthma Analysis",
+    "Navbar_Feature_3": "Cardiovascular Analysis",
+    "Navbar_Feature_4": "Arthritis Analysis",
+    "Navbar_Feature_5": "Heart and Strokes Analysis",
+    "Navbar_Feature_6": "Migraine Control Analysis",
+    "Navbar_Feature_7": "Bronchitis Analysis",
+    "Navbar_Feature_8": "Liver Condition Analysis",
+    "Navbar_Dashboard": "Dashboard",
+    "Navbar_Logout": "Logout"
+  },
+
+  "HomeDepartments": {
+    "HomeDepartments_Icon_1": "Diabetes Analysis",
+    "HomeDepartments_Icon_2": "Asthma Analysis",
+    "HomeDepartments_Icon_3": "Cardiovascular Analysis",
+    "HomeDepartments_Icon_4": "Arthritis Analysis",
+    "HomeDepartments_Icon_5": "Heart & Stroke Analysis",
+    "HomeDepartments_Icon_6": "Migraine Control Analysis",
+    "HomeDepartments_Icon_7": "Bronchitis Analysis",
+    "HomeDepartments_Icon_8": "Liver Condition Analysis"
+  },
+
+  "Team": {
+    "Team_Title": "Our Team",
+    "Team_Description": "Meet the passionate innovators behind AliveAI, dedicated to transforming the future of intelligent solutions.",
+    "Team_Counter_Patients": "PATIENTS",
+    "Team_Counter_Specialists": "SPECIALISTS",
+    "Team_Counter_Locations": "LOCATIONS"
+  },
+
+  "AboutPage": {
+    "AboutPage_BackToHome": "Back to Home",
+    "AboutPage_OurServices": "Our Services",
+    "AboutPage_OurServices_Description": "Comprehensive AI-Powered Healthcare Services. Offering cutting-edge solutions for diagnostics, treatment planning, and patient management across all medical fields.",
+    "AboutPage_KeyServices": "KEY SERVICES",
+    "AboutPage_KeyServices_Question": "What medical functionality is inside?",
+    "AboutPage_Service_1": "Health Dashboard",
+    "AboutPage_Service_2": "Patient Registration Data",
+    "AboutPage_Service_3": "Health Check-Ups Analysis",
+    "AboutPage_Service_4": "Chatbot for Health Suggestions",
+    "AboutPage_Service_5": "Doctor's Appointment"
+  },
+
+  "ComingSoon": {
+    "ComingSoon_Title": "Coming Soon",
+    "ComingSoon_Description": "Documentation are on it's way. Stay tuned!"
+  },
+
+  "Charts": {
+    "Charts_Percentages_Label": "Percentages \u2192",
+    "Charts_Range_Label": "Range \u2192",
+    "Charts_Analysis": "Analysis"
+  },
+
+  "LoginPage": {
+    "LoginPage_RememberMe": "Remember Me",
+    "LoginPage_EnterEmail": "Enter email",
+    "LoginPage_EnterPassword": "Enter Password",
+    "LoginPage_Congratulations": "Congratulations!",
+    "LoginPage_AuthFailed": "Authentication Failed",
+    "LoginPage_PleaseEnterValidEmail": "Please Enter Valid Email",
+    "LoginPage_PleaseEnterValidPassword": "Please Enter Valid Password",
+    "LoginPage_ForgotPassword_Title": "Enter Account Email",
+    "LoginPage_ForgotPassword_Placeholder": "Enter Email",
+    "LoginPage_Verify": "Verify",
+    "LoginPage_Cancel": "Cancel",
+    "LoginPage_InvalidEmail": "Please enter a valid email address",
+    "LoginPage_EmailNotExist": "Email does not exist",
+    "LoginPage_EnterOtps": "Enter OTPs",
+    "LoginPage_OtpEmailPlaceholder": "Enter OTP sent to email",
+    "LoginPage_OtpPhonePlaceholder": "Enter OTP sent to phone",
+    "LoginPage_EmailOtpDigits": "Email OTP must be exactly 6 digits",
+    "LoginPage_PhoneOtpDigits": "Phone OTP must be exactly 6 digits",
+    "LoginPage_IncorrectEmailOtp": "Incorrect OTP for Email",
+    "LoginPage_IncorrectPhoneOtp": "Incorrect OTP for Phone",
+    "LoginPage_ResetPassword": "Reset Password",
+    "LoginPage_NewPassword": "New Password",
+    "LoginPage_ConfirmPassword": "Confirm Password",
+    "LoginPage_Submit": "Submit",
+    "LoginPage_PasswordsNoMatch": "Passwords do not match",
+    "LoginPage_PasswordFormatError": "Password must be between 8 and 18 characters and include uppercase, lowercase, numeric, and special characters",
+    "LoginPage_Success": "Success",
+    "LoginPage_PasswordUpdated": "Password has been updated successfully!",
+    "LoginPage_OK": "OK"
+  },
+
+  "SignUpPage": {
+    "SignUpPage_FullName": "Full Name",
+    "SignUpPage_Username": "Username",
+    "SignUpPage_Email": "Email",
+    "SignUpPage_Password": "Password",
+    "SignUpPage_MobileNumber": "Mobile Number",
+    "SignUpPage_Address": "Address",
+    "SignUpPage_EnterOtps": "Enter OTPs",
+    "SignUpPage_OtpEmailPlaceholder": "Enter OTP sent to email",
+    "SignUpPage_OtpPhonePlaceholder": "Enter OTP sent to phone",
+    "SignUpPage_EmailOtpDigits": "Email OTP must be exactly 6 digits",
+    "SignUpPage_PhoneOtpDigits": "Phone OTP must be exactly 6 digits",
+    "SignUpPage_IncorrectEmailOtp": "Incorrect OTP for Email",
+    "SignUpPage_IncorrectPhoneOtp": "Incorrect OTP for Phone",
+    "SignUpPage_Success": "Success",
+    "SignUpPage_SignupComplete": "Sign-up has been completed successfully!",
+    "SignUpPage_OK": "OK",
+    "SignUpPage_Verify": "Verify",
+    "SignUpPage_Cancel": "Cancel",
+    "SignUpPage_Err_InvalidName": "Please Enter a Valid Name",
+    "SignUpPage_Err_InvalidUsername": "Please Enter a Valid Username",
+    "SignUpPage_Err_InvalidEmail": "Please Enter a Valid Email",
+    "SignUpPage_Err_InvalidPassword": "Please Enter a Valid Password",
+    "SignUpPage_Err_InvalidMobile": "Please Enter a Valid Mobile Number",
+    "SignUpPage_Err_InvalidAddress": "Please Enter a Valid Address",
+    "SignUpPage_ValidationError": "Validation Error"
+  },
+
+  "FooterPage": {
+    "FooterPage_NamePlaceholder": "Your Name",
+    "FooterPage_EmailPlaceholder": "Your Email",
+    "FooterPage_MessagePlaceholder": "Your Message"
+  }
+}
