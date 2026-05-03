@@ -6,7 +6,7 @@ import "../StyleSheets/DashboardMenu.css";
 import BarChart from "./Utils/BarChart";
 import DonutChart from "./Utils/DonutChart";
 import LineChart from "./Utils/LineChart";
-import StaticData from "../Static/StaticData.json";
+import StaticData from "../Utils/StaticText.json";
 
 const MenuDashboard = () => {
   const donutData = [
@@ -21,22 +21,22 @@ const MenuDashboard = () => {
   ];
 
   const features = [
-    "Diabetes",
-    "Asthma",
-    "Cadiovascular",
-    "Arthritis",
-    "Heart & Stroke ",
-    "Migrane",
-    "Bronchitis",
-    "Liver Condition",
+    StaticData.UserDashboard.UserDashboard_Feature_1,
+    StaticData.UserDashboard.UserDashboard_Feature_2,
+    StaticData.UserDashboard.UserDashboard_Feature_3,
+    StaticData.UserDashboard.UserDashboard_Feature_4,
+    StaticData.UserDashboard.UserDashboard_Feature_5,
+    StaticData.UserDashboard.UserDashboard_Feature_6,
+    StaticData.UserDashboard.UserDashboard_Feature_7,
+    StaticData.UserDashboard.UserDashboard_Feature_8,
   ];
 
   const percentages = [0, 25, 50, 75, 100];
-  const percentageLabel = "Percentages";
+  const percentageLabel = StaticData.UserDashboard.UserDashboard_PercentageLabel;
 
   const peopleData = features.map(() => 25);
   const userData = [25, 0, 0, 0, 0, 0, 0, 0];
-  const featureLabel = "Health Features";
+  const featureLabel = StaticData.UserDashboard.UserDashboard_FeatureLabel;
 
   const barData = [
     { label: "0-10", value: 30 },

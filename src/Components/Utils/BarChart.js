@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-import StaticData from "../../Static/StaticData.json";
+import StaticData from "../../Utils/StaticText.json";
 
 const BarChart = ({
   data,

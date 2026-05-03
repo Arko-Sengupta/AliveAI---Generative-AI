@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import { AuthProvider } from "./Components/Routes/AuthContext";
 import PrivateRoute from "./Components/Routes/PrivateRoute";
-import StaticData from "./Static/StaticData.json";
+import StaticData from "./Utils/StaticText.json";
 import Dashboard from "./Components/Dashboard";
 import "./StyleSheets/Dashboard.css";
 import "./StyleSheets/DashboardMenu.css";
@@ -41,7 +41,6 @@ const App = () => {
               path="/signup"
               element={<SignUp StaticData={StaticData} />}
             />
-            <Route path="/features" element={<Feature />} />
             <Route
               path="/dashboard/*"
               element={

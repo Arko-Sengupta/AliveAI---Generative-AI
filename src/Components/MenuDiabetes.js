@@ -12,7 +12,7 @@ import "../StyleSheets/DashboardMenu.css";
 import CustomButton from "./Utils/CustomButton";
 import DonutChart from "./Utils/DonutChart";
 import ECGAnimation from "./Utils/ECGAnimation";
-import StaticData from "../Static/StaticData.json";
+import StaticData from "../Utils/StaticText.json";
 
 const donutData = [{ id: "1", Diabetic: 25, "Non-Diabetic": 75 }];
 

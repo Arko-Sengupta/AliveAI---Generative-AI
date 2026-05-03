@@ -28,14 +28,15 @@ const AboutCover = ({ StaticData }) => {
     StaticData.About.About_Cover;
 
   useEffect(() => {
-    let index = -1;
+    let index = 0;
     setDisplayedText("");
     const interval = setInterval(() => {
+      if (index >= About_Cover_Sub_Title.length) {
+        clearInterval(interval);
+        return;
+      }
       setDisplayedText((prev) => prev + About_Cover_Sub_Title.charAt(index));
       index++;
-      if (index === About_Cover_Sub_Title.length) {
-        clearInterval(interval);
-      }
     }, 100);
 
     return () => clearInterval(interval);

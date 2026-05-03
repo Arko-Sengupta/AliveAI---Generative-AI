@@ -1,7 +1,7 @@
 import React from "react";
 import ECGAnimation from "./ECGAnimation";
 import "../../StyleSheets/DashboardMenu.css";
-import StaticData from "../../Static/StaticData.json";
+import StaticData from "../../Utils/StaticText.json";
 
 const ComingSoon = () => {
   return (

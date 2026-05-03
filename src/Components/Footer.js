@@ -108,8 +108,8 @@ const WebFooterEnquiry = ({ Footer, StaticData }) => {
     if (!name || !email || !message) {
       Swal.fire({
         icon: "error",
-        title: "Empty Fields",
-        text: "Please fill in all form fields before submitting.",
+        title: StaticData.FooterEnquiry.FooterEnquiry_EmptyFields_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_EmptyFields_Text,
         customClass: {
           confirmButton: "btn-blue",
         },
@@ -117,8 +117,8 @@ const WebFooterEnquiry = ({ Footer, StaticData }) => {
     } else if (!EmailRegex.test(email)) {
       Swal.fire({
         icon: "error",
-        title: "Invalid Email",
-        text: "Please enter a valid email address.",
+        title: StaticData.FooterEnquiry.FooterEnquiry_InvalidEmail_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_InvalidEmail_Text,
         customClass: {
           confirmButton: "btn-blue",
         },
@@ -126,8 +126,8 @@ const WebFooterEnquiry = ({ Footer, StaticData }) => {
     } else {
       Swal.fire({
         icon: "success",
-        title: "Message Sent",
-        text: "Thank you for your enquiry!",
+        title: StaticData.FooterEnquiry.FooterEnquiry_MessageSent_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_MessageSent_Text,
         customClass: {
           confirmButton: "btn-blue",
         },
@@ -310,8 +310,8 @@ const MobFooterEnquiry = ({ Footer, StaticData }) => {
     if (!name || !email || !message) {
       Swal.fire({
         icon: "error",
-        title: "Empty Fields",
-        text: "Please fill in all form fields before submitting.",
+        title: StaticData.FooterEnquiry.FooterEnquiry_EmptyFields_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_EmptyFields_Text,
         customClass: {
           confirmButton: "btn-blue",
         },
@@ -319,8 +319,8 @@ const MobFooterEnquiry = ({ Footer, StaticData }) => {
     } else if (!EmailRegex.test(email)) {
       Swal.fire({
         icon: "error",
-        title: "Invalid Email",
-        text: "Please enter a valid email address.",
+        title: StaticData.FooterEnquiry.FooterEnquiry_InvalidEmail_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_InvalidEmail_Text,
         customClass: {
           confirmButton: "btn-blue",
         },
@@ -328,8 +328,8 @@ const MobFooterEnquiry = ({ Footer, StaticData }) => {
     } else {
       Swal.fire({
         icon: "success",
-        title: "Message Sent",
-        text: "Thank you for your enquiry!",
+        title: StaticData.FooterEnquiry.FooterEnquiry_MessageSent_Title,
+        text: StaticData.FooterEnquiry.FooterEnquiry_MessageSent_Text,
         customClass: {
           confirmButton: "btn-blue",
         },

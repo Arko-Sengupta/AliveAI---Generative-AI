@@ -27,14 +27,15 @@ const Cover = ({ StaticData }) => {
   const text = StaticData.Contact.Contact_Cover_AnimatedText;
 
   useEffect(() => {
-    let index = -1;
+    let index = 0;
     setDisplayedText("");
     const interval = setInterval(() => {
+      if (index >= text.length) {
+        clearInterval(interval);
+        return;
+      }
       setDisplayedText((prev) => prev + text.charAt(index));
       index++;
-      if (index === text.length) {
-        clearInterval(interval);
-      }
     }, 100);
 
     return () => clearInterval(interval);

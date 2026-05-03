@@ -1,5 +1,5 @@
 import "../../StyleSheets/Dashboard.css";
-import StaticData from "../../Static/StaticData.json";
+import StaticData from "../../Utils/StaticText.json";
 
 const ComingSoon2 = () => {
   return (

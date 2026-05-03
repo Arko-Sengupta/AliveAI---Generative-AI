@@ -26,7 +26,7 @@ import {
   Typography,
 } from "@mui/material";
 import "../StyleSheets/Dashboard.css";
-import StaticData from "../Static/StaticData.json";
+import StaticData from "../Utils/StaticText.json";
 
 import MenuDashboard from "./MenuDashboard";
 import MenuGeneralInfo from "./MenuGeneralInfo";

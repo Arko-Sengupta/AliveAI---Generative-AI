@@ -28,7 +28,7 @@ import Swal from "sweetalert2";
 import "../StyleSheets/DashboardMenu.css";
 import { useAuth } from "./Routes/AuthContext";
 import CustomButton from "./Utils/CustomButton";
-import StaticData from "../Static/StaticData.json";
+import StaticData from "../Utils/StaticText.json";
 
 const FormGroup = ({
   label,

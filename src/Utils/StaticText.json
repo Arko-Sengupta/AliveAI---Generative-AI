@@ -41,23 +41,6 @@
       "Home_Summary_Read_More_Button": "Read More"
     },
 
-    "Home_Founders": {
-      "Home_Founders_Title": "Meet Our Founders",
-      "Home_Founders_Sub_Title": "Meet the Visionaries Behind AliveAI. Harnessing AI to Revolutionize Healthcare with Cutting-Edge Medical Insights and Personalized Patient Care.",
-      "Home_Founders_Members": {
-        "Home_Founders_Members_Member_1": "Member 1",
-        "Home_Founders_Members_Member_2": "Member 2",
-        "Home_Founders_Members_Member_3": "Member 3",
-        "Home_Founders_Members_Member_4": "Member 4"
-      },
-      "Home_Founders_Designations": {
-        "Home_Founders_Designations_Designation_1": "Designation 1",
-        "Home_Founders_Designations_Designation_2": "Designation 2",
-        "Home_Founders_Designations_Designation_3": "Designation 3",
-        "Home_Founders_Designations_Designation_4": "Designation 4"
-      }
-    },
-
     "Home_Review": {
       "Home_Review_Title": "Our Patients Say About Us",
       "Home_Review_Sub_Title": "AliveAI Patient Pulse: Real-time Feedback Hub — Amplify Patient Voices, Enhance Care, and Drive Continuous Improvement Efforts!",
@@ -163,7 +146,17 @@
   },
 
   "UserDashboard": {
-    "UserDashboard_Title": "USER DASHBOARD"
+    "UserDashboard_Title": "USER DASHBOARD",
+    "UserDashboard_PercentageLabel": "Percentages",
+    "UserDashboard_FeatureLabel": "Health Features",
+    "UserDashboard_Feature_1": "Diabetes",
+    "UserDashboard_Feature_2": "Asthma",
+    "UserDashboard_Feature_3": "Cardiovascular",
+    "UserDashboard_Feature_4": "Arthritis",
+    "UserDashboard_Feature_5": "Heart & Stroke",
+    "UserDashboard_Feature_6": "Migraine",
+    "UserDashboard_Feature_7": "Bronchitis",
+    "UserDashboard_Feature_8": "Liver Condition"
   },
 
   "GeneralInfo": {
@@ -357,8 +350,8 @@
   },
 
   "Charts": {
-    "Charts_Percentages_Label": "Percentages \u2192",
-    "Charts_Range_Label": "Range \u2192",
+    "Charts_Percentages_Label": "Percentages →",
+    "Charts_Range_Label": "Range →",
     "Charts_Analysis": "Analysis"
   },
 
@@ -426,5 +419,14 @@
     "FooterPage_NamePlaceholder": "Your Name",
     "FooterPage_EmailPlaceholder": "Your Email",
     "FooterPage_MessagePlaceholder": "Your Message"
+  },
+
+  "FooterEnquiry": {
+    "FooterEnquiry_EmptyFields_Title": "Empty Fields",
+    "FooterEnquiry_EmptyFields_Text": "Please fill in all form fields before submitting.",
+    "FooterEnquiry_InvalidEmail_Title": "Invalid Email",
+    "FooterEnquiry_InvalidEmail_Text": "Please enter a valid email address.",
+    "FooterEnquiry_MessageSent_Title": "Message Sent",
+    "FooterEnquiry_MessageSent_Text": "Thank you for your enquiry!"
   }
 }

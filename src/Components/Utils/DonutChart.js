@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as d3 from "d3";
 import React, { useEffect, useRef } from "react";
 import "../../StyleSheets/DashboardMenu.css";
-import StaticData from "../../Static/StaticData.json";
+import StaticData from "../../Utils/StaticText.json";
 
 const DonutChart = ({
   data,

@@ -44,14 +44,15 @@ const Cover = ({ StaticData }) => {
   } = StaticData.Home.Home_Cover;
 
   useEffect(() => {
-    let index = -1;
+    let index = 0;
     setDisplayedText("");
     const interval = setInterval(() => {
+      if (index >= Home_Cover_Sub_Title.length) {
+        clearInterval(interval);
+        return;
+      }
       setDisplayedText((prev) => prev + Home_Cover_Sub_Title.charAt(index));
       index++;
-      if (index === Home_Cover_Sub_Title.length) {
-        clearInterval(interval);
-      }
     }, 100);
 
     return () => clearInterval(interval);
